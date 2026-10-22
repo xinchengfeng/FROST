@@ -1,0 +1,367 @@
+{
+  "files": [
+    {
+      "path": "previous_LICENSE_STATUS.txt",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/previous_LICENSE_STATUS.txt",
+      "sha256": "2cd94cbf6ecda3dbaa69da9dd8ab22cbe5549256c7debc0fb2b7082f1260ebce",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "requirements.txt",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/requirements.txt",
+      "sha256": "b03f1b026fbeb91eacdaaaf9025728c4b58e6bc6f89558c8a89c18f5034318e2",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "previous_requirements.txt",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/previous_requirements.txt",
+      "sha256": "b03f1b026fbeb91eacdaaaf9025728c4b58e6bc6f89558c8a89c18f5034318e2",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/evaluate.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/evaluate.py",
+      "sha256": "3a571dae2b3ccb61be493f59b26ce4f1322c716dbb3d5a79f282fda9795f7f46",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/sc_baselines.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/sc_baselines.py",
+      "sha256": "3c4be9d38c67524784d2c7aee6215b7ff51e4d4c880d7c86e979baa8b3f45647",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/horner.cpp",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/horner.cpp",
+      "sha256": "7c5c6cb097bec1e7d85b0ae3e0995a737829026cf6dc7662dc60c720da4f055d",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/verify_local.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/verify_local.py",
+      "sha256": "45f0255239a97ae4016c987bdb4ddeee78f351efabc0a4cec5d5e5699ec19793",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/local_tt.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/local_tt.py",
+      "sha256": "e0605711efa1fffe6d3a77af192f2fe00532d913cf546a788563c728e3657e0d",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/validate_horner.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/validate_horner.py",
+      "sha256": "6031e3296b9c2c61c16ced47713f28ffafad6bfadd2bc89e57b32d7eda470c77",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/select_finite.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/select_finite.py",
+      "sha256": "5bda34a22f7f0b2221574b251db291aaeb47e9988af8abee8d4561cb888b4c1e",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/make_figure.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/make_figure.py",
+      "sha256": "e1e4007f397eee57139158d0e4be10cebe77a5222c3b4e399e9a6ee44523a2e7",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/train_candidates.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/train_candidates.py",
+      "sha256": "1f05c957afa1eb84449cf38058a102eddb486452d3caf9bd983d0f5dd388efff",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/local_tt.cpp",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/local_tt.cpp",
+      "sha256": "21988a1da1331d75a76226f42ef414baca31cf55c73450f8c8ac4531312f59cb",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/validate_antithetic.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/validate_antithetic.py",
+      "sha256": "17b1dd2ecb28d65b4a063464f18a1aebc8c85f2281306f1d764ef4d99bb0823c",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/verify_stratified.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/verify_stratified.py",
+      "sha256": "4d20ce7735398001df9b22ef4bb1f144af71ebf4da986cd00ea310869bebfcd1",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/diagnose.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/diagnose.py",
+      "sha256": "f409b650b1f03ca82395d480242a3ad444c34f7605a285a5e697c566dd521899",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/horner.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/horner.py",
+      "sha256": "e3d68317fef8c213082977856de4c97ed942cce9ca1413801d123c0bb37d5c69",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/sc_exp_kernels.cpp",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/sc_exp_kernels.cpp",
+      "sha256": "85d0061d70aff55e82ad2e25d05dacdf080885d6781e48372b7e7ba2379b203d",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "source/summarize.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/source/summarize.py",
+      "sha256": "3a08653febf783ba99ae34ba52412d4669d56cde6f9ad957469c1a5b2a05dc45",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "inputs/stage2_protocol.json",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/inputs/stage2_protocol.json",
+      "sha256": "36acf899076fa8c6c56602dd4d1ec7fa0c993ad0f8d6645639546374f0717e19",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/evaluate.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/evaluate.py",
+      "sha256": "88a79a6f03857973e7565c7d2d3f433bc902ca30006b673849cdd8be0a0de515",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/verify_results.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/verify_results.py",
+      "sha256": "2b90318af2f9c1c967445d4a74f257f4e1675f4160502a483acef83b20d3a0d7",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/render_figures.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/render_figures.py",
+      "sha256": "36b97d9eaacc182a89ecf39d23a2d76f07997376ea6a3abf20e225e2dc505c64",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/package.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/package.py",
+      "sha256": "9d8f1de6432f3ea9dc122c3f959994c072d3d2939a46610a58467daae5bd5753",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/write_results.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/write_results.py",
+      "sha256": "bee087fe724eb58bcb657614530117fbffbb7a84b8cbf6ee169ee8ea5677f294",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/attention_core.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/attention_core.py",
+      "sha256": "1ad370d8695e223f8b14e4afb06024af93d73626fe2025283a0872457494b3c8",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/stochastic_model.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/stochastic_model.py",
+      "sha256": "82f992298632679aadb2dda44503898a1cc8e058172dd8919882de6e2459f386",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/data.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/data.py",
+      "sha256": "eedccf2dfa7346084d58a4b347cc28021e6f8aea5aab27c08fbaa1c7a2034dd2",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/validate.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/validate.py",
+      "sha256": "f1e96b03ca6b6a3f8b9258cbc396604a7b20d4f65e118bf9ccd922e675474ec5",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/calibrate.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/calibrate.py",
+      "sha256": "8ca655f9e3695e2a9af449585711e384def5ee0f07857278482996fd02138d69",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/vision.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/vision.py",
+      "sha256": "ad34286fa188b3188601493fd38a621eb92f14a6ad8beec9737c2b79d64e85d7",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/finalize_bsds500.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/finalize_bsds500.py",
+      "sha256": "b362713bf3fdb3d414688fddfb117ecf7f49666da54482bcac135d39f24aeec2",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/restoration_model.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/restoration_model.py",
+      "sha256": "575403bed67e77ed73b70183ade96378e71c5f94b9500df17a7038699085a7a2",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/restoration_data.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/restoration_data.py",
+      "sha256": "781cd40eb9bc34a751d3329cd40830a05a2cf080a051683636fedb3af4bdfef4",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/restoration_metrics.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/restoration_metrics.py",
+      "sha256": "44fee5d5717a33927bbbbaacfd28d6da1ce8266a21cd5b26584bb41a54343ef9",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/finite_kernels.cpp",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/finite_kernels.cpp",
+      "sha256": "2f32a3dc8181ff4f06341349564d32b04433c8c6881b2f92382f4990e70f3fdb",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/plot_examples_bsds500.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/plot_examples_bsds500.py",
+      "sha256": "5d1cd4e8cd45f09929b2d20b7cedad4af6d006749f7d84ce0933e9615ce7542b",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/finalize_quality30.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/finalize_quality30.py",
+      "sha256": "37afc32106017bf796c416490485d5b30e626916e5cad9eeb2929e2523c9152c",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/plot_bsds500.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/plot_bsds500.py",
+      "sha256": "9a7811012185d1250b4495898b91d22ac54543903c301f8e1d98a1da75b87e05",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/run_quality30.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/run_quality30.py",
+      "sha256": "3c8e891361958e2fe6a0b298c6b17063e598319dbcb6fa003f585f731b4b9cdf",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/summarize_bsds500.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/summarize_bsds500.py",
+      "sha256": "ed5578ddad70d38b09afdcc1f7f47c7a47c5e4c740a2d920ad2932b8808449f9",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/write_readme.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/write_readme.py",
+      "sha256": "ef4e3043a5280cff28ad8b10392743137c3d7c77f3a003fe7a5af4421bd2394c",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/report_quality30.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/report_quality30.py",
+      "sha256": "7769898f29f91830a5816b3c30972233db8bb273ea1d63bce05073d6760898bb",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/evaluate_bsds500.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/evaluate_bsds500.py",
+      "sha256": "5b775547cc14c6ffa004277cb3a1f21c2c6322dc57735fd234386070d036e2c0",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/fast_finite.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/fast_finite.py",
+      "sha256": "e8921770b42ccb4ecf13d1393d42eb3e705af55a19a79822468fa989894e2da1",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/write_manuscript.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/write_manuscript.py",
+      "sha256": "3fb307f1655d2d1691b86b1a577f647d438e29b9ef806daf0ac04236a8288184",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/verify_fast_finite.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/verify_fast_finite.py",
+      "sha256": "91d07acdbf3420ecb5a86299f515f2a96b8d11fd2678b624fa46eec7e0e3bd3f",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/download_bsds.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/download_bsds.py",
+      "sha256": "910f84af265c513a9aed366de3192edf401177860e3015786f80aa3ab21abca2",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/benchmark_bsds500.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/benchmark_bsds500.py",
+      "sha256": "b664195aa9464b45b2b813112168b9bad634570ca694b3bbeeafedeff06bfcb5",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/scripts/packed_kernels.py",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/scripts/packed_kernels.py",
+      "sha256": "8716bb9d4ea81ab6aca391b7fd3db43128e25c3a41374fada261935b6198b34c",
+      "transformation": "byte-identical"
+    },
+    {
+      "path": "legacy_runtime/source/original/checkpoints/scalar_tables.json",
+      "original_archive": "FROST_Fig10_SC_comparison_package.zip",
+      "original_member": "FROST_Fig10_SC_comparison/legacy_runtime/source/original/checkpoints/scalar_tables.json",
+      "sha256": "cda28908811500621422bd4d0e155da840cf717876560b7866741535389c07a1",
+      "transformation": "byte-identical"
+    }
+  ],
+  "added_release_files": [
+    "README.md",
+    "prepare_data.py (original directory only)",
+    "smoke_native.py (scalar directory only)"
+  ],
+  "note": "Scientific implementations are byte-identical; new release helpers adapt public data layouts and verify reference hashes. Original archive figure labels may predate current manuscript numbering."
+}

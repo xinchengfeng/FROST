@@ -1,0 +1,165 @@
+{
+  "status": "stage2 pilot only; not full-dataset or hardware results",
+  "parameter_selection": "synthetic scores only, before image runs; not image PSNR selection",
+  "training_seed": 2026101701,
+  "validation_seed": 2026101702,
+  "sexp_candidates": [
+    {
+      "states": 16,
+      "gain": 2,
+      "burn": 256,
+      "mean_row_tv": 0.09201241196864508,
+      "seed_scores": [
+        0.09372370588642127,
+        0.09186680734120474,
+        0.09044672267830926
+      ]
+    },
+    {
+      "states": 16,
+      "gain": 4,
+      "burn": 256,
+      "mean_row_tv": 0.14242090059716547,
+      "seed_scores": [
+        0.1447837301297855,
+        0.14271240961907572,
+        0.13976656204263518
+      ]
+    },
+    {
+      "states": 32,
+      "gain": 2,
+      "burn": 256,
+      "mean_row_tv": 0.09264900021211643,
+      "seed_scores": [
+        0.09472355602514665,
+        0.09219661746564616,
+        0.09102682714555647
+      ]
+    },
+    {
+      "states": 32,
+      "gain": 4,
+      "burn": 256,
+      "mean_row_tv": 0.13998640512545052,
+      "seed_scores": [
+        0.14179860479629366,
+        0.14186852713762105,
+        0.13629208344243687
+      ]
+    },
+    {
+      "states": 32,
+      "gain": 8,
+      "burn": 256,
+      "mean_row_tv": 0.2287916548682517,
+      "seed_scores": [
+        0.23383919231315478,
+        0.23069477506443192,
+        0.22184099722716846
+      ]
+    },
+    {
+      "states": 64,
+      "gain": 2,
+      "burn": 256,
+      "mean_row_tv": 0.09271073678417159,
+      "seed_scores": [
+        0.0940904710612062,
+        0.09315402433853413,
+        0.09088771495277444
+      ]
+    },
+    {
+      "states": 64,
+      "gain": 4,
+      "burn": 256,
+      "mean_row_tv": 0.13485399021799332,
+      "seed_scores": [
+        0.13669055580794273,
+        0.1351387667057443,
+        0.13273264814029295
+      ]
+    },
+    {
+      "states": 64,
+      "gain": 8,
+      "burn": 256,
+      "mean_row_tv": 0.20342580167132132,
+      "seed_scores": [
+        0.21044762168757644,
+        0.20249063564920525,
+        0.1973391476771823
+      ]
+    }
+  ],
+  "bernstein_candidates": [
+    {
+      "degree": 4,
+      "max_abs_error": 0.22091421169749792,
+      "rmse": 0.10950404901961246
+    },
+    {
+      "degree": 8,
+      "max_abs_error": 0.0008533658760747631,
+      "rmse": 0.0002926055946431332
+    },
+    {
+      "degree": 16,
+      "max_abs_error": 3.797429037888378e-11,
+      "rmse": 1.1776779774634326e-11
+    },
+    {
+      "degree": 32,
+      "max_abs_error": 1.3322676295501878e-15,
+      "rmse": 2.9477820957483e-16
+    }
+  ],
+  "sexp": {
+    "kind": "sexp",
+    "states": 16,
+    "gain": 2,
+    "burn": 256,
+    "degree": 16,
+    "bound": 8.0,
+    "coefficients": null,
+    "normalization": "decoded integer counts divided by their row sum; numerical",
+    "rng": "xorshift32(13,17,5), one nonzero state per scalar input",
+    "exact_maximum": true
+  },
+  "bernstein": {
+    "kind": "bernstein",
+    "states": 32,
+    "gain": 4,
+    "burn": 256,
+    "degree": 8,
+    "bound": 8.0,
+    "coefficients": [
+      1.0,
+      0.007796012162303407,
+      0.10585770080220884,
+      9.237484191220936e-20,
+      6.354197803327884e-05,
+      0.010552217546088143,
+      1.7264904731879306e-20,
+      0.00022258326310187107,
+      0.00033546262790251185
+    ],
+    "normalization": "decoded integer counts divided by their row sum; numerical",
+    "rng": "xorshift32(13,17,5), one nonzero state per scalar input",
+    "exact_maximum": true
+  },
+  "image_ids": [
+    2018,
+    43033,
+    235098
+  ],
+  "pilot_stream_seed": 101,
+  "pilot_length": 4096,
+  "comparison_scope": "replace softmax only; other original FROST full-mode modules retained",
+  "references": [
+    "10.1109/TC.2012.231",
+    "10.1109/DAC.2008.4555898"
+  ],
+  "note": "SExp exact-zero bypass, max subtraction, clipping and decoded count normalization are our adaptations; not a full published softmax system reproduction"
+}
