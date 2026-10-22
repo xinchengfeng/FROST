@@ -1,0 +1,1179 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{xurl}
+% The numeric Springer style uses \burl for proceedings links.
+% Route it through \url so underscores and long URLs compile correctly.
+\providecommand{\burl}[1]{\url{#1}}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage[title]{appendix}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{manyfoot}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{microtype}
+\usepackage{etoolbox}
+\usepackage{placeins}
+
+% Compact single-column reading layout.
+% sn-jnl already loads geometry: configure it without loading it again.
+\geometry{
+  reset,a4paper,
+  left=22mm,right=22mm,
+  top=22mm,bottom=22mm,
+  bindingoffset=0mm,
+  headheight=14pt,headsep=5mm,footskip=10mm,
+  heightrounded
+}
+\linespread{1.0}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1.5em}
+
+% Compact display spacing, retained after font-size changes.
+\newcommand{\FROSTmathspacing}{%
+  \setlength{\abovedisplayskip}{6pt plus 2pt minus 2pt}%
+  \setlength{\belowdisplayskip}{6pt plus 2pt minus 2pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{4pt plus 1pt minus 1pt}%
+}
+\appto\normalsize{\FROSTmathspacing}
+\AtBeginDocument{\normalsize\allowdisplaybreaks[2]\raggedbottom}
+\setlength{\jot}{3pt}
+
+% Flexible placement prevents a queue of top-only floats.
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{6}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.90}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.85}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{4pt}
+
+% Retain the class heading fonts and numbering; adjust spacing only.
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-10pt plus -3pt minus -2pt}{5pt}{\sectionfont}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-8pt plus -2pt minus -1pt}{4pt}{\subsectionfont}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-6pt plus -2pt minus -1pt}{3pt}{\subsubsectionfont}}
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{10pt plus 2pt minus 2pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{thmstyletwo}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+\theoremstyle{thmstylethree}
+\newtheorem{definition}{Definition}
+
+% Limit tall schematics without distorting their aspect ratio.
+\newcommand{\FROSTgraphic}[1]{%
+  \includegraphics[width=\linewidth,height=0.56\textheight,
+    keepaspectratio]{#1}%
+}
+
+% Overlay panel letters without editing the original image files.
+\newcommand{\FROSTpanelrow}[6]{%
+  \begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] (frostimg) at (0,0) {%
+      \includegraphics[width=\linewidth,height=0.25\textheight,
+        keepaspectratio]{#1}%
+    };
+    \begin{scope}[x={(frostimg.south east)},y={(frostimg.north west)}]
+      \tikzset{frostlabel/.style={
+        anchor=center,fill=white,text=black,draw=none,
+        inner sep=0pt,minimum width=4mm,minimum height=3.5mm,
+        font=\sffamily\bfseries\fontsize{8}{8}\selectfont}}
+      \node[frostlabel] at (#4,#6) {#2};
+      \node[frostlabel] at (#5,#6) {#3};
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+\raggedbottom
+
+\begin{document}
+
+
+\title[Stochastic Transformer inference]{End-to-end stochastic Transformer inference with tensorized finite-state operators}
+
+\author[1]{\fnm{Xincheng} \sur{Feng}}
+\email{xcfeng@connect.hku.hk}
+
+\author[2]{\fnm{Meng} \sur{Li}}
+\email{meng.li@pku.edu.cn}
+
+\author*[1]{\fnm{Ngai} \sur{Wong}}
+\email{nwong@eee.hku.hk}
+
+\affil[1]{%
+    \orgdiv{Department of Electrical and Computer Engineering},
+    \orgname{The University of Hong Kong},
+    \orgaddress{%
+        \city{Hong Kong},
+        \country{China}
+    }
+}
+
+\affil[2]{%
+    \orgdiv{Institute for Artificial Intelligence},
+    \orgname{Peking University},
+    \orgaddress{%
+        \city{Beijing},
+        \postcode{100871},
+        \country{China}
+    }
+}
+
+\abstract{Transformers combine extensive matrix arithmetic with nonlinear operations that couple tokens and features, complicating their implementation using stochastic bitstreams. Here we introduce finite-state and rank-compressed operators for stochastic Transformers (FROST), a framework that integrates stochastic arithmetic with tensorized finite-state operators for Transformer inference. Multivariate softmax mappings are represented through input-driven state transitions and tensor-train parameters, whose storage grows linearly with input dimensionality at fixed state resolution and rank. Software simulations evaluate softmax approximation, attention computation and complete Transformer inference under mixed stochastic and numerical execution. Calibration without updating Transformer weights raises accuracy on a controlled retrieval task from 71.4\% to 99.9\% at a sampling length of 256. Across the Modified National Institute of Standards and Technology database (MNIST), Fashion-MNIST and the Canadian Institute for Advanced Research 10-class dataset (CIFAR-10), calibrated four-block models retain mean classification accuracies within 1.6 percentage points of floating-point references at the same sampling length. These results demonstrate the feasibility of composing multivariate stochastic operators across Transformer networks and identify calibration and finite-stream sampling as determinants of inference fidelity.}
+
+\keywords{Stochastic computing, Transformer inference, Finite-state machines, Tensor-train decomposition, Multivariate function approximation}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+%%\pacs[MSC Classification]{35A01, 65L10, 65L12, 65L20, 65L70}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:introduction}
+
+Transformers have become a common architecture for machine learning (ML), supporting applications ranging from natural language processing (NLP) to computer vision (CV)~\cite{vaswani2017attention,dosovitskiy2021image}. Across these domains, their computational structure remains broadly consistent: linear projections generate feature representations, self-attention mediates content-dependent interactions, and normalization and feed-forward transformations regulate and refine those representations. This combination enables flexible modelling of dependencies across tokens and feature dimensions. Improving the computational efficiency of these shared operations could therefore benefit a broad range of models and applications.
+
+This architectural versatility comes with substantial computational and data-movement costs. Given an input token matrix $X\in\mathbb{R}^{n\times d}$, let $n$ denote the number of tokens and $d$ the embedding dimension. For a single attention head, let $d_k$ and $d_v$ denote the query/key and value dimensions, respectively. The learned projection matrices are $W_Q,W_K\in\mathbb{R}^{d\times d_k}$ and $W_V\in\mathbb{R}^{d\times d_v}$. They produce query, key and value representations $Q=XW_Q$, $K=XW_K$ and $V=XW_V$, with $Q,K\in\mathbb{R}^{n\times d_k}$ and $V\in\mathbb{R}^{n\times d_v}$. Writing $\mathrm{T}$ for matrix transpose and applying softmax row-wise, scaled dot-product attention evaluates~\cite{vaswani2017attention}
+\begin{equation}
+\mathrm{Attention}(Q,K,V) = \mathrm{softmax} \left( \frac{QK^{\mathrm T}}{\sqrt{d_k}} \right)V. \label{eq:standard_attention}
+\end{equation}
+The resulting output has shape $n\times d_v$. This operation combines matrix multiplications with nonlinear normalization of input-dependent scores. Layer normalization~\cite{ba2016layer} and feed-forward activations introduce further nonlinear computations, repeated across tokens, attention heads and layers. Their hardware implementation requires arithmetic units, intermediate storage and data transfer, with the relative costs depending on the model and execution platform. Quantization~\cite{kim2021ibert}, pruning~\cite{wang2021spatten} and specialized accelerators~\cite{li2020ftrans} reduce these demands, but also motivate a complementary question: can the numerical representation underlying Transformer computation itself be redesigned?
+
+Stochastic computing (SC) offers an alternative to positional binary arithmetic by representing values through the statistics of bitstreams~\cite{gaines1969stochastic,alaghi2013survey}. For a unipolar stochastic sequence $\{x_b(t)\}_{t=1}^{L}$, let $t$ index bitstream cycles, $L$ denote the number of observed bits, and $P_x=\Pr[x_b(t)=1]$ be the marginal probability of producing a logic one. The finite-stream estimate of this probability, denoted by $\widehat{P}_x$, is
+\begin{equation}
+\widehat{P}_x = \frac{1}{L} \sum_{t=1}^{L}x_b(t), \qquad x_b(t)\in\{0,1\}. \label{eq:stochastic_encoding}
+\end{equation}
+For independent input streams, multiplication can be implemented using an AND gate, whereas multiplexers support scaled addition and probabilistic selection \cite{gaines1969stochastic,qian2008synthesis}. Numerical outputs can subsequently be estimated by counting bits over a finite observation window. SC thus exchanges arithmetic complexity for temporal estimation, creating opportunities for compact, parallel datapaths. These opportunities are relevant to Transformer inference, where repeated computations can often be evaluated at reduced precision. Their practical value, however, depends on balancing circuit simplicity against bitstream-generation overhead, estimation error and latency.
+
+Extending these primitives to a complete Transformer presents a representational challenge. Established stochastic nonlinear operators predominantly target univariate functions, such as sigmoid, hyperbolic tangent and exponential mappings \cite{brown2001stochastic,feng2022mmfsm}. More complex expressions are commonly assembled by cascading stochastic multipliers, adders and scalar nonlinear units. Such compositions can implement multivariate functions, but do not by themselves provide a compact representation of coupled high-dimensional mappings. Moreover, finite-bitstream errors can propagate through successive stages, while correlations between streams can bias operations that rely on statistical independence~\cite{alaghi2013survey,alaghi2013correlation}.
+
+These issues are particularly relevant to attention and normalization. An attention coefficient depends on a query, the corresponding key and the competing scores across all unmasked tokens. Layer normalization similarly couples features through their shared mean and variance. Implementing these mappings through successive scalar operations introduces intermediate representations and additional stochastic processing stages. A representation that directly captures their multivariate dependence could offer an alternative, provided that its parameter and execution costs remain tractable as dimensionality increases.
+
+Our previous work introduced the stochastic multivariate universal-radix finite-state machine (SMURF)~\cite{feng2025smurf} and the high-dimensional stochastic multivariate universal-radix finite-state machine (HI-SMURF)~\cite{feng2026smurf} to address this problem at the operator level. In SMURF, each of $M$ input variables drives an $N$-state finite-state machine (FSM). Let $i_m\in\{0,\ldots,N-1\}$ be the state index for input $m\in\{1,\ldots,M\}$. Their joint state, encoded as $\boldsymbol{s}=[i_M,i_{M-1},\ldots,i_1]$, selects an entry in a trainable conditional probability table. Let $P_{\boldsymbol{s}}$ denote the joint steady-state probability, $w_{\boldsymbol{s}}\in[0,1]$ the state-conditioned output probability, and $P_y$ the marginal output-one probability. At steady state, the expected output is
+\begin{equation}
+P_y = \sum_{\boldsymbol{s}} P_{\boldsymbol{s}}w_{\boldsymbol{s}}. \label{eq:smurf_output}
+\end{equation}
+The sum runs over all joint state configurations. This formulation represents a multivariate function through input-dependent mixtures of state-conditioned outputs, enabling approximation without prescribing a decomposition into elementary arithmetic operations.
+
+The explicit SMURF table contains $N^M$ parameters for $M$ inputs and $N$ states per input. HI-SMURF replaces this table with a tensor-train (TT) representation~\cite{oseledets2011tensor,feng2026smurf}. Let $\widetilde{w}_{\boldsymbol{s}}$ denote the compressed approximation of $w_{\boldsymbol{s}}$, and let $G^{(m)}$ denote core $m$. The rank $r_m$ links cores $m$ and $m+1$, with unit boundary ranks $r_0=r_M=1$ and an upper bound $r$ on all internal ranks. A state-selected slice is a matrix $G^{(m)}[i_m]\in\mathbb{R}^{r_{m-1}\times r_m}$. The contracted coefficient is
+\begin{equation}
+\widetilde{w}_{\boldsymbol{s}} = G^{(1)}[i_1] G^{(2)}[i_2] \cdots G^{(M)}[i_M], \label{eq:tt_parameterization}
+\end{equation}
+where $G^{(m)}[i_m]$ is a state-selected slice of the $m$th tensor-train core. Using big-O notation for the asymptotic storage bound, parameter storage scales as $\mathcal{O}(MNr^2)$ rather than $\mathcal{O}(N^M)$. This representation makes higher-dimensional approximation tractable when the required ranks remain modest, although the rank needed to achieve a given accuracy depends on the target function. Previous demonstrations, including attention normalization in a lightweight vision Transformer, establish the feasibility of this operator-level approach \cite{feng2026smurf}. Extending it to a complete architecture additionally requires compatible representations and datapaths for linear transformations, nonlinear operators and their composition across layers.
+
+Here we introduce finite-state and rank-compressed operators for stochastic Transformers (FROST), a framework that extends multivariate FSM-based approximation to complete Transformer computation (Fig.~\ref{fig:frost_overview}).
+
+\begin{figure}[!htbp]
+    \centering
+    \FROSTgraphic{Images/Fig_FROST_overview.pdf}
+
+    \caption{
+\textbf{Conceptual overview of FROST.}
+\textbf{a}, Multivariate coupling in softmax and feature normalization.
+\textbf{b}, Input-driven FSMs select tensor-train core slices to
+represent coupled nonlinear mappings.
+\textbf{c}, Stochastic arithmetic and finite-state nonlinear operators
+are composed into Transformer blocks.
+$L$, $N$ and $r$ denote bitstream length, FSM resolution and
+tensor-train rank, respectively.
+}
+    \label{fig:frost_overview}
+\end{figure}
+FROST combines stochastic arithmetic for linear projections and attention aggregation with tensorized finite-state operators for nonlinear mappings, including attention normalization, feature normalization and feed-forward activations. These operators share an input-driven probabilistic formulation, while their trainable parameters encode the distinct functions required within a Transformer block. Tensor-train parameterization controls storage growth at a fixed rank, allowing operator capacity to be adjusted to the complexity of the target mapping.
+
+FROST connects these components through stochastic datapaths that preserve probabilistic representations across successive computational stages. This architecture extends the scope of stochastic implementation from individual nonlinear kernels to the interacting operations of a Transformer block. It also brings operator approximation and hardware mapping into a common design space, in which bitstream length, FSM resolution and tensor-train rank jointly determine numerical fidelity and implementation cost. By composing multivariate finite-state operators with stochastic linear arithmetic, FROST provides a framework for investigating how probabilistic computation can support end-to-end Transformer inference.
+
+\section{Architecture for stochastic Transformer computation}
+\label{sec:frost_architecture}
+
+The finite-state and rank-compressed operators for stochastic Transformers (FROST) framework combines stochastic computing (SC) arithmetic with trainable finite-state machine (FSM) operators to implement the linear and nonlinear computations of a Transformer block. Stochastic arithmetic supports linear projections, query--key dot products and attention aggregation, whereas finite-state operators approximate coupled mappings, including attention and feature normalization. Building on the stochastic multivariate universal-radix finite-state machine (SMURF)~\cite{feng2025smurf} and the high-dimensional stochastic multivariate universal-radix finite-state machine (HI-SMURF)~\cite{feng2026smurf}, tensor-train (TT) parameterization provides a compact representation of these multivariate operators when the required ranks remain bounded~\cite{oseledets2011tensor}.
+
+The architecture connects these components through stochastic datapaths, allowing activation values to pass between successive operations as bitstreams. Conversion between binary and stochastic representations occurs at interfaces with conventional storage or non-stochastic modules. FSM state registers, stored parameters and scaling metadata can retain binary representations. The resulting dataflow therefore maintains stochastic representations for numerical processing without requiring every circuit element or stored quantity to use stochastic encoding.
+
+\subsection{Stochastic representation of Transformer tensors}
+
+Transformer activations and weights generally contain signed values, whereas attention probabilities are non-negative. FROST consequently uses both unipolar and bipolar representations. A value $x\in[0,1]$ is encoded by a stochastic bitstream $\{x_b(t)\}_{t=1}^{L}$, where $x_b(t)\in\{0,1\}$ is the bit at clock cycle $t$ and $L$ is the observation length. Let $\widehat{x}$ denote its finite-stream estimate. Unipolar encoding gives~\cite{gaines1969stochastic,alaghi2013survey}
+\begin{equation}
+\Pr\!\left[x_b(t)=1\right]=x, \qquad \widehat{x} = \frac{1}{L} \sum_{t=1}^{L}x_b(t), \label{eq:unipolar_representation}
+\end{equation}
+For a signed value $x\in[-1,1]$, bipolar encoding gives
+\begin{equation}
+x = 2\Pr\!\left[x_b(t)=1\right]-1, \qquad \widehat{x} = \frac{2}{L} \sum_{t=1}^{L}x_b(t)-1. \label{eq:bipolar_representation}
+\end{equation}
+
+Let $x_{\min}$ and $x_{\max}$ be the lower and upper bounds of a calibrated numerical interval, with $x_{\max}>x_{\min}$. A value $x$ in this interval is mapped to the unipolar value $x_{\mathrm{sc}}$ through
+\begin{equation}
+x_{\mathrm{sc}} = \frac{x-x_{\min}}{x_{\max}-x_{\min}}. \label{eq:range_mapping}
+\end{equation}
+The corresponding bipolar value is $2x_{\mathrm{sc}}-1$. Scale and offset parameters may be obtained from calibration data or learned with the model. These transformations are included in the numerical definition of each operator, so that its stochastic implementation approximates the function in the original numerical domain. Clipping outside the calibrated interval introduces an additional approximation error.
+
+For two independent unipolar streams $x_b(t)$ and $y_b(t)$ encoding values $x,y\in[0,1]$, an AND gate produces the output bit $z_b(t)$. With $\land$ denoting logical conjunction, it implements multiplication~\cite{alaghi2013survey}:
+\begin{equation}
+z_b(t)=x_b(t)\land y_b(t), \qquad \Pr\!\left[z_b(t)=1\right]=xy. \label{eq:unipolar_multiplication}
+\end{equation}
+For independent bipolar streams, an exclusive-NOR (XNOR) gate implements the corresponding product. A multiplexer (MUX) provides scaled addition in either representation~\cite{alaghi2013survey}. Let $c_b(t)\in\{0,1\}$ be its selection bit, independent of the data streams, with selection probability $\alpha=\Pr[c_b(t)=1]\in[0,1]$. The numerical value $z$ represented by the output is
+\begin{equation}
+z = \alpha x+(1-\alpha)y. \label{eq:stochastic_mux_addition}
+\end{equation}
+
+These operations produce products and weighted averages rather than unrestricted sums. Accumulation factors must therefore be tracked through matrix multiplications and residual connections. For example, an equally weighted multiplexer represents $(x+y)/2$; recovering the numerical sum requires a factor of two in the associated scale. Throughout the following formulation, numerical expressions include this scale compensation, while finite-bitstream execution produces stochastic estimates of the represented values.
+
+Figure~\ref{fig:frost_representation} summarizes the stochastic
+encodings, arithmetic primitives and scale compensation used
+throughout the FROST datapath.
+
+\begin{figure}[!htbp]
+    \centering
+    \FROSTgraphic{Images/Fig_FROST_representation.pdf}
+    \caption{
+\textbf{Stochastic representations and arithmetic primitives in FROST.}
+\textbf{a}, Numerical tensors are mapped from calibrated ranges
+to probabilities and encoded as unipolar or bipolar bitstreams.
+\textbf{b}, AND and XNOR gates implement multiplication for
+independent input streams. Multiplexers implement weighted
+averages when selectors are independent of the data streams.
+\textbf{c}, An equally weighted multiplexer encodes $(x+y)/2$;
+tracking a factor of two in the numerical scale recovers the sum.
+}
+    \label{fig:frost_representation}
+\end{figure}
+
+\subsection{Finite-state representation of multivariate operators}
+
+Consider $M$ normalized inputs forming the vector $\boldsymbol{x}=[x_1,\ldots,x_M]\in[0,1]^M$, where $m\in\{1,\ldots,M\}$ indexes input variables. Each input drives an FSM with $N$ states. Its state at cycle $t$ is $i_m(t)\in\{0,\ldots,N-1\}$, and its driving bit is $x_{b,m}(t)\in\{0,1\}$, with marginal probability $\Pr[x_{b,m}(t)=1]=x_m$. The transition rule is a nearest-neighbour random walk with saturating boundaries~\cite{brown2001stochastic,feng2025smurf}:
+\begin{equation}
+i_m(t+1) = \begin{cases} \min\!\left(i_m(t)+1,N-1\right), & x_{b,m}(t)=1, \\[4pt] \max\!\left(i_m(t)-1,0\right), & x_{b,m}(t)=0. \end{cases} \label{eq:fsm_transition}
+\end{equation}
+
+For a temporally independent and identically distributed (IID) Bernoulli input with fixed probability $0<x_m<1$, the ratio of rightward to leftward transition probabilities, denoted by $\tau_m$, is
+\begin{equation}
+\tau_m = \frac{x_m}{1-x_m}. \label{eq:transition_ratio}
+\end{equation}
+Let $\pi_m(i_m\mid x_m)$ denote the stationary probability of state $i_m$ for input $x_m$. With the denominator summation index $u$ ranging over all $N$ states, this distribution is~\cite{brown2001stochastic,feng2025smurf}
+\begin{equation}
+\pi_m(i_m\mid x_m) = \frac{\tau_m^{i_m}} {\displaystyle\sum_{u=0}^{N-1}\tau_m^u}. \label{eq:single_fsm_stationary}
+\end{equation}
+At $x_m=1/2$, this expression gives $\pi_m(i_m\mid x_m)=1/N$. At the endpoints, the stationary distribution is concentrated at state $0$ for $x_m=0$ and at state $N-1$ for $x_m=1$.
+
+Let $\boldsymbol{s}=[i_M,\ldots,i_1]$ denote a joint state configuration and $\boldsymbol{s}(t)$ its instantaneous value. Under mutually independent driving streams, its joint stationary probability $P_{\boldsymbol{s}}(\boldsymbol{x})$ factorizes as~\cite{feng2025smurf}
+\begin{equation}
+P_{\boldsymbol{s}}(\boldsymbol{x}) = \prod_{m=1}^{M} \pi_m(i_m\mid x_m). \label{eq:joint_state_probability}
+\end{equation}
+The concatenated indices form a universal-radix codeword that selects a trainable output probability $w_{\boldsymbol{s}}\in[0,1]$. The codeword identifies an instantaneous FSM configuration; it does not assign the numerical input to a deterministic partition of the input domain. Let $y_b(t)\in\{0,1\}$ denote the scalar output bit. Conditional on the instantaneous configuration, the operator emits a Bernoulli-distributed bit:
+\begin{equation}
+y_b(t)\mid\boldsymbol{s}(t) \sim \operatorname{Bernoulli} \left( w_{\boldsymbol{s}(t)} \right). \label{eq:bernoulli_emission}
+\end{equation}
+Its stationary mean, denoted by the output-one probability $P_y(\boldsymbol{x})$, is
+\begin{equation}
+P_y(\boldsymbol{x}) = \sum_{\boldsymbol{s}} P_{\boldsymbol{s}}(\boldsymbol{x}) w_{\boldsymbol{s}}. \label{eq:frost_dense_output}
+\end{equation}
+
+Equation~\eqref{eq:frost_dense_output} defines a multivariate approximation using the joint state probabilities as basis functions. The coefficients $w_{\boldsymbol{s}}$ determine the contribution of each configuration, allowing interactions among input dimensions to be represented within a single operator. Approximation capacity depends on the state resolution and the constraints on these coefficients.
+
+Let $T(\boldsymbol{x})$ be a target mapping expressed in the corresponding normalized output range, and let $\mathcal{D}$ be the operator-input distribution. The operator training loss $\mathcal{L}_{\mathrm{op}}$ is the expected squared error, where $\mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}}$ denotes expectation over that distribution and $\|\cdot\|_2$ denotes the Euclidean norm (absolute value for a scalar). Parameters are fitted by minimizing~\cite{feng2025smurf,feng2026smurf}
+\begin{equation}
+\mathcal{L}_{\mathrm{op}} = \mathbb{E}_{\boldsymbol{x}\sim\mathcal{D}} \left[ \left\| T(\boldsymbol{x})-P_y(\boldsymbol{x}) \right\|_2^2 \right], \label{eq:operator_training_loss}
+\end{equation}
+The analytical expectation supports training without finite-bitstream sampling noise. Subsequent bitstream-aware optimization can account for finite observation windows and the statistical properties of the implemented datapath.
+
+The stationary expressions above provide an analytical reference under the stated independence assumptions. In a composed stochastic network, upstream operators can introduce temporal correlations, and shared random sources can correlate different streams. Such dependencies may change state occupancies and bias downstream computations~\cite{alaghi2013survey,alaghi2013correlation}. Finite-bitstream evaluation must therefore account for these effects, together with FSM initialization and transient behaviour.
+
+\subsection{Rank-compressed tensorized parameterization}
+
+The dense finite-state representation requires $N^M$ output parameters. FROST adopts the TT representation used by HI-SMURF to reduce this storage requirement~\cite{oseledets2011tensor,feng2026smurf}. Let $\mathcal{W}\in[0,1]^{N\times\cdots\times N}$ be the order-$M$ tensor of scalar output probabilities. Let $G^{(m)}$ denote core $m$ and $r_m$ the rank linking cores $m$ and $m+1$. The approximation $\widetilde{w}_{\boldsymbol{s}}$ to the coefficient $w_{\boldsymbol{s}}$ is
+\begin{equation}
+\widetilde{w}_{\boldsymbol{s}} = G^{(1)}[i_1] G^{(2)}[i_2] \cdots G^{(M)}[i_M], \label{eq:frost_tt_scalar}
+\end{equation}
+where
+\begin{equation}
+G^{(m)} \in \mathbb{R}^{r_{m-1}\times N\times r_m}, \qquad r_0=r_M=1.
+\end{equation}
+Each state index selects a matrix slice $G^{(m)}[i_m]\in\mathbb{R}^{r_{m-1}\times r_m}$, and the internal ranks $r_m$ control the capacity of the representation.
+
+For $M\geq2$, let every internal rank equal $r$, and let $\Theta_{\mathrm{TT}}$ be the set of scalar-output TT-core parameters. Writing $|\Theta_{\mathrm{TT}}|$ for the number of stored scalar entries, the parameter count is
+\begin{equation}
+\left|\Theta_{\mathrm{TT}}\right| = 2Nr+(M-2)Nr^2. \label{eq:tt_scalar_parameters}
+\end{equation}
+Storage therefore grows linearly with the number of inputs at fixed state resolution and rank. The rank required to maintain a given approximation accuracy remains dependent on the target function. Parameter compression also introduces tensor contraction operations, whose implementation contributes to the overall area, latency and energy cost.
+
+To represent vector-valued mappings, let $C$ be the number of output components, indexed by $c\in\{1,\ldots,C\}$. The rank-one terminal boundary of the scalar representation is replaced by an output axis of size $C$:
+\begin{equation}
+G^{(M)} \in \mathbb{R}^{r_{M-1}\times N\times C}.
+\end{equation}
+The resulting state-conditioned vector of contracted outputs is denoted by $\widetilde{\boldsymbol{w}}_{\boldsymbol{s}}$, with component $\widetilde{w}_{\boldsymbol{s},c}$. It becomes
+\begin{equation}
+\widetilde{\boldsymbol{w}}_{\boldsymbol{s}} = G^{(1)}[i_1] G^{(2)}[i_2] \cdots G^{(M)}[i_M], \qquad \widetilde{\boldsymbol{w}}_{\boldsymbol{s}} \in \mathbb{R}^{C}, \label{eq:frost_tt_vector}
+\end{equation}
+For the same $M\geq2$ and uniform internal ranks $r$, let $\Theta_{\mathrm{TT}}^{(C)}$ denote the vector-output TT-core parameter set. Its parameter count is
+\begin{equation}
+\left|\Theta_{\mathrm{TT}}^{(C)}\right| = Nr+(M-2)Nr^2+NrC. \label{eq:tt_vector_parameters}
+\end{equation}
+The expected output vector, denoted by $\boldsymbol{P}_y(\boldsymbol{x})\in\mathbb{R}^{C}$, is
+\begin{equation}
+\boldsymbol{P}_y(\boldsymbol{x}) = \sum_{\boldsymbol{s}} P_{\boldsymbol{s}}(\boldsymbol{x}) \widetilde{\boldsymbol{w}}_{\boldsymbol{s}}. \label{eq:frost_vector_output}
+\end{equation}
+Shared cores provide a common representation for all output components, allowing attention probabilities or normalized features to be learned jointly. Parameter sharing alone, however, does not enforce the numerical constraints specific to either operation.
+
+Compatibility with stochastic emission requires admissible state-conditioned outputs. For scalar Bernoulli emission, the contracted coefficient must satisfy
+\begin{equation}
+0 \leq \widetilde{w}_{\boldsymbol{s}} \leq 1.
+\end{equation}
+For vector-valued feature mappings, this condition applies component-wise after output-range encoding. For attention probabilities, the stronger simplex constraint is required:
+\begin{equation}
+\widetilde{w}_{\boldsymbol{s},c} \geq0, \qquad \sum_{c=1}^{C} \widetilde{w}_{\boldsymbol{s},c} = 1. \label{eq:simplex_constraint}
+\end{equation}
+Because the state probabilities also sum to one, these constraints ensure that the expected attention output lies on the probability simplex.
+
+These are constraints on the contracted outputs, rather than simply on individual core entries. A probability-preserving parameterization can enforce them by construction; an auxiliary penalty provides only soft enforcement and does not guarantee admissibility. Any correction or normalization applied after contraction forms part of the operator and must be included in its computational cost.
+
+For an admissible attention operator, stochastic emission can take the form of a categorical event. At each cycle, one output category is selected according to $\widetilde{\boldsymbol{w}}_{\boldsymbol{s}(t)}$. The empirical category frequencies estimate the attention probabilities and sum to one over every non-empty observation window. This categorical representation differs from independently emitting one Bernoulli stream per output, which would preserve normalization only in expectation.
+
+Figure~\ref{fig:frost_operator} connects the finite-state
+representation to state-selected tensor-train contraction
+and admissible stochastic emission.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/Fig_FROST_operator.pdf}
+   \caption{
+\textbf{Finite-state representation and tensorized multivariate computation.}
+\textbf{a}, Four-state saturating random walk and analytical
+stationary occupancies for IID Bernoulli inputs.
+\textbf{b}, FSM states select tensor-train core slices whose
+contraction yields a conditional output; its stationary mixture
+defines the expected operator output.
+\textbf{c}, Contracted outputs must satisfy scalar probability
+or probability-simplex constraints. Categorical emission produces
+one event per cycle.
+\textbf{d}, Scalar parameter counts for dense and tensor-train
+representations, $N^M$ and $2Nr+(M-2)Nr^2$, at $N=16$ and $r=8$.
+Counts describe parameter storage only.
+}
+    \label{fig:frost_operator}
+\end{figure}
+
+\subsection{Composition of a stochastic Transformer block}
+
+We describe a post-normalization Transformer block with input $X\in\mathbb{R}^{n\times d}$, where $n$ is the number of tokens and $d$ is the embedding dimension~\cite{vaswani2017attention}. Let $n_h$ be the number of attention heads, indexed by $h\in\{1,\ldots,n_h\}$, and let $d_k$ and $d_v$ be the per-head query/key and value dimensions. The learned projection matrices are $W_Q^{(h)},W_K^{(h)}\in\mathbb{R}^{d\times d_k}$ and $W_V^{(h)}\in\mathbb{R}^{d\times d_v}$. The operator $\operatorname{SCMatMul}$ denotes matrix multiplication implemented using stochastic products and scaled accumulation, including the numerical scale factors in the represented result. For each head, the query and key matrices $Q^{(h)},K^{(h)}\in\mathbb{R}^{n\times d_k}$ and the value matrix $V^{(h)}\in\mathbb{R}^{n\times d_v}$ are computed as
+\begin{equation}
+\begin{aligned} Q^{(h)} &= \operatorname{SCMatMul}(X,W_Q^{(h)}), \\ K^{(h)} &= \operatorname{SCMatMul}(X,W_K^{(h)}), \\ V^{(h)} &= \operatorname{SCMatMul}(X,W_V^{(h)}). \end{aligned} \label{eq:stochastic_qkv}
+\end{equation}
+
+Let $i,j\in\{1,\ldots,n\}$ index query and key tokens and $\ell\in\{1,\ldots,d_k\}$ index their features. Write $q_{i\ell}^{(h)}=[Q^{(h)}]_{i\ell}$ and $k_{j\ell}^{(h)}=[K^{(h)}]_{j\ell}$ for the corresponding matrix entries. The compatibility score $z_{ij}^{(h)}$ between those tokens is
+\begin{equation}
+z_{ij}^{(h)} = \frac{1}{\sqrt{d_k}} \sum_{\ell=1}^{d_k} q_{i\ell}^{(h)}k_{j\ell}^{(h)}. \label{eq:stochastic_attention_score}
+\end{equation}
+The complete score vector $\boldsymbol{z}_i^{(h)}=[z_{i1}^{(h)},\ldots,z_{in}^{(h)}]$ is passed to the tensorized attention operator $\mathcal{F}_{\mathrm{att}}$, whose trainable parameter set is $\Theta_{\mathrm{att}}$. It produces the attention-weight row $\boldsymbol{a}_i^{(h)}=[a_{i1}^{(h)},\ldots,a_{in}^{(h)}]$, where $a_{ij}^{(h)}$ is the weight assigned to key token $j$:
+\begin{equation}
+\boldsymbol{a}_i^{(h)} = \mathcal{F}_{\mathrm{att}} \left( \boldsymbol{z}_i^{(h)}; \Theta_{\mathrm{att}} \right) \approx \operatorname{softmax} \left( \boldsymbol{z}_i^{(h)} \right). \label{eq:frost_attention_operator}
+\end{equation}
+The notation $\mathcal{F}_{\mathrm{att}}$ includes the conversion of score values to FSM input probabilities. Its target is defined using the original score scale, because rescaling logits without compensation changes the softmax distribution.
+
+This operator represents the dependence of each attention coefficient on all competing scores within the same row. It replaces separately evaluated exponential and reciprocal kernels with a learned multivariate mapping. The formulation assumes a fixed set of valid token positions. Masked attention additionally requires excluded positions to receive zero probability; the conventional negative-infinity mask cannot be represented directly by a finite-range stochastic encoding.
+
+Let $V_j^{(h)}$ denote row $j$ of $V^{(h)}$, and let $O_i^{(h)}\in\mathbb{R}^{d_v}$ be the output row for query token $i$. Each head aggregates its value representations according to
+\begin{equation}
+O_i^{(h)} = \sum_{j=1}^{n} a_{ij}^{(h)}V_j^{(h)}. \label{eq:stochastic_attention_aggregation}
+\end{equation}
+Collecting these output rows gives $O^{(h)}\in\mathbb{R}^{n\times d_v}$. Let $W_O\in\mathbb{R}^{n_h d_v\times d}$ be the output-projection matrix. The operator $\operatorname{Concat}$ concatenates head outputs along the feature axis, producing the projected attention output $O\in\mathbb{R}^{n\times d}$:
+\begin{equation}
+O = \operatorname{SCMatMul} \left( \operatorname{Concat} \left[ O^{(1)},\ldots,O^{(n_h)} \right], W_O \right).
+\end{equation}
+Stochastic aggregation must respect the statistical conditions of the chosen weighting circuit. In particular, the represented attention coefficients and value samples must not acquire unintended bit-level dependence through shared random sources~\cite{alaghi2013correlation}.
+
+Let $\mathcal{F}_{\mathrm{norm}}$ denote the row-wise feature-normalization operator and $\Theta_{\mathrm{norm},1}$ its parameter set for the first normalization stage. The attention output is combined with the residual input using scaled stochastic addition, producing the normalized hidden representation $H\in\mathbb{R}^{n\times d}$:
+\begin{equation}
+H = \mathcal{F}_{\mathrm{norm}} \left( X+O; \Theta_{\mathrm{norm},1} \right). \label{eq:frost_first_normalization}
+\end{equation}
+For a feature vector $\boldsymbol{u}=[u_1,\ldots,u_d]\in\mathbb{R}^{d}$, let $\ell\in\{1,\ldots,d\}$ index features. Let $\mu(\boldsymbol{u})$ and $\sigma^2(\boldsymbol{u})$ denote its feature mean and population variance. The learned affine gain and offset vectors are $\boldsymbol{\gamma},\boldsymbol{\beta}\in\mathbb{R}^{d}$, with components $\gamma_{\ell}$ and $\beta_{\ell}$, and $\epsilon>0$ is a numerical-stability constant. The target layer-normalization operator is~\cite{ba2016layer}
+\begin{equation}
+\left[ \operatorname{LayerNorm}(\boldsymbol{u}) \right]_{\ell} = \gamma_{\ell} \frac{ u_{\ell}-\mu(\boldsymbol{u}) }{ \sqrt{\sigma^2(\boldsymbol{u})+\epsilon} } + \beta_{\ell}, \label{eq:layernorm_definition}
+\end{equation}
+where
+\begin{equation}
+\mu(\boldsymbol{u}) = \frac{1}{d}\sum_{\ell=1}^{d}u_{\ell}, \qquad \sigma^2(\boldsymbol{u}) = \frac{1}{d} \sum_{\ell=1}^{d} \left( u_{\ell}-\mu(\boldsymbol{u}) \right)^2.
+\end{equation}
+These moments are computed over features within a token, rather than across tokens.
+
+The normalization operator approximates the mapping from the full feature vector to its normalized output, including the appropriate input and output encodings. The mean, variance and inverse square root define the target function but need not be evaluated as separate runtime kernels. The achievable fidelity depends on the input distribution, state resolution and tensor-train rank.
+
+Let $d_{\mathrm{ff}}$ be the hidden width of the feed-forward network (FFN), with learned weights $W_1\in\mathbb{R}^{d\times d_{\mathrm{ff}}}$ and $W_2\in\mathbb{R}^{d_{\mathrm{ff}}\times d}$ and biases $b_1\in\mathbb{R}^{d_{\mathrm{ff}}}$ and $b_2\in\mathbb{R}^{d}$. Let $\mathcal{F}_{\mathrm{act}}$ denote the element-wise activation operator with parameter set $\Theta_{\mathrm{act}}$. Its target is the Gaussian error linear unit (GELU)~\cite{hendrycks2016gelu}. The feed-forward output $F\in\mathbb{R}^{n\times d}$ is
+\begin{equation}
+F = \operatorname{SCMatMul} \left( \mathcal{F}_{\mathrm{act}} \left( \operatorname{SCMatMul}(H,W_1)+b_1; \Theta_{\mathrm{act}} \right), W_2 \right) + b_2, \label{eq:frost_ffn}
+\end{equation}
+where bias terms are broadcast across tokens and incorporated using the same scale-aware stochastic arithmetic. The activation operator $\mathcal{F}_{\mathrm{act}}$ acts element-wise. Scalar activations such as GELU can therefore use a univariate FSM configuration, without the multi-input tensorization required for attention and feature normalization.
+
+Let $\mathcal{A}_{\mathrm{FROST}}$ denote the complete multihead attention transformation, including its output projection, with parameter set $\Theta_{\mathcal{A}}$. Let $\mathcal{G}_{\mathrm{FROST}}$ denote the FFN transformation with parameter set $\Theta_{\mathcal{G}}$, and let $\Theta_{\mathrm{norm},2}$ be the second normalization-stage parameter set. The complete block output is $Y\in\mathbb{R}^{n\times d}$. Combining these operations gives
+\begin{align}
+O
+&=
+\mathcal{A}_{\mathrm{FROST}}
+\left(
+X;\Theta_{\mathcal{A}}
+\right),
+\label{eq:frost_block_attention}
+\\
+H
+&=
+\mathcal{F}_{\mathrm{norm}}
+\left(
+X+O;\Theta_{\mathrm{norm},1}
+\right),
+\label{eq:frost_block_norm1}
+\\
+Y
+&=
+\mathcal{F}_{\mathrm{norm}}
+\left(
+H+
+\mathcal{G}_{\mathrm{FROST}}
+\left(
+H;\Theta_{\mathcal{G}}
+\right);
+\Theta_{\mathrm{norm},2}
+\right),
+\label{eq:frost_block_output}
+\end{align}
+The attention and FFN parameter sets include the corresponding linear weights and finite-state operator parameters, together with biases where applicable.
+
+This construction assigns stochastic implementations according to the structure of each operation: arithmetic datapaths perform linear and bilinear transformations, univariate FSMs implement element-wise activations, and tensorized operators represent coupled nonlinear mappings. Their composition provides a stochastic dataflow for the complete Transformer block. Its numerical and hardware performance depends jointly on operator approximation, scale management, stream statistics and execution scheduling. The following section evaluates operator approximation, stochastic attention and integration into complete Transformer inference.
+
+Figure~\ref{fig:frost_block} summarizes the resulting
+post-normalization architecture and expands its attention
+and feed-forward dataflows. The schematic labels $\mathcal{T}_{\mathrm{att}}$ and $\mathcal{T}_{\mathrm{act}}$ denote the corresponding parameterized operators $\mathcal{F}_{\mathrm{att}}$ and $\mathcal{F}_{\mathrm{act}}$ in the text.
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Images/Fig_FROST_block.pdf}
+\caption{
+\textbf{Composition of a complete FROST Transformer block.}
+\textbf{a}, Post-normalization architecture combining stochastic
+attention, residual connections, tensorized feature normalization
+and a stochastic feed-forward transformation.
+\textbf{b}, Stochastic projections and query--key products generate
+score rows, which a tensorized operator maps jointly to attention
+weights. Value aggregation is followed by head concatenation
+and output projection.
+\textbf{c}, Two stochastic linear layers surround an element-wise
+FSM activation targeting GELU.
+Tensor tiles are schematic; arrows indicate numerical dataflow.
+}
+    \label{fig:frost_block}
+\end{figure}
+
+\section{Experiments}
+\subsection{Direct multivariate approximation of softmax}
+\label{sec:softmax_approximation}
+
+We first evaluated whether HI-SMURF could reproduce the coupled probability
+mapping of softmax. A joint-output TT operator predicted all
+probabilities from state-dependent vectors constrained to the probability
+simplex. Input scores were sorted and mean-centred before stochastic
+encoding, and the output permutation was subsequently inverted. Exact
+softmax supplied the training and evaluation targets; inference used
+neither an exponential approximation nor a runtime output softmax.
+Three configurations were each trained once on 16,384 Gaussian score
+vectors of dimension 16, with 2,048 validation vectors and 4,096
+independent test vectors.
+
+We quantify probability error using root-mean-square error (RMSE) over all output components and total variation (TV) distance for each row. A row's TV distance is one half of the sum of absolute differences between its approximate and reference probabilities. The validation-selected operator, with $N=16$ states and TT rank $r=8$,
+achieved a test RMSE of
+$1.296\times10^{-2}$ and a mean row total variation distance of
+$5.640\times10^{-2}$ (Fig.~\ref{fig:softmax_results}, upper row).
+The median and 95th-percentile row total variation distances were
+0.0512 and 0.1026, respectively. Larger reference probabilities tended
+to be underestimated, although non-negativity and normalization were
+preserved, with a maximum row-sum deviation of $1.13\times10^{-6}$.
+Increasing capacity from $(N,r)=(8,4)$ to $(16,4)$ and $(16,8)$ reduced
+RMSE from 0.01426 to 0.01394 and 0.01296, while parameter counts
+increased from 2,336 to 4,672 and 16,512
+(Supplementary Fig.~S1). Thus, doubling rank at $N=16$ reduced error
+by 7.0\% for a 3.53-fold increase in parameter count.
+
+We next evaluated finite-stream operation on 128 additional score
+vectors using independent Bernoulli inputs and three sequence seeds.
+After central initialization and 256 burn-in cycles, the FSMs generated
+$L$ categorical output events. RMSE decreased from
+$(4.449\pm0.214)\times10^{-2}$ at $L=64$ to
+$(1.804\pm0.085)\times10^{-2}$ at $L=1024$, approaching the analytic
+steady-state error of $1.397\times10^{-2}$ on the same inputs
+(Fig.~\ref{fig:softmax_results}, lower row).
+Sampling RMSE relative to the analytic output decreased from
+0.0425 to 0.0114. Averaging conditional probabilities along the same
+FSM trajectories produced lower errors than categorical emission,
+separating trajectory-sampling error from output-emission variability.
+TT contractions remained floating-point operations throughout this
+evaluation.
+
+\begin{figure}[!htbp]
+    \centering
+
+    \FROSTpanelrow
+    {Images/Softmax_approximation.png}
+    {a}{b}{0.058}{0.581}{0.932}
+
+\par\vspace{1mm}
+
+\FROSTpanelrow
+    {Images/Softmax_bitstream.png}
+    {c}{d}{0.054}{0.579}{0.932}
+
+\caption{
+\textbf{Softmax approximation and finite-stream accuracy of HI-SMURF.}
+\textbf{Upper row: a,b}, Analytic probabilities versus exact softmax
+and the distribution of row total variation distances for 4,096
+test vectors ($N=16$, $r=8$).
+\textbf{Lower row: c}, Output RMSE on 128 additional vectors;
+the dashed line denotes analytic error.
+\textbf{Lower row: d}, Sampling RMSE relative to analytic output,
+comparing categorical emission with diagnostic probability averaging
+along identical FSM trajectories. The $L^{-1/2}$ reference is
+anchored at $L=64$.
+Open markers in the lower row show three sequence seeds for one
+fixed model; filled markers and error bars denote their mean and
+sample standard deviation. $L$ excludes 256 burn-in cycles.
+}
+    \label{fig:softmax_results}
+\end{figure}
+
+
+\subsection{Stochastic computation of the complete attention core}
+\label{sec:sc_attention}
+
+For this single-head test, let $Q,K\in\mathbb{R}^{n\times d_k}$ denote the query and key matrices, $V\in\mathbb{R}^{n\times d_v}$ the value matrix, and $O\in\mathbb{R}^{n\times d_v}$ the attention-core output before output projection. The superscript $\mathrm{T}$ denotes matrix transpose. We next combined stochastic score computation, the frozen HI-SMURF
+operator and stochastic value aggregation to evaluate
+$O=\mathrm{softmax}(QK^{\mathrm T}/\sqrt{d_k})V$.
+The experiment used 128 synthetic input triples with $n=16$ tokens
+and $d_k=d_v=32$. Arithmetic sampling error was reduced using
+sign--magnitude streams and distinct scrambled Sobol coordinates for
+the operands of each multiplication~\cite{sobol1967distribution,owen1995scrambling,najafi2018discrepancy}. FSM inputs remained independent
+Bernoulli streams. Let $A\in\mathbb{R}^{n\times n}$ denote the row-normalized attention-weight matrix and $\mathbf{1}\in\mathbb{R}^{n}$ the all-ones column vector. Let $\boldsymbol{\mu}_V\in\mathbb{R}^{d_v}$ be the vector of column means of $V$. Values were centred before aggregation and their
+mean restored afterwards:
+\begin{equation}
+AV = A\bigl(V-\mathbf{1}\boldsymbol{\mu}_V^{\mathrm T}\bigr) + \mathbf{1}\boldsymbol{\mu}_V^{\mathrm T}, \qquad \boldsymbol{\mu}_V^{\mathrm T} = \frac{1}{n}\mathbf{1}^{\mathrm T}V. \label{eq:attention_value_centering}
+\end{equation}
+This identity follows from $A\mathbf{1}=\mathbf{1}$ and introduces
+no additional trainable parameters. Relative Frobenius error is the Frobenius norm of the output difference divided by the reference-output norm; cosine similarity is the inner product of corresponding output vectors divided by the product of their Euclidean norms.
+
+At $L=256$ per stage, the improved core achieved an output RMSE of
+$0.1092\pm0.0008$, compared with $0.3135\pm0.0014$ for bipolar
+independent streams, a reduction of 65.2\%
+(mean $\pm$ sample standard deviation across five sequence seeds;
+Fig.~\ref{fig:attention_results}).
+Relative Frobenius error decreased from 0.869 to 0.303, and mean
+cosine similarity increased from 0.717 to 0.955.
+With only one stage stochastic and the remaining stages exact,
+output RMSE was 0.0098 for score computation, 0.1060 for finite-stream
+HI-SMURF and 0.0259 for value aggregation.
+These non-additive controls identify the nonlinear operator as the
+main remaining error source in this setting.
+
+Increasing $L$ from 64 to 1,024 reduced full-core RMSE from 0.1957
+to 0.0715, towards the analytic HI-SMURF error of 0.0534
+(Fig.~\ref{fig:attention_results}, lower row).
+At $L=128$, the improved core already achieved a lower RMSE
+(0.1451) than the baseline at $L=1024$ (0.1712).
+Accuracy nevertheless depended on the input distribution.
+Doubling $Q$ produced relative errors of 0.515 for the improved
+core and 0.496 for its analytic control, exposing a limitation
+of the frozen softmax operator (Supplementary Fig.~S2).
+Value centring addressed a separate effect: an offset of 8 added
+to $V$ increased RMSE from 0.1095 to 0.1711 without centring,
+whereas the centred implementation retained an RMSE of 0.1092.
+
+These experiments generated bitstreams in all three attention stages,
+while retaining floating-point TT contractions and decoding and
+re-encoding between stages. Input and output projections were excluded.
+Sampling lengths omit 256 FSM burn-in cycles and do not measure
+hardware latency.
+
+\begin{figure}[!htbp]
+    \centering
+
+    \FROSTpanelrow
+    {Images/Fig_attention_fidelity.pdf}
+    {a}{b}{0.048}{0.566}{0.929}
+
+\par\vspace{1mm}
+
+\FROSTpanelrow
+    {Images/Fig_attention_efficiency.pdf}
+    {c}{d}{0.044}{0.566}{0.929}
+
+\caption{
+\textbf{Accuracy and error sources of stochastic attention.}
+\textbf{Upper row: a}, Stochastic versus floating-point outputs
+at $L=256$ (sequence seed 101).
+\textbf{Upper row: b}, Single-stage stochastic controls versus
+the complete core. Other stages are exact; errors are not additive.
+\textbf{Lower row: c}, Ablation of encoding, Sobol sampling and
+value centring.
+\textbf{Lower row: d}, Relative Frobenius error versus stream length;
+the dashed line denotes analytic HI-SMURF with exact surrounding arithmetic.
+Evaluations use 128 matrices, $n=16$, $d_k=d_v=32$ and a frozen
+$N=16$, $r=8$ operator.
+Except for the scatter plot, open markers show five sequence seeds;
+filled markers and error bars denote their mean and sample standard
+deviation. Faint lines connect matched seeds.
+$L$ excludes 256 FSM burn-in cycles.
+}
+    \label{fig:attention_results}
+\end{figure}
+
+
+\subsection{End-to-end simulation of a stochastic Transformer}
+\label{sec:full_transformer}
+
+We integrated the stochastic operators into a four-block encoder-only
+Transformer with learned input and positional embeddings, two attention
+heads per block, output projections, residual connections, pre-layer
+normalization, GELU feed-forward networks, final normalization and a
+classification head. Layer-normalization placement follows the pre-normalization variant~\cite{xiong2020layer}; the post-normalization block in Section~\ref{sec:frost_architecture} illustrates operator composition rather than the exact experimental ordering. The scalar normalization implementation described below estimates variance and an inverse square root separately, rather than applying the fully tensorized feature-normalization operator of that architectural formulation.
+A controlled associative-retrieval task presented 15 distinct keys
+with independently assigned four-class values, followed by a query
+for one stored key. Three independently trained floating-point models
+achieved 100\% accuracy on the 128 held-out sequences used for
+stochastic evaluation.
+
+Main linear stages and attention products used explicit
+sign--magnitude bitstreams. GELU used an eight-state probability gate,
+whereas normalization combined stochastic variance estimation with a
+four-state reciprocal-square-root gate.
+To address activation-distribution mismatch, we calibrated HI-SMURF
+using reference attention scores from separate input sequences and
+selected its encoding range on an independent calibration-validation
+set. Calibration used no task labels and preserved the Transformer
+weights, state count, TT rank and 16,512-parameter operator size.
+
+For network-level fidelity, let $Z_{\mathrm{cls}}$ and $\widehat{Z}_{\mathrm{cls}}$ denote the floating-point and FROST classification-logit matrices for the same evaluation inputs, with rows indexing inputs and columns indexing classes. Let $\mathcal{C}$ subtract the mean across classes within each row, and let $\|\cdot\|_{\mathrm{F}}$ denote the Frobenius norm. The relative centred-logit error $\varepsilon_z$, defined when the reference norm is non-zero, is
+\begin{equation}
+\varepsilon_z = \frac{\|\mathcal{C}(\widehat{Z}_{\mathrm{cls}})-\mathcal{C}(Z_{\mathrm{cls}})\|_{\mathrm{F}}}{\|\mathcal{C}(Z_{\mathrm{cls}})\|_{\mathrm{F}}}.
+\label{eq:centered_logit_error}
+\end{equation}
+
+At $L=256$, calibration increased retrieval accuracy from 71.4\%
+to 99.9\% and reduced relative centred-logit error from
+$0.811\pm0.081$ to $0.079\pm0.021$
+(Fig.~\ref{fig:transformer_results}, upper row).
+Results are means across three trained models after averaging three
+stream realizations per model; uncertainty denotes the sample
+standard deviation of these model means.
+Calibration also reduced errors throughout the network: the
+fourth-block query-representation error decreased from 0.736 to 0.122.
+Residual-update errors were measured separately to assess learned
+transformations without dilution by the identity connections
+(Supplementary Fig.~S3).
+
+For calibrated inference, increasing $L$ from 64 to 1,024 reduced
+centred-logit error from 0.230 to 0.081 and increased accuracy from
+98.0\% to 99.7\%.
+Error approached the analytic value of 0.075 but was not monotonic:
+the mean at $L=1024$ slightly exceeded that at $L=256$ (0.079).
+Thus, classification accuracy alone did not resolve the remaining
+numerical error.
+
+Extending stochastic evaluation from attention alone to all learned
+linear stages and then to normalization and GELU yielded centred-logit
+errors of 0.093, 0.087 and 0.079, respectively, at $L=256$
+(Fig.~\ref{fig:transformer_results}, lower row).
+These interacting errors do not imply that adding stochastic stages
+intrinsically improves accuracy.
+With calibration fixed, switching from independent arithmetic streams
+to Sobol streams reduced centred-logit error from 0.249 to 0.079.
+
+The experiment evaluated the complete encoder graph, while TT
+contractions, centring, residual and bias accumulation, static
+normalization-affine gains, range scaling and stage conversions
+remained numerical operations.
+Reported stream lengths exclude 256 softmax and 64 scalar-FSM
+burn-in cycles; hardware area, energy and latency were not measured.
+
+\begin{figure}[!htbp]
+    \centering
+
+    \FROSTpanelrow
+    {Images/Fig_transformer_performance.pdf}
+    {a}{b}{0.048}{0.562}{0.928}
+
+\par\vspace{1mm}
+
+\FROSTpanelrow
+    {Images/Fig_transformer_ablation.pdf}
+    {c}{d}{0.048}{0.562}{0.928}
+
+   \caption{
+\textbf{End-to-end Transformer fidelity and operator-level controls.}
+\textbf{Upper row: a,b}, Four-class retrieval accuracy and relative
+centred-logit error versus stream length. The dashed logit-error
+reference denotes stationary-state evaluation of calibrated operators.
+\textbf{Lower row: c}, Operator-coverage ablation at $L=256$ using
+calibrated operators and Sobol arithmetic; remaining operations are exact.
+\textbf{Lower row: d}, Calibration and arithmetic-stream ablations
+at $L=256$. FSM inputs remain independent Bernoulli streams.
+Open markers show trained-model means, averaging three stream
+realizations for finite-stream conditions. Filled markers and error
+bars denote the mean and sample standard deviation across three
+independently trained models; faint lines connect matched models.
+All evaluations use 128 held-out sequences.
+$L$ excludes 256 softmax and 64 scalar-FSM burn-in cycles.
+}
+    \label{fig:transformer_results}
+\end{figure}
+
+% Replace the entire uploaded classification subsection with this block.
+% Requires graphicx and booktabs; retain the existing centred-logit-error equation.
+% The added citation keys are included in FROST_references_quality30.bib.
+
+\subsection{Task-level fidelity in image classification and reconstruction}
+\label{sec:dataset_validation}
+
+\paragraph{Classification under stochastic conversion.}
+We tested whether FROST preserved the decisions and continuous outputs of
+frozen reference networks on the Modified National Institute of Standards
+and Technology database (MNIST)~\cite{lecun1998gradient},
+Fashion-MNIST~\cite{xiao2017fashion} and the Canadian Institute for Advanced
+Research 10-class dataset (CIFAR-10)~\cite{krizhevsky2009learning}.
+Each dataset used three independently trained four-block Transformers,
+with 16 image tokens, two attention heads per block and a feature width
+of 32. For each frozen model, a tensor-train (TT) attention operator with
+16 finite-state machine (FSM) states per input and TT rank 8 was calibrated
+against reference attention probabilities using 512 training-partition
+images; 488 separate training-partition images were reserved for
+calibration validation. The resulting operator was shared across all
+heads and blocks of that model. Calibration used no task labels, and
+official test images were excluded from training and model selection.
+
+Table~\ref{tab:dataset_performance} consolidates the complete-test
+comparison and the implementation diagnostics. Here, $L$ denotes the
+number of bits per stochastic stream. On the 10,000-image official test
+sets, FROST at $L=256$ retained accuracies of 96.85\%, 83.95\% and
+63.23\%, corresponding to paired decreases of 1.11, 1.55 and 0.99
+percentage points (pp) from floating point. The reference with 8-bit
+weights and 8-bit activations (W8A8) remained closer to floating point.
+Prediction agreement and the relative centred-logit error
+$\varepsilon_z$ (Eq.~\eqref{eq:centered_logit_error}) additionally
+characterized conversion fidelity: on CIFAR-10, the 0.99-pp accuracy
+decrease accompanied changes in 8.79\% of predicted classes.
+
+On fixed diagnostic subsets of 1,000 test images per dataset, with
+100 images per class, increasing $L$ from 64 to 1,024 reduced
+$\varepsilon_z$ from 0.383 to 0.133, from 0.312 to 0.114 and from
+0.263 to 0.081, respectively. Comparison with the analytical operators
+separates finite-stream sampling effects from operator approximation.
+At fixed $L=256$, activation calibration reduced $\varepsilon_z$
+relative to direct transfer by approximately 32\%, 28\% and 20\%.
+Prediction agreement improved on all three datasets, although
+CIFAR-10 diagnostic accuracy decreased slightly from 63.97\% to
+63.70\%. Calibration therefore improved agreement with the frozen
+reference without guaranteeing higher classification accuracy.
+
+\begin{table}[!htbp]
+\caption{Classification fidelity and diagnostics of stochastic conversion.}
+\label{tab:dataset_performance}
+% Preserve the former table labels as aliases of the merged table.
+\label{tab:dataset_stream_length}
+\label{tab:dataset_calibration}
+\centering
+\fontsize{8}{9.5}\selectfont
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+\multicolumn{7}{@{}l}{\textbf{a}\quad Complete official test sets: 10,000 images per dataset} \\
+\addlinespace[3pt]
+& \multicolumn{4}{c}{Classification accuracy (\%)}
+& \multicolumn{2}{c}{FROST, $L=256$} \\
+\cmidrule(lr){2-5}\cmidrule(l){6-7}
+Dataset & Float & W8A8
+& \shortstack{FROST\\analytical}
+& \shortstack{FROST\\$L=256$}
+& \shortstack{Agreement\\(\%)} & $\varepsilon_z$ \\
+\midrule
+MNIST
+& $97.96\pm0.12$ & $97.98\pm0.15$
+& $97.70\pm0.21$ & $96.85\pm0.23$
+& $97.84\pm0.25$ & $0.201\pm0.004$ \\
+Fashion-MNIST
+& $85.50\pm0.22$ & $85.48\pm0.21$
+& $85.09\pm0.18$ & $83.95\pm0.52$
+& $93.56\pm1.28$ & $0.162\pm0.017$ \\
+CIFAR-10
+& $64.22\pm0.55$ & $64.16\pm0.52$
+& $64.08\pm0.72$ & $63.23\pm0.62$
+& $91.21\pm0.14$ & $0.131\pm0.002$ \\
+\bottomrule
+\end{tabular*}
+
+\vspace{6pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrr@{}}
+\toprule
+\multicolumn{6}{@{}l}{\textbf{b}\quad Fixed diagnostic subsets: centred-logit error $\varepsilon_z$} \\
+\addlinespace[3pt]
+Dataset
+& \shortstack{Direct transfer\\$L=256$}
+& \shortstack{Calibrated\\$L=64$}
+& \shortstack{Calibrated\\$L=256$}
+& \shortstack{Calibrated\\$L=1{,}024$}
+& \shortstack{Calibrated\\analytical} \\
+\midrule
+MNIST
+& $0.287\pm0.008$ & $0.383\pm0.006$
+& $0.194\pm0.005$ & $0.133\pm0.005$ & $0.105\pm0.005$ \\
+Fashion-MNIST
+& $0.224\pm0.043$ & $0.312\pm0.033$
+& $0.162\pm0.018$ & $0.114\pm0.014$ & $0.091\pm0.014$ \\
+CIFAR-10
+& $0.160\pm0.002$ & $0.263\pm0.001$
+& $0.128\pm0.002$ & $0.081\pm0.003$ & $0.061\pm0.001$ \\
+\bottomrule
+\end{tabular*}
+\par\vspace{3pt}
+\begin{minipage}{\linewidth}
+\fontsize{8}{9.5}\selectfont
+Values are means $\pm$ sample standard deviations across three independently
+trained models, with identical Transformer weights within each implementation
+comparison. In \textbf{a}, agreement is the percentage of predictions
+identical to floating point; both fidelity columns concern finite-stream
+FROST. Analytical FROST evaluates the calibrated operators without
+finite-stream sampling. W8A8 quantizes linear and attention products while
+retaining floating-point nonlinear operations.
+In \textbf{b}, all conditions use the same prespecified 1,000-image subset
+per dataset, with 100 images per class. Direct transfer uses the generic
+operator from the softmax study; all other columns use the model-specific
+calibrated operator. Calibration comparisons retain the same FSM state
+count, TT rank, model weights and prescribed stream seed. Diagnostic
+finite-stream evaluations use base seed 101, and their $L=256$ predictions
+are extracted from the complete-test runs. Full-test and diagnostic estimates
+refer to different image sets. Stream length excludes the 256-cycle softmax
+and 64-cycle scalar-FSM burn-in periods and does not measure network latency.
+\end{minipage}
+\end{table}
+
+% Requires graphicx and booktabs.
+\paragraph{Image-specific coordinate reconstruction.}
+To probe spatially structured continuous outputs, we evaluated all 200 images
+in the official test partition of the Berkeley Segmentation Data Set 500
+(BSDS500)~\cite{arbelaez2011contour}, without exclusions based on
+reconstruction quality. Each reference was a $64\times64$
+red--green--blue (RGB) centre crop obtained after bicubic resizing of the
+shorter image edge to 96 pixels. A separate model was fitted to all
+reference pixels of each image. Thus, the test partition served as a fixed
+evaluation image pool; its pixels were fitting targets, and these measurements
+concern image-specific reconstruction rather than held-out restoration.
+The architecture, fitting budget, preprocessing, calibration procedure and
+stream lengths were fixed before extending the three-image pilot.
+
+A $16\times16$ coordinate grid normalized to $[-1,1]$ was encoded into
+50 features using the two raw coordinates and sine/cosine features at
+12 frequencies uniformly spaced from 1 to 8~\cite{tancik2020fourfeat}.
+A two-block pre-normalization Transformer, with $4\times4$-token windows,
+feature width 64, four attention heads and feed-forward width 128,
+predicted one $4\times4$ RGB patch per token. The second block used a
+two-token reflected window shift. The additional positional embedding was
+frozen to zero and the output baseline was fixed at 0.5. Inference received
+encoded coordinates, with target-image information stored in the fitted weights.
+Each model underwent 1,500 updates using adaptive moment estimation with
+decoupled weight decay (AdamW)~\cite{loshchilov2019decoupled}, with
+initial learning rate $8\times10^{-4}$, weight decay $10^{-4}$ and gradient
+norm clipping at 1. The original cosine learning-rate schedule had a
+3,000-update span; only its first 1,500 updates were used for every target.
+Hidden-state Gaussian perturbations with standard deviation 0.004 were
+applied during fitting and disabled during inference. Checkpoints were
+checked every 250 updates and selected by target-fit peak signal-to-noise
+ratio (PSNR).
+The tensor-train (TT) attention operator was calibrated separately for each
+model using a random 80/20 split of its activation rows, with the same
+600-update calibration budget for each of the candidate bounds 2, 4 and 8.
+This row split provides no independent-image validation.
+
+Within each image, all implementations shared the same fitted Transformer
+weights. The stochastic-computing (SC) control used the original
+uncalibrated TT attention operator, whereas FROST used the calibrated
+operator. The software W8A8 control quantized linear projections,
+query--key product operands, and attention weights and values for value
+aggregation; normalization, softmax and nonlinear activations remained
+numerical. The stream length $L$ denotes the number of recorded stochastic
+cycles, excluding warm-up cycles of the finite-state machines.
+SC was evaluated at $L=4096$, and FROST at
+$L=1024$ and $L=4096$, using base stream seeds 101, 202 and 303 for
+every target. Float and W8A8 were deterministic at fixed fitted weights.
+PSNR was computed from full-crop RGB mean
+squared error with unit peak value after output clipping to $[0,1]$.
+The structural similarity index measure
+(SSIM)~\cite{wang2004ssim} was averaged across RGB channels, using an
+$11\times11$ Gaussian window of standard deviation 1.5, population
+covariance, unit data range and stabilization constants $K_1=0.01$
+and $K_2=0.03$. No border pixels were removed before reconstruction PSNR;
+SSIM used valid window centres.
+
+For stochastic implementations, the three stream scores were first averaged
+within each image. Dataset means and sample standard deviations were then
+computed across these 200 image-level averages
+(Table~\ref{tab:frost_coordinate_reconstruction}). At $L=4096$, FROST
+achieved PSNR $35.18\pm2.49$~dB and SSIM
+$0.9729\pm0.0135$.
+The mean PSNR exceeded or equalled 30~dB for 196 of 200 images
+(98.0\%); 588 of the 600 individual stream runs
+reached this threshold, with a minimum run PSNR of 28.38~dB.
+Relative to the uncalibrated SC control at the same length, FROST improved
+image-averaged PSNR by 2.56~dB (95\% paired image-bootstrap confidence
+interval, 2.42--2.69~dB; 10,000 resamples).
+At $L=1024$, FROST obtained mean PSNR 32.75~dB and SSIM
+0.9551, compared with 32.63~dB and 0.9541 for
+the SC control at $L=4096$.
+Increasing $L$ from 1,024 to 4,096 increased mean FROST PSNR from
+32.75 to 35.18~dB, a paired gain of 2.43~dB.
+Float and W8A8 retained higher mean fidelity, with mean PSNRs of
+46.04 and 44.43~dB, respectively, indicating residual
+approximation and sampling errors in FROST.
+Figure~\ref{fig:frost_reconstruction} retains the three images selected
+for the original pilot as visual examples; the quantitative conclusions
+use all 200 targets. Here, table standard deviations describe variation
+across target-specific fits after averaging streams. They are distinct
+from within-model stream variability and from the independently trained
+model variation in the classification experiments.
+
+\begin{table}[!htbp]
+\caption{Reconstruction fidelity across all 200 BSDS500 evaluation images.}
+\label{tab:frost_coordinate_reconstruction}
+\label{tab:frost_bsds500_reconstruction}
+\centering
+\fontsize{8}{9.5}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcrrrr@{}}
+\toprule
+Implementation & $L$ & PSNR (dB) & SSIM
+& \shortstack{PSNR loss\\vs Float (dB)}
+& \shortstack{Images with\\PSNR $\geq30$ dB} \\
+\midrule
+Float
+& --
+& $46.04\pm2.02$
+& $0.9950\pm0.0033$
+& 0.00 & 200/200 \\
+W8A8
+& --
+& $44.43\pm1.91$
+& $0.9940\pm0.0035$
+& 1.61 & 200/200 \\
+SC (base TT)
+& 4096
+& $32.63\pm3.03$
+& $0.9541\pm0.0337$
+& 13.42 & 162/200 \\
+FROST
+& 1024
+& $32.75\pm2.25$
+& $0.9551\pm0.0159$
+& 13.29 & 177/200 \\
+FROST
+& 4096
+& $35.18\pm2.49$
+& $0.9729\pm0.0135$
+& 10.86 & 196/200 \\
+\bottomrule
+\end{tabular*}
+\par\vspace{3pt}
+\begin{minipage}{\linewidth}
+\fontsize{8}{9.5}\selectfont
+PSNR and SSIM are means $\pm$ sample standard deviations across 200
+images. For SC and FROST, each image contributes the mean of its three
+base stream seeds (101, 202 and 303); the 600 runs are not treated as
+600 independent images. Float and W8A8 each contribute one deterministic
+score per fitted image. PSNR loss is Float PSNR minus implementation
+PSNR, averaged over matched images. The last column counts images whose
+PSNR, averaged over streams where applicable, is at least 30~dB.
+Every target participates in fitting its own model; no target is excluded.
+The error terms describe between-image variation, not confidence intervals
+or repeated independent training of the same target. Image identifiers,
+all individual scores and within-image stream standard deviations are
+provided in the accompanying source data.
+\end{minipage}
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_reconstruction.pdf}
+\caption{\textbf{Image-specific reconstruction with finite stochastic streams.}
+\textbf{a--c}, Reference crops and reconstructions of the snow scene
+(BSDS500 image 2018), bird and reeds (43033), and roller coaster (235098).
+These three targets were selected for the original pilot and retained as
+visual examples in the 200-image evaluation. Each model was fitted to all
+pixels of its reference image and received encoded coordinates during
+inference. Columns compare the reference, Float, W8A8, the SC control
+with the base TT operator at $L=4096$, and FROST at $L=1024$ and
+$L=4096$. Base stream seed 101 is displayed. Numbers give PSNR in dB
+and RGB SSIM. Blue boxes identify the same $16\times16$ region of
+interest (ROI) across implementations; below each crop are the enlarged
+ROI and its mean absolute RGB error on a common $[0,0.1]$ colour scale.
+Teal FROST scores indicate PSNR at least 30 dB, and orange scores
+indicate lower PSNR. Figure numbers are individual seed scores;
+Table~\ref{tab:frost_coordinate_reconstruction} reports the full 200-image
+aggregates after averaging three stream seeds within each target.
+These are fitted-image reconstruction results.}
+\label{fig:frost_reconstruction}
+\label{fig:frost_coordinate_reconstruction}
+\end{figure}
+
+Together, the classification and reconstruction experiments assess
+decision fidelity and spatially structured output fidelity under
+stochastic conversion. Both are software simulations with numerical
+centering, range handling, residual and bias additions, and stage
+conversions; reconstruction also uses numerical coordinate encoding.
+They measure the behaviour of a mixed-representation Transformer graph,
+without establishing hardware area, energy or latency advantages.
+
+\section{Hardware evaluation of power, performance and resource utilization}
+\label{sec:fpga_evaluation}
+
+To be determined (TBD) implementation fields are explicitly marked as \texttt{[TBD]}. We will evaluate FROST against a single-precision (32-bit) floating-point (FP32) implementation on the same field-programmable gate array (FPGA), using the compact Transformer described in Section~\ref{sec:dataset_validation}. The primary hardware workload will use the CIFAR-10 configuration, comprising four encoder blocks, 16 image tokens, two attention heads and a feature width of 32. Both implementations will use the same frozen model checkpoint and compute the complete graph from image patches to classification logits. The target device, speed grade, development board and Vivado version will be specified as \texttt{[TBD]}. Both designs will be optimized within the same device budget, with arithmetic parallelism, operator
+reuse and memory allocation documented explicitly.
+
+The FP32 baseline will include floating-point linear and attention products, softmax, GELU and normalization. FROST will include stochastic arithmetic and finite-state operators, together with bitstream generators, TT-core storage and evaluation, accumulators, conversion circuits, control logic and intermediate buffers. Numerical helper operations,
+including residual addition, centering and range handling, will remain within the measured hardware boundary. The precision of stored probabilities and numerical accumulators will be specified and validated against the corresponding software implementation. A single FROST
+implementation will support programmable stream lengths $L\in\{64,256,1024\}$ at fixed FSM state count and TT rank.
+
+Resource utilization will be obtained after placement and routing and reported separately as look-up tables (LUTs), flip-flops (FFs), digital signal processing (DSP) blocks and block random-access memories (BRAMs). The main comparison will use a common operating frequency that meets timing for both designs, while maximum frequency will be assessed separately using fully routed implementations. Power will be estimated using representative inference switching activity under matched voltage and thermal assumptions. Static and dynamic components will be reported separately, and any board-level measurements will be distinguished
+from tool-based estimates.
+
+Latency will include input loading, FSM burn-in, intermediate transfers and output conversion, measured from acceptance of the first input word to production of the final classification logit. Initial FPGA configuration and one-time model loading will be excluded. Throughput will be measured during sustained inference after pipeline fill. Let $C_{\mathrm{lat}}$ be the latency in clock cycles, $C_{\mathrm{II}}$ the image initiation interval in cycles, and $f_{\mathrm{clk}}$ the operating clock frequency in hertz. Let $P_{\mathrm{active}}$ be the active power in watts, including static and dynamic power within the declared FPGA boundary. The latency $\tau$ in seconds, throughput $R$ in images per second and energy per inference $E_{\mathrm{inf}}$ in joules per image will be
+\begin{equation}
+\tau = \frac{C_{\mathrm{lat}}}{f_{\mathrm{clk}}}, \qquad R = \frac{f_{\mathrm{clk}}}{C_{\mathrm{II}}}, \qquad E_{\mathrm{inf}} = \frac{P_{\mathrm{active}}}{R}, \label{eq:fpga_metrics}
+\end{equation}
+Host and external-memory costs will be reported separately if excluded from this boundary. Hardware accuracy will be evaluated using actual FPGA outputs. The acceptable accuracy loss will be specified before comparison as \texttt{[TBD]} percentage
+points, with operating-point selection based on validation data.
+
+\textit{Illustrative resource comparison.}
+The placeholder values in Table~\ref{tab:fpga_resources_draft} would
+correspond to 48.7\% fewer LUTs and 81.0\% fewer DSP blocks for FROST, accompanied by 18.9\% greater BRAM utilization. This example illustrates how lower arithmetic resource requirements could coexist with increased storage requirements. Whether such a trade-off occurs in the implemented
+design will depend on the costs of probability generation, TT-core evaluation, buffering and representation conversion.
+
+\begin{table}[!htbp]
+\caption{Illustrative FPGA resource comparison: placeholder values only.}
+\label{tab:fpga_resources_draft}
+\centering
+\small
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
+\toprule
+Metric & FP32 baseline & FROST, programmable $L$ \\
+\midrule
+LUTs & 57,344 & 29,392 \\
+FFs & 80,480 & 45,560 \\
+DSP blocks & 168 & 32 \\
+BRAMs (36-kbit equivalent) & 106 & 126 \\
+Maximum frequency (MHz) & 223 & 246 \\
+Common operating frequency (MHz) & 200 & 200 \\
+\bottomrule
+\end{tabular*}
+\par\vspace{3pt}
+\begin{minipage}{\linewidth}
+\fontsize{8}{9.5}\selectfont
+\textbf{All numerical entries are invented placeholders and are not
+supported by FPGA implementation or measurement.}
+The proposed comparison covers the same complete CIFAR-10 Transformer graph. FROST will use 16 FSM states per softmax input and TT rank 8, with all three stream lengths supported by one implementation. Resource counts must include generators, parameter storage, buffers, conversion circuits and numerical helper operations.
+Maximum-frequency values must be replaced with results from complete implementation runs that satisfy timing requirements.
+\end{minipage}
+\end{table}
+
+\textit{Illustrative power-performance comparison.}
+The example in Table~\ref{tab:fpga_ppa} assigns FROST at $L=256$ an active power of 1.80~W and a throughput of 12,500 images~s$^{-1}$, corresponding to 144.0~$\mu$J per image. Relative to the FP32 placeholders of 3.50~W and 15,625 images~s$^{-1}$, this would represent a 35.7\% energy reduction, with latency increasing from 145 to 225~$\mu$s. The example therefore describes an energy-latency trade-off rather than a simultaneous improvement in all performance metrics.
+
+Increasing the stream length to $L=1024$ raises the illustrative energy consumption to 489.6~$\mu$J per image despite unchanged
+resource allocation. Conversely, the $L=64$ example has lower energy consumption but a larger classification-accuracy loss. The final comparison will therefore interpret resource utilization,
+power and performance jointly with hardware accuracy. These placeholder scenarios do not establish a measured or predicted hardware advantage of FROST.
+
+\begin{table}[!htbp]
+\centering
+\caption{Illustrative FPGA power, performance and accuracy:
+placeholder values only.}
+\label{tab:fpga_ppa}
+
+\begingroup
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+
+% Use the full available width without scaling the table text.
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+\toprule
+Implementation
+& \shortstack{Accuracy\\(\%)}
+& \shortstack{Latency\\($\mu$s)}
+& \shortstack{Image interval\\($\mu$s)}
+& \shortstack{Throughput\\($\mathrm{kimages}\,\mathrm{s}^{-1}$)}
+& \shortstack{Active power\\(W)}
+& \shortstack{Energy/image\\($\mu$J)}
+\\
+\midrule
+FP32
+& 64.20 & 145 & 64  & 15.625 & 3.50 & 224.0 \\
+
+FROST, $L=64$
+& 60.50 & 105 & 32  & 31.250 & 1.80 & 57.6 \\
+
+FROST, $L=256$
+& 63.20 & 225 & 80  & 12.500 & 1.80 & 144.0 \\
+
+FROST, $L=1024$
+& 64.00 & 705 & 272 & 3.676  & 1.80 & 489.6 \\
+\bottomrule
+\end{tabular*}
+
+\par\smallskip
+\noindent
+\begin{minipage}{\linewidth}
+\fontsize{8}{9.5}\selectfont
+\textbf{Every numerical entry, including classification accuracy, is illustrative and has not been measured on an FPGA.}
+The example assumes a common 200-MHz clock and a fully supplied pipeline. Image interval denotes the steady-state interval between successive images, rather than single-image latency. Throughput equals the reciprocal of this interval; energy is
+calculated using unrounded throughput.
+Example power includes 0.70~W of static power for each design, with dynamic components of 2.80~W for FP32 and 1.10~W for FROST. Constant FROST power across stream lengths is an illustrative
+assumption and must be replaced by separate activity-based estimates
+or measurements. FPGA accuracies must be evaluated anew and must not be copied
+from the software results in Section~\ref{sec:dataset_validation}.
+\end{minipage}
+
+\endgroup
+\end{table}
+
+\FloatBarrier
+\section{Conclusion}
+\label{sec:conclusion}
+
+We introduced FROST, a framework that combines stochastic arithmetic with tensorized finite-state operators for Transformer computation. By representing coupled nonlinear functions through multivariate state transitions and trainable tensor-train cores, FROST provides a common computational basis for attention normalization, feature normalization and nonlinear feature transformations. At a fixed tensor-train rank, the number of operator parameters scales linearly with input dimensionality, making this representation tractable beyond low-dimensional function approximation. Software evaluations spanning softmax approximation, attention computation and Transformer inference on image-classification tasks support the feasibility of integrating these operators across successive computational stages. These evaluations connect operator-level approximation with model-level behaviour and characterize the influence of finite-bitstream computation.
+
+The practical benefits of FROST will depend on how this representation is realized in hardware. Bitstream generation, inter-stream correlation, parameter precision and tensor-train contraction jointly determine the balance between accuracy and implementation cost. Hardware validation is therefore required
+to establish area, latency and energy performance under matched accuracy constraints, accounting for parameter storage, control logic and representation conversion. Extending the evaluation to larger models and longer sequences will further clarify the capacity required of the finite-state operators and the accumulation of approximation errors. FROST provides a foundation for this
+algorithm-hardware co-design, bringing multivariate stochastic computing into the design space of Transformer architectures.
+
+% The sn-mathphys-num document-class option already selects the
+% sn-mathphys-num bibliography style; do not declare it a second time.
+\bibliography{FROST_references}
+\end{document}

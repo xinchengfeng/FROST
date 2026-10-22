@@ -1,0 +1,62 @@
+[
+  {
+    "n": 16,
+    "states": 4,
+    "rank": 2,
+    "heads": "separate",
+    "encoding": "center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "heads": "separate",
+    "encoding": "center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "heads": "separate",
+    "encoding": "center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "heads": "separate",
+    "encoding": "sorted_center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 8,
+    "rank": 4,
+    "heads": "separate",
+    "encoding": "center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "heads": "separate",
+    "encoding": "center",
+    "bound": 2.5,
+    "seed": 11,
+    "steps": 3000
+  }
+]

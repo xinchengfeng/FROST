@@ -1,0 +1,112 @@
+{
+  "scope": "Unmasked, single-head scaled dot-product attention core from supplied Q,K,V to Y. Input/output projections, multi-head concatenation, residuals, LayerNorm, training and task accuracy are outside scope.",
+  "created_utc": "2026-09-15T07:23:38Z",
+  "n": 16,
+  "cases": {
+    "normal_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 220001,
+      "family": "normal"
+    },
+    "normal_d16": {
+      "size": 128,
+      "d": 16,
+      "seed": 220016,
+      "family": "normal"
+    },
+    "normal_d64": {
+      "size": 128,
+      "d": 64,
+      "seed": 220064,
+      "family": "normal"
+    },
+    "diffuse_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 230001,
+      "family": "diffuse"
+    },
+    "sharp_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 230002,
+      "family": "sharp"
+    },
+    "correlated_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 230003,
+      "family": "correlated"
+    },
+    "offset_2_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 220001,
+      "family": "offset_2"
+    },
+    "offset_4_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 220001,
+      "family": "offset_4"
+    },
+    "offset_8_d32": {
+      "size": 128,
+      "d": 32,
+      "seed": 220001,
+      "family": "offset_8"
+    }
+  },
+  "configs": {
+    "bipolar_iid": {
+      "source": "iid",
+      "encoding": "bipolar",
+      "center": false,
+      "gain": 1.0
+    },
+    "magnitude_iid": {
+      "source": "iid",
+      "encoding": "magnitude",
+      "center": false,
+      "gain": 1.0
+    },
+    "magnitude_sobol": {
+      "source": "sobol",
+      "encoding": "magnitude",
+      "center": false,
+      "gain": 1.0
+    },
+    "improved": {
+      "source": "sobol",
+      "encoding": "magnitude",
+      "center": true,
+      "gain": 1.0
+    }
+  },
+  "seeds": [
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "lengths": [
+    64,
+    128,
+    256,
+    512,
+    1024
+  ],
+  "jobs": 170,
+  "burn_in": 256,
+  "total_sequential_bit_windows": "QK L + FSM (256+L) + AV L = 256+3L; not wall-clock latency",
+  "baseline": "Bipolar IID QK; IID unipolar-attention/bipolar-value AV. Same frozen HI-SMURF and power-of-two scaling as all variants.",
+  "softmax": "Frozen joint categorical HI-SMURF from Section 3.1, 16 states, rank 8, 16512 parameters, one training seed 11. No additional fitting.",
+  "preprocessing": "Per-Q/K-vector and per-V-feature power-of-two max-absolute scaling; no Q/K/V clipping. Softmax sorted centered scores encoded within [-4,4].",
+  "calibration": "Gain grid 1.0 through 1.25 on 128 separate matrices selected 1.0, so no gain correction. Value centering checked on separate development matrices at offsets 0,4,8.",
+  "rng": "Two distinct coordinates of one scrambled 2-D Sobol net, independent per-stream 32-bit digital shifts. IID FSM input drives and IID categorical emissions unchanged.",
+  "stage_controls": "Replace only QK, HI-SMURF or AV and keep remaining operations exact; controls isolate errors but are NOT additive decompositions.",
+  "uncertainty": "Mean and sample SD across 5 stream/digital-shift seeds, fixed checkpoint and fixed input matrices. Matrix entries are not independent replicates.",
+  "exclusions": "No real-task data, gate-level TT arithmetic, synthesis, PPA, hardware timing, causal masks, or variable token counts."
+}

@@ -1,0 +1,65 @@
+% Double-column sn-jnl layout: use figure* for these 180-mm-wide panels.
+% Place after the paragraph reporting complete-test classification results.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_dataset_accuracy.pdf}
+\caption{\textbf{Image classification across three public datasets.}
+\textbf{a}, Accuracy on the complete official test partition of each
+dataset, comprising 10,000 images. Floating-point, simulated W8A8,
+analytic FROST and finite-stream FROST share the same trained Transformer
+weights within each model pair. W8A8 quantizes the linear and attention
+products while retaining floating-point nonlinear functions.
+\textbf{b}, Paired accuracy change relative to the corresponding
+floating-point model, measured in percentage points; zero denotes equal
+accuracy. Open markers indicate individual trained models. Filled markers
+and error bars show means and sample standard deviations across three
+independently trained models. Each full-test finite-stream evaluation uses
+$L=256$ and one prespecified stream realization. Model and calibration
+selection use separate subsets of the official training partition.
+These results concern a compact Transformer trained from scratch for each
+dataset.}
+\label{fig:dataset_accuracy}
+\end{figure*}
+
+% Place after the paragraph interpreting the stream-length diagnostic.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_dataset_streams.pdf}
+\caption{\textbf{Stream-length dependence on image-classification tasks.}
+\textbf{a}, Accuracy change from the corresponding floating-point model
+as a function of bitstream length. \textbf{b}, Relative centred-logit
+error, with dotted lines showing dataset-specific mean errors for analytic
+evaluation of the calibrated finite-state operators.
+Each dataset uses the same prespecified, class-balanced subset of 1,000
+test images at every length. The calibrated $L=256$ predictions are
+extracted from the complete-test evaluation in
+Fig.~\ref{fig:dataset_accuracy}. Open markers show individual trained-model
+results; filled markers and error bars indicate the mean and sample
+standard deviation across three trained models using stream seed 101.
+Additional stream seeds at $L=256$ are reported separately in the source
+data. Bitstream length excludes softmax and scalar FSM burn-in periods
+of 256 and 64 cycles, respectively, and is not a measurement of network
+latency.}
+\label{fig:dataset_streams}
+\end{figure*}
+
+% Place after the paragraph comparing direct transfer and activation calibration.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_dataset_calibration.pdf}
+\caption{\textbf{Activation calibration without updating Transformer weights.}
+\textbf{a}, Relative centred-logit error for direct transfer of the
+generic HI-SMURF operator and for activation-calibrated operators.
+\textbf{b}, Disagreement with the corresponding floating-point
+class predictions. All configurations evaluate the complete stochastic
+network at $L=256$ using Sobol arithmetic streams and IID FSM drives.
+Calibration preserves the 16-state, rank-8 operator architecture while
+updating its parameters and selecting an encoding bound using separate
+calibration and calibration-validation images. No task labels are used
+for calibration. Comparisons use the same fixed subset of 1,000 test
+images per dataset. Faint lines connect the same trained model across
+conditions. Open markers denote individual models, and filled markers
+and error bars denote the mean and sample standard deviation across
+three trained models at stream seed 101.}
+\label{fig:dataset_calibration}
+\end{figure*}

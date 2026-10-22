@@ -1,0 +1,78 @@
+% Requires \usepackage{graphicx}. Figure numbers are assigned by LaTeX.
+% Insert the first two figure environments after the main accuracy paragraph;
+% insert the third after the final robustness paragraph, or let [t] float them.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_attention_fidelity.pdf}
+\caption{\textbf{Output fidelity and stage-wise controls for stochastic attention.}
+\textbf{a}, Improved stochastic attention outputs against floating-point
+references for all 65,536 output entries from 128 input matrices at $L=256$.
+This panel uses the first predetermined sequence seed (101); the dashed line
+denotes identity and colour indicates the number of entries in each bin.
+The model has $n=16$, $d_k=d_v=32$, 16 FSM states and TT rank 8.
+\textbf{b}, Attention output RMSE when only the indicated stage is stochastic,
+with all other operations evaluated exactly, and when all three stages are
+stochastic. The exact-softmax controls are used only to isolate stage errors.
+Stage-wise errors are not additive. Open markers represent five sequence
+seeds; filled markers and error bars show their mean and sample standard
+deviation for the same input matrices and frozen HI-SMURF checkpoint.
+The HI-SMURF-only results are identical for both configurations because the
+nonlinear operator and its stream generation are unchanged.}
+\label{fig:attention_fidelity}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_attention_efficiency.pdf}
+\caption{\textbf{Simple arithmetic changes reduce finite-stream attention error.}
+\textbf{a}, Sequential ablation at $L=256$: bipolar independent streams,
+sign--magnitude independent streams, sign--magnitude Sobol streams, and the
+addition of value centring. Faint lines connect results with the same sequence
+seed. All configurations use the same power-of-two scaling and frozen
+HI-SMURF operator. Value centring has little effect on the zero-mean Gaussian
+inputs in this panel; its effect under value shifts is shown in
+Fig.~\ref{fig:attention_robustness}b.
+\textbf{b}, Relative Frobenius error over the concatenated test outputs as a
+function of stream length. The dashed line shows analytic HI-SMURF with exact
+score computation and exact value aggregation on the same 128 matrices.
+Each stage uses $L$ sampling cycles; 256 additional FSM burn-in cycles are
+excluded from the horizontal axis. The three sequential sampling windows
+therefore contain $3L+256$ cycles, without accounting for implementation
+latency. Open markers show five sequence seeds; filled markers and error bars
+show their mean and sample standard deviation.}
+\label{fig:attention_efficiency}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_attention_robustness.pdf}
+\caption{\textbf{Sensitivity to input structure and value offsets.}
+\textbf{a}, Relative Frobenius error at $L=256$ on 128 matrices per regime:
+diffuse scores obtained by halving $Q$, standard Gaussian inputs, sharp scores
+obtained by doubling $Q$, and correlated inputs with
+$Q=0.7K+\sqrt{1-0.7^2}E_Q$ and
+$V=0.7K+\sqrt{1-0.7^2}E_V$, where $K$, $E_Q$ and $E_V$ contain independent
+standard Gaussian entries. Orange marks indicate the analytic HI-SMURF
+error with exact surrounding arithmetic. Regimes use separate input sets.
+\textbf{b}, Absolute output RMSE after adding offsets of 0, 2, 4 or 8 to the
+same value matrices. Both configurations use sign--magnitude Sobol arithmetic;
+they differ only in value centring. Absolute error is reported because a
+larger common offset would artificially reduce an error normalized by the
+reference-output norm. Open markers show five sequence seeds; filled markers
+and error bars show their mean and sample standard deviation. The same
+HI-SMURF checkpoint is used in all panels, with no adaptation to the test regimes.}
+\label{fig:attention_robustness}
+\end{figure}
+
+% Optional supplementary figure:
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/Fig_attention_dimension_supplement.pdf}
+\caption{\textbf{Attention error across head dimensions.}
+Relative Frobenius error at $d_k=d_v\in\{16,32,64\}$, with $n=16$ tokens,
+$L=256$ and the same frozen HI-SMURF operator. Each dimension uses 128
+independent Gaussian input triples. Markers and error bars denote the mean
+and sample standard deviation across five sequence seeds. This test changes
+head dimension, not token count.}
+\label{fig:attention_dimension_supplement}
+\end{figure}

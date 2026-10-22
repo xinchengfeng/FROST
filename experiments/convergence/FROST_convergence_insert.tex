@@ -1,0 +1,78 @@
+% Measured finite-stream diagnostics: two separate two-panel figures.
+\FloatBarrier
+\paragraph{Formation of normalized stochastic attention.}
+Using the fixed CIFAR-10 checkpoint (model seed 11) and its previously
+calibrated operator, we sampled eight of 64 image/block/head attention
+matrices from the first eight diagnostic test images without replacement
+(selection seed 20261009). All 128 rows were retained, spanning five images.
+Eight matched streams (seeds $101,202,\ldots,808$) each recorded 4096
+categorical events after 256 burn-in cycles; shorter results are nested
+prefixes. This diagnostic isolates attention normalization at fixed
+numerical scores.
+
+Let $\widehat a_j(L)$ be the fraction of the first $L$ recorded events
+assigned to key $j\in\{1,\ldots,16\}$. One event per cycle ensures
+non-negative frequencies with $\sum_{j=1}^{16}\widehat a_j(L)=1$ at every
+non-empty prefix (Fig.~\ref{fig:frost_attention_formation}).
+The representative row was selected at the upper-median reference-entropy
+rank before sampling. Its three-group probability trajectory approaches
+the stationary operator output while preserving total probability mass;
+the stationary output can differ from exact softmax. All error metrics
+below retain the original 16 components.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_attention_formation.pdf}
+\caption{\textbf{Formation of normalized attention from finite-state events.}
+\textbf{a}, Actual trajectories of 16 input-driven finite-state machines
+(FSMs), categorical output events and accumulated attention probabilities
+for the representative score row, using stream seed 101. The first 128
+recorded cycles are displayed in the state and event maps. Inputs and keys
+are ordered by descending score; every event column selects exactly one
+key. Finite probability columns are prefixes of the same stream, followed
+by stationary tensor-train (TT) output and exact softmax.
+\textbf{b}, A three-group projection of the 16-component probability
+simplex: the top key, second key and sum of the other 14 keys. Grey paths
+show eight FROST streams; colour highlights seed 101 as stream length
+$L$ increases from 16 to 4096. The inset connects measured prefixes at
+$L=1024$, 2048 and 4096. The star and diamond denote stationary TT and
+exact softmax, respectively. Group masses are not conditionally
+renormalized. $L$ excludes the 256 burn-in cycles.}
+\label{fig:frost_attention_formation}
+\end{figure}
+\FloatBarrier
+
+\paragraph{Finite-stream convergence and approximation error.}
+FROST mean row total variation (TV) distance to exact softmax decreased
+from $0.2267\pm0.0043$ at $L=64$ to $0.06509\pm0.00064$ at $L=4096$
+(Fig.~\ref{fig:frost_attention_convergence}). The base TT control reached
+$0.08151\pm0.00141$, giving FROST 20.1\% lower mean error at the same
+16,512-parameter capacity. Stationary errors were 0.05509 for FROST and
+0.07396 for base TT, whereas FROST error relative to its own stationary
+output decreased from 0.2171 at $L=64$ to 0.02955 at $L=4096$.
+These measured prefixes show decreasing sampling error; calibration
+lowers the approximation floor. Uncertainties are sample standard
+deviations of eight stream-level means at fixed weights and scores.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_attention_convergence.pdf}
+\caption{\textbf{Sampling convergence and the calibrated approximation floor.}
+\textbf{a}, Row TV distance to exact softmax, averaged over eight streams
+for each of 128 fixed test score rows, at stream lengths from 16 to 4096.
+Both heatmaps use the same logarithmic colour scale and the same
+reference-entropy row ordering.
+\textbf{b}, Mean row TV versus $L$ for base TT and calibrated FROST;
+shading denotes one sample standard deviation across eight stream-level
+means. The dotted blue curve measures FROST error relative to its
+stationary TT output. Dashed horizontal lines denote the two stationary
+errors relative to exact softmax; the bracket compares measured mean
+errors at $L=4096$. All operator parameters and Transformer weights are
+fixed; both operators use 16 states, rank 8 and 16,512 parameters. These
+are sampling-convergence measurements, with $L$ excluding the 256
+burn-in cycles.}
+\label{fig:frost_attention_convergence}
+\label{fig:frost_convergence}
+\end{figure}
+\FloatBarrier
+

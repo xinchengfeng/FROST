@@ -1,0 +1,65 @@
+\subsection{Validation across image-classification datasets}
+\label{sec:dataset_validation}
+
+We next evaluated FROST on MNIST, Fashion-MNIST and CIFAR-10, covering
+handwritten digits, grayscale clothing images and RGB natural images
+\cite{lecun1998gradient,xiao2017fashion,krizhevsky2009learning}.
+Each dataset used a four-block patch Transformer with 16 tokens, two
+attention heads per block and a feature width of 32. Images retained their
+native resolution and were divided into a $4\times4$ patch grid. Three
+reference models were trained independently for each dataset. Their
+weights were then frozen, and a shared, rank-8 HI-SMURF operator was
+calibrated for each model using separate images from the training
+partition. Calibration used reference softmax outputs without task labels.
+
+On the complete official test sets of 10,000 images per dataset,
+floating-point accuracies were 97.96\%, 85.50\% and 64.22\%,
+respectively. Finite-stream FROST at $L=256$ achieved
+96.85\%, 83.95\% and 63.23\%, corresponding to paired accuracy
+changes of -1.11, -1.55 and -0.99 percentage points
+(Fig.~\ref{fig:dataset_accuracy}). Agreement with the corresponding
+floating-point class predictions was 97.84\%, 93.56\% and 91.21\%,
+and relative centred-logit errors were 0.201, 0.162 and 0.131.
+Analytic FROST achieved 97.70\%, 85.09\% and 64.08\%
+accuracy, compared with the finite-stream values above.
+The simulated W8A8 control achieved 97.98\%, 85.48\% and 64.16\%
+accuracy. This control quantized the linear and attention products while
+retaining floating-point nonlinear operations. It provides a numerical
+precision comparison; no inference about hardware cost follows from
+these accuracy measurements.
+
+We assessed stream-length dependence on a prespecified, class-balanced
+subset of 1,000 test images per dataset
+(Fig.~\ref{fig:dataset_streams}). Increasing $L$ from 64 to 1,024
+changed relative centred-logit errors from 0.383, 0.312 and 0.263
+to 0.133, 0.114 and 0.081, respectively. Corresponding accuracies changed
+from 91.67\%, 76.70\% and 60.70\% to
+97.50\%, 84.00\% and 64.23\%. Analytic evaluation of the same
+calibrated finite-state operators yielded errors of
+0.105, 0.091 and 0.061 on these subsets. Reporting both classification
+accuracy and continuous-output error distinguishes changes in predicted
+classes from deviations that leave the classification decision unchanged.
+
+Activation calibration was evaluated against direct transfer of the
+generic HI-SMURF operator on the same diagnostic images at $L=256$
+(Fig.~\ref{fig:dataset_calibration}). Relative centred-logit errors
+changed from 0.287, 0.224 and 0.160 under direct transfer to
+0.194, 0.162 and 0.128 after calibration. Prediction agreement changed
+from 95.23\%, 89.40\% and 89.53\% to
+98.03\%, 92.80\% and 91.77\%. These comparisons preserve the
+Transformer weights, FSM state count and TT rank. They assess adaptation
+of a fixed-capacity operator to each model's activation distribution;
+they do not establish zero-shot transfer of one calibrated operator
+between datasets.
+
+Reported central values are means across three independently trained
+models; figure error bars denote their sample standard deviations.
+Each complete-test evaluation uses one prespecified stream realization.
+Additional realizations at $L=256$ were evaluated on the diagnostic
+subsets and are reported separately. Together, these experiments quantify
+task-level performance and numerical fidelity of the complete stochastic
+encoder across three image datasets, while retaining the limitations of
+a compact backbone trained from scratch. The simulation includes
+numerical centering, pooling, residual and bias addition, range handling
+and stage conversions. Hardware area, energy and latency were not
+evaluated.

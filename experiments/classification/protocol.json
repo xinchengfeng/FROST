@@ -1,0 +1,123 @@
+{
+  "section": "3.4",
+  "purpose": "Paired task-level numerical validation across three public image datasets",
+  "datasets": [
+    "mnist",
+    "fashion_mnist",
+    "cifar10"
+  ],
+  "architecture": {
+    "blocks": 4,
+    "tokens": 16,
+    "d_model": 32,
+    "heads": 2,
+    "head_width": 16,
+    "ff_width": 64,
+    "classes": 10,
+    "readout": "mean pooling after final LayerNorm",
+    "position": "learned 16 x 32",
+    "patches": "4 x 4 grid, 7 x 7 grayscale or 8 x 8 RGB patches; all pixels retained"
+  },
+  "model_seeds": [
+    11,
+    22,
+    33
+  ],
+  "splits": {
+    "holdout_from_official_training": 5000,
+    "teacher_validation": 4000,
+    "operator_calibration": 512,
+    "operator_calibration_validation": 488,
+    "official_test": 10000,
+    "diagnostic_subset": 1000,
+    "holdout_seed": 410001,
+    "diagnostic_seed": 420001
+  },
+  "training": {
+    "steps": {
+      "mnist": 6000,
+      "fashion_mnist": 8000,
+      "cifar10": 12000
+    },
+    "batch": 128,
+    "optimizer": "AdamW",
+    "initial_lr": 0.001,
+    "weight_decay": 0.01,
+    "gradient_clip": 1,
+    "schedule": "200-step warmup; cosine to 5% of initial LR",
+    "augmentation": "random translations (2 pixels grayscale; 4 pixels RGB); horizontal flips for Fashion-MNIST/CIFAR-10; CIFAR reflect padding, grayscale zero padding",
+    "cifar_label_smoothing": 0.05,
+    "checkpoint_selection": "highest teacher-validation accuracy, lowest CE breaks ties",
+    "pretraining": false,
+    "schedule_update": "Learning rate is assigned after each optimizer step; the first update uses 0.001."
+  },
+  "calibration": {
+    "task_weights_updated": false,
+    "uses_task_labels": false,
+    "HI_states": 16,
+    "TT_rank": 8,
+    "TT_parameters": 16512,
+    "sharing": "one operator per trained teacher, shared across all four blocks and two heads",
+    "bounds_compared": [
+      2,
+      4,
+      8
+    ],
+    "steps_per_bound": 1200,
+    "batch_score_rows": 512,
+    "loss": "256 times mean softmax probability squared error",
+    "selection": "calibration-validation probability RMSE",
+    "optimizer": "Adam, LR 0.01 cosine to 0.001, gradient clip 5"
+  },
+  "primary_evaluation": {
+    "examples_per_model": 10000,
+    "configs": [
+      "reference",
+      "w8a8",
+      "calibrated_analytic",
+      "calibrated_full"
+    ],
+    "L": 256,
+    "stream_seed": 101,
+    "uncertainty": "mean and sample SD across three independently trained models, with one prespecified stream realization per full SC evaluation; no claim of repeated full-test streams"
+  },
+  "diagnostics": {
+    "examples_per_model": 1000,
+    "selection": "fixed 100 examples/class before examining predictions",
+    "length_sweep": [
+      64,
+      256,
+      1024
+    ],
+    "length_sweep_stream": 101,
+    "calibration_control": "generic_full at L256/seed101",
+    "additional_stream_repeats_at_L256": [
+      202,
+      303
+    ],
+    "L256_seed101_source": "subset of the full-test evaluation",
+    "note": "full-test and diagnostic metrics must not be conflated; sweep error bars use three model results at seed101"
+  },
+  "stochastic_backend": {
+    "linear": "actual sign-magnitude bits, packed AND/popcount with exact signed integer accumulation",
+    "QK_AV": "actual sampled bit products",
+    "softmax": "IID-driven saturating 16-state FSMs; latent categorical sampling of row-stochastic tensor-train cores reproduces conditional contraction law",
+    "GELU": "8-state scalar CDF probability gate times signed magnitude bits",
+    "LayerNorm": "numeric centering, stochastic variance and a 4-state reciprocal-square-root FSM gate",
+    "arithmetic_streams": "digitally shifted distinct coordinates of a scrambled 2-D Sobol net",
+    "softmax_burn": 256,
+    "scalar_burn": 64,
+    "batch_images": 16
+  },
+  "w8a8_baseline": "Numerical dynamic per-token activation/per-output-channel weight symmetric int8 quantization for all learned linear maps and QK products; unsigned 8-bit attention probabilities and per-channel int8 V for AV. Int32 accumulation. Softmax, LN, GELU and residuals remain floating point. No hardware timing inference.",
+  "retained_numerical": "input normalization, pooling/centering, residual/bias addition, static LN affine gains, sorting/range scaling, stage decode/re-encode and probability comparisons; no gate-level area/energy/latency claims",
+  "metrics": [
+    "accuracy",
+    "agreement_with_reference",
+    "macro_F1",
+    "centered_logit_relative_error",
+    "negative_log_likelihood",
+    "paired_accuracy_delta_percentage_points"
+  ],
+  "limits": "Compact custom Transformer trained from scratch; not a pretrained state-of-the-art vision backbone. Three datasets do not establish modality, sequence-length or large-model generalization. L excludes FSM burn-in and is not whole-network latency."
+}

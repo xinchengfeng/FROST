@@ -1,0 +1,1532 @@
+[
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 64,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 64,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 64,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 64,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 64,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 128,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 128,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 128,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 128,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 128,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 512,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 512,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 512,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 512,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 512,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 1024,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 1024,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 1024,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 1024,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 1024,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 64,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 64,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 64,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 64,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 64,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 128,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 128,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 128,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 128,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 128,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 512,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 512,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 512,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 512,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 512,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 1024,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 1024,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 1024,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 1024,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 1024,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d16",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d16",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 16
+  },
+  {
+    "case": "normal_d64",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "normal_d64",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 64
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "diffuse_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "sharp_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "correlated_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_2_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_4_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "offset_8_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 101,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 202,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 303,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 404,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "magnitude_sobol",
+    "L": 256,
+    "seed": 505,
+    "stage": "full",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "qk_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "hi_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 101,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 202,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 303,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 404,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "bipolar_iid",
+    "L": 256,
+    "seed": 505,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 101,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 202,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 303,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 404,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  },
+  {
+    "case": "normal_d32",
+    "method": "improved",
+    "L": 256,
+    "seed": 505,
+    "stage": "av_only",
+    "matrices": 128,
+    "d": 32
+  }
+]

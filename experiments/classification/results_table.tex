@@ -1,0 +1,14 @@
+\begin{table*}[t]
+\centering
+\caption{Classification on complete official test sets. Accuracy is reported as mean $\pm$ sample standard deviation (\%) across three independently trained models, with 10,000 test images per model. Finite-stream FROST uses $L=256$ and one prespecified stream realization per model. $\Delta$ denotes the mean paired accuracy change from floating point in percentage points.}
+\label{tab:dataset_results}
+\begin{tabular}{lccccc}
+\toprule
+Dataset & Floating point & W8A8 & FROST, analytic & FROST, $L=256$ & $\Delta$ (pp) \\
+\midrule
+MNIST & $97.96\pm0.12$ & $97.98\pm0.15$ & $97.70\pm0.21$ & $96.85\pm0.23$ & $-1.11$ \\
+Fashion-MNIST & $85.50\pm0.22$ & $85.48\pm0.21$ & $85.09\pm0.18$ & $83.95\pm0.52$ & $-1.55$ \\
+CIFAR-10 & $64.22\pm0.55$ & $64.16\pm0.52$ & $64.08\pm0.72$ & $63.23\pm0.62$ & $-0.99$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

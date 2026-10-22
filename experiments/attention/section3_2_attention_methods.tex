@@ -1,0 +1,116 @@
+\subsection{Behavioral simulation of stochastic attention}
+\label{methods:sc_attention}
+
+\paragraph{Inputs, references and experimental scope.}
+We evaluated the unmasked single-head mapping
+$Y=\mathrm{softmax}(QK^{\mathrm T}/\sqrt{d_k})V$ from supplied $Q$, $K$ and
+$V$ matrices. Unless specified otherwise, each matrix contained independent
+standard Gaussian entries, with $n=16$ and $d_k=d_v=32$.
+The main test set contained 128 independently generated triples (seed 220001).
+Additional 128-triple sets examined $d_k=d_v=16$ and 64 (seeds 220016 and
+220064), halved queries, doubled queries and correlated inputs (seeds
+230001--230003). Correlated inputs were constructed as
+$Q=0.7K+\sqrt{0.51}E_Q$ and $V=0.7K+\sqrt{0.51}E_V$, with independent
+Gaussian $K$, $E_Q$ and $E_V$. Value-offset tests reused the main triples,
+adding the scalar offsets 2, 4 and 8 to every entry of $V$.
+Reference scores, softmax probabilities and output products were computed in
+float64. These are synthetic operator benchmarks, not activation traces from
+a trained Transformer. Learned projections, head concatenation, output
+projection, masking, dropout, residual connections and layer normalization
+were not simulated.
+
+\paragraph{Frozen multivariate softmax operator.}
+The joint categorical HI-SMURF checkpoint from Section 3.1 was reused without
+training or fine-tuning. It has 16 states per input, TT rank 8, 16 output
+categories and 16,512 parameters, trained with initialization seed 11.
+Static core logits were normalized offline along each outgoing core axis;
+the resulting cores were used in float64 contractions. At runtime, scores
+were sorted, mean-centred and encoded as
+$x_j=\mathrm{clip}((z_j+4)/8,0,1)$, with the output order restored afterwards.
+Every FSM started at state 7 and followed the saturating update
+$s_j(t+1)=\mathrm{clip}(s_j(t)+2b_j(t)-1,0,15)$, where the input bits were
+independent Bernoulli samples of $x_j$. Following 256 burn-in cycles,
+state-dependent TT contractions provided categorical distributions for $L$
+output events. Exactly one category was emitted at each cycle; dividing
+category counts by $L$ gave non-negative attention weights with row sum
+exactly one. No runtime exponential approximation or output softmax was used
+in the full stochastic core. The exponential in reference computation and
+in the explicitly labelled score-only control was used only for evaluation.
+
+\paragraph{Stochastic score computation and value aggregation.}
+Before stochastic encoding, each query and key vector was divided by its
+smallest power-of-two scale not less than its maximum absolute entry.
+Values used an analogous scale per feature across tokens. Thus input values
+were not clipped. Identical scale rules were used for every configuration.
+For a scaled value $u\in[-1,1]$, the bipolar baseline generated a bit with
+probability $(u+1)/2$. Score products were evaluated by bipolar bit products
+(equivalent to decoded XNOR operations) and signed counts summed over
+features and cycles. The baseline aggregation multiplied an independent
+unipolar attention bit by a bipolar value bit, summing over keys and cycles.
+The improved representation stored the sign of $u$ separately and generated
+a magnitude bit with probability $|u|$. Multiplication then used the AND of
+the magnitude bits and the fixed product sign. Counters were decoded using
+the recorded scales and, for scores, the factor $1/\sqrt{d_k}$.
+The implementation uses matrix operations on integer-valued bit arrays to
+accelerate this counting simulation; real-valued input products are not
+substituted for the stochastic products.
+
+\paragraph{Stream generation and value centring.}
+Arithmetic streams used either independent pseudorandom draws or distinct
+coordinates of a two-dimensional scrambled Sobol net. The Sobol net used
+32-bit precision, a fixed scramble seed of 7001, and independently generated
+32-bit digital shifts for each operand stream. Every multiplication paired
+coordinate 0 for the first operand with coordinate 1 for the second. Streams
+were reused across products in the matrix operations, with independent
+shifts for distinct input entries. The quasi-random sources were used only
+in the arithmetic stages; FSM input and categorical-emission streams
+remained independent and identically distributed. Source sequences were
+regenerated for each $L\in\{64,128,256,512,1024\}$. Five random-source seeds
+(101, 202, 303, 404 and 505) were evaluated for each configuration.
+Value centring computed the feature-wise mean over tokens, subtracted this
+mean before stochastic aggregation and added it back after decoding.
+The identity in Eq.~\ref{eq:attention_value_centering} applies because the
+categorical attention weights sum to one. Mean estimation, rescaling,
+sorting, encoding comparisons, TT contraction and the final mean addition
+were evaluated numerically; their hardware cost was not measured.
+
+\paragraph{Calibration and controls.}
+Before evaluating held-out results, a gain grid of
+$\{1,1.025,1.05,1.075,1.10,1.125,1.15,1.20,1.25\}$ was tested on 128
+separate Gaussian triples (seed 210001), minimizing analytic attention-output
+RMSE. The selected gain was 1, so no gain correction was applied.
+Development sets with seeds 210002 and 210003 were used to check the arithmetic
+changes and value centring; neither set was reused in the final figures.
+The primary ablation successively changed bipolar IID arithmetic to
+sign--magnitude IID arithmetic, sign--magnitude Sobol arithmetic, and the
+addition of value centring. Stage-isolation controls replaced only score
+computation, only finite-stream HI-SMURF or only value aggregation while
+keeping the other operations exact. These controls are not an additive
+variance or error decomposition. The analytic control contracted the exact
+IID stationary-state probabilities and used exact surrounding matrix products.
+No test-set tuning or best-seed selection was used.
+
+\paragraph{Metrics, uncertainty and numerical checks.}
+For $B$ test matrices, output RMSE and relative Frobenius error were defined as
+\begin{equation}
+\mathrm{RMSE}=\sqrt{\frac{\sum_{b=1}^{B}
+\|\widehat{Y}_b-Y_b\|_F^2}{Bnd_v}},
+\qquad
+\varepsilon_F=\sqrt{\frac{\sum_{b=1}^{B}
+\|\widehat{Y}_b-Y_b\|_F^2}{\sum_{b=1}^{B}\|Y_b\|_F^2}}.
+\end{equation}
+Cosine similarity was computed between vectorized complete output matrices
+and averaged across matrices. Attention error was additionally recorded as
+mean row total variation distance. Reported error bars are sample standard
+deviations across five sequence seeds for a fixed checkpoint and input set;
+they do not estimate training-initialization uncertainty or population
+confidence intervals. The scatter figure uses seed 101, chosen in advance.
+All output entries from that run are plotted, without selecting tokens or
+features. Categorical normalization, endpoint arithmetic and the exact
+value-shift identity were verified. The steady-state checkpoint has a maximum
+row-sum deviation of $1.23\times10^{-7}$ in a separate numerical check,
+whereas categorical finite-stream rows sum exactly to one.
+There are $3L+256$ sequential sampling-window cycles across the three stages;
+this count excludes TT evaluation latency, conversion overheads and any
+implementation scheduling. These simulations establish operator-level
+behavior, not a continuously stochastic or gate-level hardware implementation.
