@@ -1,0 +1,26 @@
+{
+  "candidate": {
+    "status": "software candidate only; no new RTL/PPA",
+    "rank": 2,
+    "states": 16,
+    "CDF_storage_bits": 8,
+    "CDF_fraction_bits": 7,
+    "CDF_terminal_one": 128,
+    "CDF_order": "stage, state, left bond, right bond",
+    "score_bits": 16,
+    "score_fraction_bits": 10,
+    "value_bits": 16,
+    "value_fraction_bits": 10,
+    "FSM_initial_state": 7,
+    "burn_updates": 16,
+    "L": 256,
+    "RNG": "xorshift32(13,17,5); drive upper11 bits; emission upper7 bits with exported u8 CDF",
+    "packed_CDF_bytes": 1440,
+    "selection_sha256": "aaa34f0d1314e935f712727b9d236e0b02069f0d26c6260c200fb8f0f763367e",
+    "quality_status": "passes selection output gates; fails 98% full-network prediction-agreement gate on all three evaluation seeds",
+    "no_claim": "Do not label precision-matched, end-to-end FPGA validated, or PPA superior."
+  },
+  "CDF_npz_sha256": "49f9cd831dd558037cbcda23d6ddb9a90b7db286cc70eab1a16359f8bbd6f0eb",
+  "original_CDF_sha256": "49f9cd831dd558037cbcda23d6ddb9a90b7db286cc70eab1a16359f8bbd6f0eb",
+  "score_values_sha256": "a94e06f7e481c73fef2604ce6bf918b684bc796429412bb9f5547d5e1959d59d"
+}

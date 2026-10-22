@@ -1,0 +1,130 @@
+{
+  "status": "pass",
+  "scope": "C++functional replay against archived fixtures, not a fresh RTL/gate simulation",
+  "checks": [
+    {
+      "design": "sexp16",
+      "stream_seed": 4004,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp16",
+      "stream_seed": 5005,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp16",
+      "stream_seed": 6006,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp256",
+      "stream_seed": 4004,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp256",
+      "stream_seed": 5005,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp256",
+      "stream_seed": 6006,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "bern8",
+      "stream_seed": 4004,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "bern8",
+      "stream_seed": 5005,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "bern8",
+      "stream_seed": 6006,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "horner5",
+      "stream_seed": 4004,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "horner5",
+      "stream_seed": 5005,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "horner5",
+      "stream_seed": 6006,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "hot_reuse",
+      "stream_seed": 4004,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": null,
+      "note": "Independent functional model has no RTL timing scheduler; cycles not newly checked"
+    },
+    {
+      "design": "hot_reuse",
+      "stream_seed": 5005,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": null,
+      "note": "Independent functional model has no RTL timing scheduler; cycles not newly checked"
+    },
+    {
+      "design": "hot_reuse",
+      "stream_seed": 6006,
+      "rows": 16,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": null,
+      "note": "Independent functional model has no RTL timing scheduler; cycles not newly checked"
+    }
+  ],
+  "checked_output_words": 3840
+}

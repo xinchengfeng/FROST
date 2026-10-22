@@ -1,0 +1,114 @@
+{
+  "status": "pass",
+  "scope": "archived report consistency audit; no new EDA run",
+  "checked_output_words": 3840,
+  "waveform_hashes_checked": false,
+  "sta_binary_check": "archived metadata matches recorded provenance; executable not redistributed",
+  "checks": [
+    {
+      "design": "hot_reuse",
+      "seed": 4004,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "hot_reuse",
+      "seed": 5005,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "hot_reuse",
+      "seed": 6006,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp16",
+      "seed": 4004,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp16",
+      "seed": 5005,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp16",
+      "seed": 6006,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp256",
+      "seed": 4004,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp256",
+      "seed": 5005,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "sexp256",
+      "seed": 6006,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "bern8",
+      "seed": 4004,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "bern8",
+      "seed": 5005,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "bern8",
+      "seed": 6006,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "horner5",
+      "seed": 4004,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "horner5",
+      "seed": 5005,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    },
+    {
+      "design": "horner5",
+      "seed": 6006,
+      "words": 256,
+      "output_mismatches": 0,
+      "cycle_mismatches": 0
+    }
+  ]
+}
