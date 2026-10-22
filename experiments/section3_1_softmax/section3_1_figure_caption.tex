@@ -1,0 +1,28 @@
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig3_softmax_combined.pdf}
+\caption{\textbf{Direct multivariate softmax approximation with a
+probability-constrained HI-SMURF operator.}
+\textbf{a}, Analytic predictions versus reference probabilities for the
+validation-selected model ($N=16$, $r=8$), comprising 65,536 entries from
+4,096 test vectors. Colour indicates the number of entries in each hexagonal
+bin; the dashed line denotes identity.
+\textbf{b}, Empirical cumulative distribution of row total variation
+distances for the same test set. Markers indicate the median and 95th percentile.
+\textbf{c}, Validation RMSE over optimization for three state-count and
+rank configurations. Each curve represents one training initialization.
+\textbf{d}, Test RMSE versus the number of trainable parameters for these
+configurations. No uncertainty across training initializations is estimated.
+\textbf{e}, Finite-stream output RMSE on 128 additional vectors. Open markers
+show individual sequence seeds; filled markers and error bars show the mean
+and sample standard deviation across three seeds for a fixed trained model.
+The dashed line denotes analytic error on these same vectors. Sampling length
+$L$ excludes 256 burn-in cycles, giving a total of $256+L$ cycles.
+\textbf{f}, RMSE relative to the analytic model output, comparing categorical
+emission with the conditional-probability average along the same state
+trajectories. The latter is a diagnostic readout, not a binary output stream.
+The dotted $L^{-1/2}$ guide is anchored to the mean categorical sampling error
+at $L=64$ and is not a fitted scaling law. Data and error bars follow
+\textbf{e}. Source data are supplied with the figure.}
+\label{fig:softmax_direct}
+\end{figure}

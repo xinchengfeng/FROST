@@ -1,0 +1,130 @@
+\subsection{Complete Transformer simulation}
+\label{methods:full_transformer}
+
+\paragraph{Architecture and associative-retrieval task.}
+We implemented an encoder-only pre-layer-normalized Transformer with four
+blocks, 16 tokens, model width 32, two attention heads of width 16, FFN width
+64 and GELU activations. Inputs were 37-dimensional vectors containing a
+32-way key indicator, a four-way value indicator and a query flag.
+For each sequence, 15 distinct keys were sampled uniformly without replacement
+from 32 possibilities; values were independently sampled from four classes.
+The final token copied one randomly selected stored key, set the query flag
+and contained no value information. Its target was the value associated with
+that key. The network used a learned 37-to-32 input projection, learned
+positional embeddings, four complete encoder blocks, final LayerNorm and a
+32-to-4 classifier on the final query token. The reference model contains
+36,100 parameters. There are 18 linear stages when each fused QKV projection
+is counted as one stage, equivalent to 26 component projections if Q, K and V
+are counted separately. There are nine LayerNorm operations and four GELU
+operations. Attention is bidirectional and unmasked; dropout is disabled.
+This benchmark does not include a decoder or cross-attention.
+
+\paragraph{Reference training and data separation.}
+Three models were trained independently with initialization seeds 11, 22
+and 33. Each used 1,800 AdamW updates with batch size 64, learning rate 0.002,
+weight decay 0.01 and gradient-norm clipping at 1. The learning rate followed
+a cosine schedule ending at 0.0002. A fresh synthetic batch was generated at
+each update. Checkpoints were selected on 512 validation sequences generated
+with seed 310001, using accuracy and then cross-entropy to break ties.
+Development sets used seeds 320001 and 320003. Calibration used 128 training
+sequences with seed 330001 and 128 separate validation sequences with seed
+330002. The test set comprised 128 sequences generated with seed 340001,
+fixed before stochastic evaluation and shared across all comparisons.
+Task-label integrity and the absence of query-value information were checked.
+
+\paragraph{HI-SMURF calibration.}
+The original joint categorical operator used 16 states per input and TT rank
+8, with 16,512 parameters. For each trained Transformer, reference attention
+score rows were extracted from all four blocks and both heads on the
+calibration inputs, yielding 16,384 rows per calibration split. We fine-tuned
+the original TT core logits for 1,200 Adam steps with batch size 512, initial
+learning rate 0.01, a cosine decay to 0.001 and gradient-norm clipping at 5.
+The loss was 256 times the mean squared probability error against exact
+softmax. The sorted, centred input encoding was evaluated with bounds 4 and
+8. Checkpoints were assessed every 200 steps and selected by probability RMSE
+on the separate calibration-validation set. Bound 8 was selected for all
+three models. Each selected operator was shared across blocks and heads
+within its model. Calibration used no task labels and did not modify any
+Transformer parameters. The tested encoding bounds and all calibration
+results are retained in the source data.
+
+\paragraph{Linear and attention operations.}
+All main learned linear stages generated stochastic bit products from the
+actual inputs and weights, followed by signed counting and scale restoration.
+Signed values used a separate sign and a magnitude bitstream. Input vectors
+and weight rows used power-of-two scales covering their maximum absolute
+entries. The same rules were used for IID and Sobol arithmetic. Sobol
+generation followed the two-coordinate, independently digitally shifted
+construction in Section 3.2, with scramble seed 7001 and 32-bit shifts.
+Weight streams were shared across the eight sequences in each simulation
+batch. Independent source offsets separated stages and batches.
+The attention subgraph included stochastic QK products, actual multivariate
+FSM trajectories and categorical events, and stochastic AV aggregation with
+value centring. Softmax FSMs started centrally, used independent Bernoulli
+driving streams and ran for 256 burn-in cycles before collecting $L$ events.
+The learned QKV and output projections were included in full-graph simulation.
+
+\paragraph{GELU and LayerNorm.}
+GELU was implemented as $x\Phi(x)$, using an eight-state FSM to approximate
+the Gaussian cumulative distribution function $\Phi$. Its conditional
+probability table was fitted by bounded linear least squares on 2,001
+uniformly spaced points in $[-4,4]$, with all coefficients constrained to
+$[0,1]$. The encoding was $p=\mathrm{clip}((x+4)/8,0,1)$.
+An independent magnitude stream for $x$ was combined with the emitted gate
+bit through an AND operation and the stored sign. The CDF gate's RMSE on
+interleaved validation midpoints was 0.005881.
+For LayerNorm, the feature mean was computed numerically and subtracted.
+Variance was estimated from independent magnitude-bit products of the
+centred features, summed over features and cycles. The variance plus
+$10^{-5}$ was represented as $2^e m$, with $m\in[0.5,1)$.
+A four-state FSM approximated $1/\sqrt{2m}$ using another bounded table fitted
+on 2,001 points; midpoint probability RMSE was 0.002158. Gate emissions were
+combined with centred-feature magnitude bits, followed by exponent-scale
+restoration and the learned static affine gain and bias. Both scalar FSMs
+started centrally and used 64 burn-in cycles, followed by $L$ gate samples.
+Their driving streams remained IID Bernoulli; arithmetic and gate-emission
+uniforms used the chosen IID or Sobol source. This is a moment-based
+normalization implementation with a scalar FSM reciprocal-square-root stage.
+
+\paragraph{Controls and metrics.}
+We evaluated direct transfer and calibrated full-graph models at
+$L\in\{64,256,1024\}$ with stream seeds 101, 202 and 303 for each trained
+model. At $L=256$, further controls used calibrated IID arithmetic, stochastic
+attention cores with exact surrounding operations, and stochastic attention
+plus all learned linear stages with exact normalization and GELU.
+Analytic controls used the stationary-state expectations of the corresponding
+HI-SMURF and scalar FSMs, with exact linear arithmetic and exact variances.
+There were 87 model/configuration/stream combinations in total.
+For classifier logits $z_b$, centred logits were defined by
+$\bar z_b=z_b-\mathrm{mean}(z_b)\mathbf{1}$. Their relative error was
+\begin{equation}
+\varepsilon_z=
+\sqrt{\frac{\sum_b\|\widehat{\bar z}_b-\bar z_b\|_2^2}
+{\sum_b\|\bar z_b\|_2^2}}.
+\end{equation}
+For each block, we similarly evaluated relative error over the concatenated
+query-token representations. We also evaluated the residual updates
+$\Delta h_{b,\ell}=h_{b,\ell}-h_{b,\ell-1}$, using their own reference norm
+in the denominator. These are positions within the same trained four-block
+network, not independently trained networks of different depths.
+Class accuracy, agreement with the reference, raw-logit RMSE and query-feature
+cosine similarity were additionally recorded. First, three stream realizations
+were averaged within each trained model. Reported means and sample standard
+deviations were then computed over the three model means. Thus stream
+realizations were treated as nested repetitions, not as independent model
+replicates. Accuracy on this finite test set is not a population confidence
+bound or a result on a real vision/language benchmark.
+
+\paragraph{Numerical scope and verification.}
+All main matrix products, attention products, normalization variance products
+and scalar gate products used explicitly generated bits and signed counts.
+TT state contractions, centering means, residual and bias additions, static
+normalization-affine gains, power-of-two range handling and decoding and
+re-encoding between stages remained numerical operations. The experiment
+therefore evaluates a complete mixed-representation Transformer graph, without
+claiming a continuous all-bitstream or gate-level implementation. An exact
+NumPy forward pass matched the PyTorch reference to within $9.73\times10^{-7}$
+in logit magnitude on a separate verification set. Residual-update consistency,
+endpoint products, bounded conditional probabilities and the absence of exact
+GELU evaluation in the full stochastic path were checked. Hardware synthesis,
+area, energy and latency were not evaluated.

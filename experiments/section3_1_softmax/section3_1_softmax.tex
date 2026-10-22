@@ -1,0 +1,55 @@
+\subsection{Direct multivariate approximation of softmax}
+\label{sec:softmax_approximation}
+
+We first evaluated whether HI-SMURF could directly reproduce the coupled
+probability mapping of softmax. For this experiment, we used a joint-output
+conditional probability tensor whose state-dependent output vectors are
+constrained to the probability simplex. The tensor-train (TT) representation
+therefore predicts all output probabilities jointly. Input scores were sorted
+and mean-centred before stochastic encoding, and the output permutation was
+subsequently inverted. Exact softmax provided the reference probabilities for
+training and evaluation; the compiled operator used neither an exponential
+approximation nor a runtime output softmax.
+
+We trained three configurations on 16,384 independent Gaussian score vectors
+of dimension 16, using 2,048 validation vectors for checkpoint selection and
+4,096 separate test vectors for evaluation. Each configuration was trained
+once. The validation-selected model, with $N=16$ states per finite-state
+machine and TT rank $r=8$, achieved a test root-mean-square error (RMSE) of
+$1.296\times10^{-2}$ and a mean row total variation distance of
+$5.640\times10^{-2}$ (Fig.~\ref{fig:softmax_direct}a).
+The median and 95th-percentile row total variation distances were 0.0512 and
+0.1026, respectively (Fig.~\ref{fig:softmax_direct}b). Residual errors
+were not uniform across the probability range: larger reference probabilities
+tended to be underestimated. The state-output constraints preserved
+non-negativity and normalization, with a maximum test row-sum deviation of
+$1.13\times10^{-6}$ in floating-point evaluation.
+
+Validation error decreased over the recorded optimization steps for all three
+configurations (Fig.~\ref{fig:softmax_direct}c). At fixed rank $r=4$,
+increasing the state count from $N=8$ to $N=16$ reduced test RMSE from 0.01426
+to 0.01394, while increasing the number of trainable parameters from 2,336 to
+4,672. Increasing the rank from 4 to 8 at $N=16$ further reduced RMSE to
+0.01296, using 16,512 parameters (Fig.~\ref{fig:softmax_direct}d).
+Thus, the latter comparison yielded a 7.0\% reduction in error for a
+3.53-fold increase in parameter count. Within the configurations examined,
+additional TT capacity produced a modest improvement in approximation accuracy.
+
+We next evaluated finite-stream operation on 128 additional score vectors,
+using independent Bernoulli input streams and three random sequence seeds.
+The finite-state machines were initialized centrally and advanced for 256
+burn-in cycles before collecting $L$ categorical output events. The output
+RMSE decreased from
+$(4.449\pm0.214)\times10^{-2}$ at $L=64$ to
+$(1.804\pm0.085)\times10^{-2}$ at $L=1024$
+(mean $\pm$ sample standard deviation across sequence seeds;
+Fig.~\ref{fig:softmax_direct}e). The analytic steady-state RMSE on these
+same 128 vectors was $1.397\times10^{-2}$. Relative to this analytic
+output, the sampling RMSE decreased from 0.0425 to 0.0114
+(Fig.~\ref{fig:softmax_direct}f). Averaging the conditional probability
+vectors along the same state trajectories, without categorical emission,
+gave lower sampling errors. This diagnostic separates the additional
+variability introduced by output emission from the error already present in
+the finite-state trajectories. The finite-stream evaluation retained
+floating-point TT contractions and did not include gate-level arithmetic or
+hardware timing measurements.

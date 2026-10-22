@@ -1,0 +1,79 @@
+\subsection{Softmax approximation experiments}
+\label{methods:softmax_approximation}
+
+\paragraph{Data and encoding.}
+Training, validation and test sets contained 16,384, 2,048 and 4,096
+independently generated vectors, respectively, with 16 entries sampled from
+$\mathcal{N}(0,1)$. NumPy generator seeds were 110016, 120016 and 130016.
+Scores were stored in single precision. The reference target was the exact
+softmax of the original score vector. For model input, each row was sorted
+in descending order and its mean was subtracted. The centred scores
+$\widetilde z_m$ were encoded as
+\begin{equation}
+x_m=\operatorname{clip}\left(\frac{\widetilde z_m+4}{8},0,1\right).
+\end{equation}
+The sorting permutation was inverted at the output. The target probabilities
+were not recomputed from clipped inputs.
+
+\paragraph{Joint probability tensor.}
+We used a constrained, non-negative TT parameterization for which each
+state-selected core slice is row stochastic. The TT boundary dimensions
+were 1 and 16, and all internal bond dimensions were $r$. For every joint
+state, contracting these slices produces a non-negative output vector whose
+entries sum to one. This is a restricted subclass of general real-valued
+TT tensors. State probabilities were evaluated analytically as
+\begin{equation}
+\pi_m(s\mid x_m)=
+\frac{x_m^s(1-x_m)^{N-1-s}}
+{\sum_{u=0}^{N-1}x_m^u(1-x_m)^{N-1-u}},
+\qquad s=0,\ldots,N-1.
+\end{equation}
+Independent input streams imply a product joint state distribution
+conditional on the input vector. The expected output was obtained by
+contracting the TT cores with these state distributions.
+
+\paragraph{Optimization and model selection.}
+We evaluated $(N,r)=(8,4),(16,4),(16,8)$, corresponding to 2,336, 4,672
+and 16,512 trainable parameters. Each configuration used one initialization
+(PyTorch seed 11), the same training data, a minibatch size of 256 and 3,000
+Adam updates. The objective was $16^2$ times the mean squared probability
+error. The initial learning rate was 0.03 and followed a cosine decay to
+0.003 over the final 40\% of updates. Gradient norms were clipped to 5.
+Validation error was evaluated every 200 updates, and the checkpoint with
+the lowest validation MSE was retained. The $N=16,r=8$ configuration was
+selected by validation error for detailed probability and stream analyses.
+These configurations followed an exploratory architecture study; the test
+set was reused across that study and is not an untouched confirmatory set.
+Core probability constraints were applied to static trainable parameters
+during optimization and compilation. The compiled operator did not apply
+softmax, sigmoid or exponentiation to runtime inputs or outputs.
+
+\paragraph{Finite-stream simulation.}
+An additional 128 Gaussian vectors were generated with seed 140016.
+For each vector, independent Bernoulli bits drove saturating increment/decrement
+FSM transitions. All FSMs started at state $\lfloor(N-1)/2\rfloor$ and
+ran for 256 burn-in cycles before output collection. Three sequence seeds
+(101, 202 and 303) were evaluated at $L=64,256,1024$. At each sampled
+cycle, the compiled TT was contracted at the current state and a categorical
+output event was drawn. Dividing category counts by $L$ produced the
+estimated softmax vector, with an exact unit row sum. A second accumulator
+averaged the conditional probability vectors along the same trajectories
+without drawing output events; this was used only as a diagnostic. TT
+contractions used single-precision arithmetic, so the simulation does not
+constitute a gate-level stochastic implementation.
+
+\paragraph{Metrics and statistics.}
+For $B$ rows of dimension $n=16$, the aggregate RMSE was
+\begin{equation}
+\mathrm{RMSE}=\left[\frac{1}{Bn}\sum_{b=1}^{B}\sum_{i=1}^{n}
+(\widehat p_{bi}-p_{bi})^2\right]^{1/2}.
+\end{equation}
+The total variation distance of row $b$ was
+$\mathrm{TV}_b=\frac12\sum_i|\widehat p_{bi}-p_{bi}|$.
+Sampling RMSE used the analytic output of the same model on the same rows
+as its reference. Error bars indicate the sample standard deviation across
+the three sequence seeds; they do not quantify training-initialization or
+dataset uncertainty. Individual sequence measurements are plotted. The
+empirical cumulative distribution uses all 4,096 test rows, and all 65,536
+probability entries are included in the hexagonal-bin plot. Entries from
+the same row are coupled and are not treated as independent replicates.

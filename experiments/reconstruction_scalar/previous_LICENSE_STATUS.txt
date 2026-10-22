@@ -1,0 +1,5 @@
+A project-wide license has not been chosen during this packaging step.
+The code owners must confirm the license before a public reusable-code release.
+Existing third-party license notices in third_party/ and fonts/ are retained.
+Do not apply a project license to third-party materials in a way that overrides
+their original terms. Original benchmark photographs are obtained separately.

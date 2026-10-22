@@ -1,0 +1,613 @@
+{
+  "created_utc": "2026-09-15T08:05:39Z",
+  "architecture": {
+    "type": "encoder-only pre-LayerNorm Transformer",
+    "tokens": 16,
+    "input_width": 37,
+    "d_model": 32,
+    "heads": 2,
+    "head_width": 16,
+    "ff_width": 64,
+    "blocks": 4,
+    "classes": 4,
+    "teacher_parameters": 36100,
+    "subgraphs": "learned input projection + position embedding + four [LN, QKV projections, multi-head attention, output projection, residual, LN, FFN(GELU), residual] blocks + final LN + query-token classifier"
+  },
+  "task": "Synthetic associative retrieval: 15 unique keys sampled from 32, independent 4-class values, final token queries one stored key. Output that key value. Chance 25%. No query value is exposed.",
+  "train": "Three independent teacher initializations 11,22,33; 1800 AdamW steps on fresh batches of 64. Validation seed 310001, 512 sequences. Select accuracy then cross-entropy.",
+  "calibration": "Reference activations on 128 sequences seed 330001; validation 128 seed 330002. Same-size shared HI-SMURF, 16 states/rank8/16512 parameters; 1200 Adam steps for bounds 4 and 8; select smallest validation probability RMSE. Teacher weights frozen. No task labels used.",
+  "development_seeds": [
+    320001,
+    320003
+  ],
+  "test_seed": 340001,
+  "test_sequences": 128,
+  "model_seeds": [
+    11,
+    22,
+    33
+  ],
+  "stream_seeds": [
+    101,
+    202,
+    303
+  ],
+  "Ls": [
+    64,
+    256,
+    1024
+  ],
+  "configs": {
+    "generic_full": {
+      "mode": "full",
+      "calibrated": false,
+      "source": "sobol",
+      "encoding": "magnitude"
+    },
+    "calibrated_full": {
+      "mode": "full",
+      "calibrated": true,
+      "source": "sobol",
+      "encoding": "magnitude"
+    },
+    "calibrated_iid": {
+      "mode": "full",
+      "calibrated": true,
+      "source": "iid",
+      "encoding": "magnitude"
+    },
+    "attention_only": {
+      "mode": "attention_only",
+      "calibrated": true,
+      "source": "sobol",
+      "encoding": "magnitude"
+    },
+    "linear_attention": {
+      "mode": "linear_attention",
+      "calibrated": true,
+      "source": "sobol",
+      "encoding": "magnitude"
+    },
+    "generic_analytic": {
+      "mode": "analytic",
+      "calibrated": false,
+      "source": "sobol",
+      "encoding": "magnitude"
+    },
+    "calibrated_analytic": {
+      "mode": "analytic",
+      "calibrated": true,
+      "source": "sobol",
+      "encoding": "magnitude"
+    }
+  },
+  "jobs": [
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 64,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 64,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 64,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 1024,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 1024,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 11,
+      "L": 1024,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 64,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 64,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 64,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 1024,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 1024,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 22,
+      "L": 1024,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 64,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 64,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 64,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 1024,
+      "stream_seed": 101
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 1024,
+      "stream_seed": 202
+    },
+    {
+      "config": "generic_full",
+      "model_seed": 33,
+      "L": 1024,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 64,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 64,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 64,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 1024,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 1024,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 11,
+      "L": 1024,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 64,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 64,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 64,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 1024,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 1024,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 22,
+      "L": 1024,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 64,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 64,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 64,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 1024,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 1024,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_full",
+      "model_seed": 33,
+      "L": 1024,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "calibrated_iid",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "attention_only",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 101
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 202
+    },
+    {
+      "config": "linear_attention",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 303
+    },
+    {
+      "config": "generic_analytic",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 0
+    },
+    {
+      "config": "generic_analytic",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 0
+    },
+    {
+      "config": "generic_analytic",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 0
+    },
+    {
+      "config": "calibrated_analytic",
+      "model_seed": 11,
+      "L": 256,
+      "stream_seed": 0
+    },
+    {
+      "config": "calibrated_analytic",
+      "model_seed": 22,
+      "L": 256,
+      "stream_seed": 0
+    },
+    {
+      "config": "calibrated_analytic",
+      "model_seed": 33,
+      "L": 256,
+      "stream_seed": 0
+    }
+  ],
+  "nonlinear": "Softmax: actual 16-state FSM trajectories and categorical events, 256 burn-in. GELU: x times an 8-state fitted CDF gate. LayerNorm: SC variance then a 4-state reciprocal-square-root gate. Scalar FSM burn-in 64. Fitted CPTs bounded in [0,1].",
+  "arithmetic": "Sign-magnitude bit products for all 18 learned linear maps, QK and AV. IID or independent digital shifts of distinct 2D Sobol coordinates; FSM inputs remain IID Bernoulli. Weights share streams within a batch of eight sequences.",
+  "retained_numerical": "Residual and bias additions, centering means, static LN affine gains, power-of-two range scaling, TT contractions, and stage decode/re-encode. No claim of all-bitstream or gate-level hardware.",
+  "uncertainty": "First average three stream runs within each teacher, then report mean and sample SD of the three teacher means. Stream runs are nested, not nine independent trained models. Analytic controls have one run per teacher.",
+  "exclusions": "No decoder/cross-attention, causal mask, pretrained large model, real vision/language task, hardware PPA, or execution-time speedup claim."
+}

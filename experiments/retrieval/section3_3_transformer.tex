@@ -1,0 +1,67 @@
+\subsection{End-to-end simulation of a stochastic Transformer}
+\label{sec:full_transformer}
+
+We next integrated the stochastic operators into a complete four-block
+encoder-only Transformer. The network included learned input and positional
+embeddings, two attention heads per block, output projections, residual
+connections, pre-layer normalization, feed-forward networks with GELU
+activations, a final normalization layer and a classification head. We used
+a controlled associative-retrieval task: 15 tokens presented distinct keys
+with independently assigned four-class values, and a final query token
+requested the value associated with one stored key. Three independently
+trained floating-point models reached 100\% accuracy on the 128 held-out
+sequences used for stochastic evaluation.
+
+All main linear stages and attention products were evaluated using explicit
+sign--magnitude bitstreams. GELU used an eight-state probability gate, whereas
+layer normalization combined stochastic variance estimation with a four-state
+reciprocal-square-root gate. We examined direct transfer of the softmax
+operator from Section~\ref{sec:softmax_approximation} and a simple
+activation-calibration procedure. Calibration updated the same-size
+HI-SMURF table using reference attention scores from separate input sequences,
+with its encoding range selected on an independent calibration-validation set.
+The Transformer weights remained fixed, and the HI-SMURF operator retained
+16 states, TT rank 8 and 16,512 parameters. Calibration used reference
+operator outputs without task labels.
+
+Calibration reduced errors throughout the network
+(Fig.~\ref{fig:transformer_depth}). At $L=256$, the relative error in the
+query representation after the fourth block decreased from 0.736
+under direct transfer to 0.122 after calibration. We additionally
+measured the error in each block's residual update to assess the learned
+transformation separately from the identity connection. At the classifier
+output, relative centred-logit error decreased from
+0.811 $\pm$ 0.081 to 0.079 $\pm$ 0.021,
+and retrieval accuracy increased from 71.4\% to 99.9\%
+(Fig.~\ref{fig:transformer_performance}). Values denote means across three
+trained models after averaging three stream realizations per model; reported
+uncertainty is the sample standard deviation across the three model means.
+
+Longer streams improved numerical fidelity over the tested range, with
+diminishing gains within the calibrated architecture.
+Increasing $L$ from 64 to 1,024 reduced relative centred-logit error from
+0.230 to 0.081, compared with 0.075 for analytic
+evaluation of the calibrated finite-state operators
+(Fig.~\ref{fig:transformer_performance}b). Error did not decrease monotonically:
+the mean at $L=1024$ was slightly above that at $L=256$ (0.079),
+indicating that longer streams did not remove the remaining approximation
+error. Corresponding retrieval
+accuracies were 98.0\% and 99.7\%
+(Fig.~\ref{fig:transformer_performance}a). The continuous-output metric
+therefore resolves approximation errors that need not change the predicted
+class. Stream length excludes 256 burn-in cycles for each multivariate
+softmax FSM ensemble and 64 cycles for each scalar FSM stage.
+
+Progressively extending stochastic computation from the attention cores to
+all learned linear stages and then to normalization and GELU yielded relative
+centred-logit errors of 0.093, 0.087 and 0.079, respectively,
+at $L=256$ (Fig.~\ref{fig:transformer_ablation}a). These end-to-end controls
+contain interacting approximation errors; their ordering does not establish
+that adding stochastic stages improves intrinsic accuracy. With the calibrated
+operator fixed, switching from independent arithmetic streams to Sobol
+streams changed this error from 0.249 to 0.079
+(Fig.~\ref{fig:transformer_ablation}b). These comparisons evaluate the
+complete encoder graph on a controlled synthetic task. TT contractions,
+centering, residual and bias accumulation, static normalization-affine gains,
+range scaling and conversion between stochastic stages remained numerical
+operations; hardware area, energy and latency were not measured.

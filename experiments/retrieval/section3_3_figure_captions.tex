@@ -1,0 +1,65 @@
+% Requires graphicx. Each core figure has its own a,b panels.
+% Depth figure: after the paragraph reporting fourth-block and final-output errors.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_transformer_depth.pdf}
+\caption{\textbf{Propagation of approximation error through a four-block Transformer.}
+\textbf{a}, Relative error of the query-token representation after each encoder
+block at $L=256$. \textbf{b}, Relative error of the query-token residual update,
+defined as the difference between the representations entering and leaving
+each complete encoder block. Evaluating updates measures the learned
+transformation separately from the copied residual signal.
+Direct transfer uses the generic HI-SMURF checkpoint from Section 3.1.
+Calibration uses reference activation data to update an operator of the same
+state count and TT rank while leaving Transformer weights fixed.
+The analytic control uses stationary-state expectations and exact surrounding
+arithmetic, including exact variances, with the same calibrated nonlinear
+operators. Open markers indicate three trained-model means, each obtained
+from three stream realizations for finite-stream configurations. Filled markers
+and error bars denote the mean and sample standard deviation across these
+three model means. Each run uses the same 128 held-out sequences.}
+\label{fig:transformer_depth}
+\end{figure}
+
+% Performance figure: after the stream-length paragraph.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_transformer_performance.pdf}
+\caption{\textbf{End-to-end retrieval accuracy and numerical fidelity.}
+\textbf{a}, Four-class associative-retrieval accuracy of the complete stochastic
+Transformer versus bitstream length. The floating-point reference achieves
+100\% accuracy on the same test sequences; chance performance is 25\%.
+\textbf{b}, Relative error of the centred classification logits, evaluated
+over all 128 test sequences. Subtracting each logit vector's mean removes a
+common offset that does not affect class probabilities. The dashed analytic
+reference is the mean over the three calibrated models.
+Open markers show results averaged over three stream realizations for each
+of three independently trained models. Filled markers and error bars denote
+the mean and sample standard deviation across model means; stream realizations
+are nested repetitions. Zero observed accuracy variation does not imply a
+population confidence bound. Each stochastic phase uses $L$ sampling cycles;
+the softmax and scalar FSM burn-in periods of 256 and 64 cycles, respectively,
+are excluded from the horizontal axis.}
+\label{fig:transformer_performance}
+\end{figure}
+
+% Ablation figure: after the final Results paragraph.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/Fig_transformer_ablation.pdf}
+\caption{\textbf{Operator coverage and simple calibration in the complete network.}
+\textbf{a}, Relative centred-logit error at $L=256$ when stochastic computation
+covers the attention cores, additionally all learned linear stages, and
+additionally layer normalization and GELU. The final configuration evaluates
+the full computational graph. All three configurations use calibrated
+HI-SMURF and Sobol arithmetic; operations outside each indicated subset are
+evaluated exactly. \textbf{b}, Full-graph error for direct transfer with Sobol
+arithmetic, calibrated operators with independent streams, and calibrated
+operators with Sobol streams. FSM driving streams remain independent
+Bernoulli streams in every configuration. Faint lines connect the same trained
+model across conditions. Open markers show three model means, each averaging
+three stream realizations; filled markers and error bars show the mean and
+sample standard deviation across these model means. No Transformer weights
+are updated during calibration.}
+\label{fig:transformer_ablation}
+\end{figure}
