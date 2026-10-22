@@ -1,0 +1,64 @@
+{
+  "python": "3.12.14",
+  "system": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "packages": {
+    "numpy": {
+      "available": true,
+      "version": "2.3.5"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.17.0"
+    },
+    "pandas": {
+      "available": true,
+      "version": "2.2.3"
+    },
+    "torch": {
+      "available": false,
+      "version": null
+    },
+    "matplotlib": {
+      "available": true,
+      "version": "3.10.8"
+    },
+    "PIL": {
+      "available": true,
+      "version": "12.3.0"
+    },
+    "sklearn": {
+      "available": true,
+      "version": "1.8.0"
+    },
+    "skimage": {
+      "available": false,
+      "version": null
+    },
+    "fontTools": {
+      "available": true,
+      "version": "4.61.1"
+    },
+    "pypdf": {
+      "available": true,
+      "version": "6.10.0"
+    },
+    "fitz": {
+      "available": true,
+      "version": "1.26.6"
+    },
+    "reportlab": {
+      "available": true,
+      "version": "4.4.9"
+    }
+  },
+  "executables": {
+    "g++": "/usr/bin/g++",
+    "git": "/usr/local/bin/git",
+    "iverilog": null,
+    "verilator": null,
+    "yosys": null,
+    "nextpnr-ecp5": null,
+    "sta": null
+  },
+  "note": "Missing optional tools do not prevent source checks or GitHub upload. Full workflows require their own dependencies."
+}

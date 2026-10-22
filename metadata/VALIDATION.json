@@ -1,0 +1,76 @@
+{
+  "prepared_on": "2026-10-22",
+  "scope": "Source release preparation, functional fixtures and saved-record consistency; not new scientific experiments",
+  "status": "passed_for_executed_checks",
+  "checks": {
+    "python_syntax": {
+      "passed": true,
+      "files": 282,
+      "details": "validation_details/repository_syntax.json"
+    },
+    "software_native_kernels": {
+      "passed": true,
+      "fsm_values": 336,
+      "categorical_events": 21,
+      "details": "validation_details/software_kernel_smoke.json"
+    },
+    "reconstruction_native_kernels": {
+      "passed": true,
+      "compiled_kernels": 3,
+      "exact_count_checks": 4,
+      "details": "validation_details/reconstruction_validation.json"
+    },
+    "hardware_reference_replay": {
+      "passed": true,
+      "output_words": 3840,
+      "configs": 15,
+      "cycle_checks": "12 scalar configs; FROST scheduler not newly simulated",
+      "details": "validation_details/hardware_reference_replay.json"
+    },
+    "hardware_saved_record_audit": {
+      "passed": true,
+      "output_words": 3840,
+      "records": 15,
+      "waveform_hashes_rechecked": false,
+      "details": "validation_details/hardware_record_restore_audit.json"
+    },
+    "data_archive_restore": {
+      "passed": true,
+      "software_and_source_dry_run_manifest_files": 6699,
+      "hardware_and_source_actual_restore_files": 630,
+      "actual_restore_root": "temporary validation copy, not the released source tree"
+    },
+    "figure_rendering": {
+      "passed": true,
+      "pdf_count": 14,
+      "figures": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10
+      ],
+      "font": "DejaVu Sans fallback",
+      "details": "../figures/VALIDATION.json"
+    },
+    "upload_preparation": {
+      "passed": true,
+      "ignored_required_source_files": 0,
+      "high_confidence_credential_pattern_hits": 0,
+      "individual_files_over_25MiB": 0,
+      "note": "Pattern scan is not a guarantee about all sensitive information."
+    }
+  },
+  "not_executed": [
+    "PyTorch-dependent graph checks, full training, calibration and network/reconstruction inference (PyTorch unavailable).",
+    "A new RTL or gate-level simulation, synthesis, FPGA place-and-route, or power estimation (EDA tools unavailable).",
+    "A fresh Fig9 redraw with reacquired official reference photographs in this code-packaging task.",
+    "Rehashing the separately archived full waveform files in this packaging task."
+  ],
+  "scientific_results_modified": false,
+  "links_and_license": "No repository URL, DOI, or blanket original-code license was invented."
+}

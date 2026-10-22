@@ -1,0 +1,203 @@
+{
+  "scope": "Lightweight figure redraw checks, not new scientific experiments",
+  "status": "passed",
+  "font_family": "DejaVu Sans",
+  "exact_publication_fonts": false,
+  "figures": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10
+  ],
+  "pdf_count": 14,
+  "all_expected_pdf_outputs_vector": true,
+  "outputs": [
+    {
+      "file": "Softmax_approximation.pdf",
+      "sha256": "b39b7531f74b3df594094a606f8f4b1fd5b87226781992f56f2c55aba14fcb96",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2359924316406,
+        218.26800537109375
+      ],
+      "raster_images": 0,
+      "text_characters": 379
+    },
+    {
+      "file": "Softmax_bitstream.pdf",
+      "sha256": "09b7e46c5aebff748f0ed763905e828d323f850e5294ba8966a7830705d9894a",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2359924316406,
+        218.26800537109375
+      ],
+      "raster_images": 0,
+      "text_characters": 424
+    },
+    {
+      "file": "Fig_attention_fidelity.pdf",
+      "sha256": "b21cc9b1b97db3cf254ebc166d51b778d6ab579eb06017f83e19362cccde1621",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        218.26771545410156
+      ],
+      "raster_images": 0,
+      "text_characters": 495
+    },
+    {
+      "file": "Fig_attention_efficiency.pdf",
+      "sha256": "078ed6cd24cce97d8a2bc3392b06b5c200232a98ef7e586114bb11e40fcc45ce",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        218.26771545410156
+      ],
+      "raster_images": 0,
+      "text_characters": 472
+    },
+    {
+      "file": "Fig_FROST_overview.pdf",
+      "sha256": "f74d3be544bbac30413eaadc5520128f58fb84233cccc4043c02ec8d31be5d22",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        285.0
+      ],
+      "raster_images": 0,
+      "text_characters": 763
+    },
+    {
+      "file": "Fig_FROST_representation.pdf",
+      "sha256": "d771a251a8004b9caacacb28b0976d99017e86b907e412b17bf969acf2b1b4ba",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        365.0
+      ],
+      "raster_images": 0,
+      "text_characters": 718
+    },
+    {
+      "file": "Fig_FROST_operator.pdf",
+      "sha256": "7a97f1f557ed8d18ce1e69357fae64ae34fe6e34274a16eddcd45b7a1fe16b7c",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        510.0
+      ],
+      "raster_images": 0,
+      "text_characters": 1146
+    },
+    {
+      "file": "Fig_FROST_block.pdf",
+      "sha256": "dc69dd712458dc293347b00ee5f9044b738c266a3d1eac8419aafeefdb76d908",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        520.0
+      ],
+      "raster_images": 0,
+      "text_characters": 922
+    },
+    {
+      "file": "FROST_attention_formation.pdf",
+      "sha256": "eccdbd4f9407e1f7bf70408cedaa9c1bd6e0bad916c6b487a8bc160e24bbcfa6",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        325.9842529296875
+      ],
+      "raster_images": 0,
+      "text_characters": 488
+    },
+    {
+      "file": "FROST_attention_convergence.pdf",
+      "sha256": "dfdf804f434abaae46fbb57cfbd3008736cc7a8202a682092de9f25525001985",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        283.4645690917969
+      ],
+      "raster_images": 0,
+      "text_characters": 610
+    },
+    {
+      "file": "Fig_transformer_performance.pdf",
+      "sha256": "28c55fd7cb8097fd2b9380e7cc4f0dba1893cee4a9f0b683ece7b1c4985c52ea",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        223.93701171875
+      ],
+      "raster_images": 0,
+      "text_characters": 362
+    },
+    {
+      "file": "Fig_transformer_ablation.pdf",
+      "sha256": "155d6ce6a76d868e407354d8d5e3c1b15bafdf14ecbc19bc603ffbd00d64cbcc",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        226.7716522216797
+      ],
+      "raster_images": 0,
+      "text_characters": 320
+    },
+    {
+      "file": "FROST_hardware_stage3.pdf",
+      "sha256": "0f7f1676de3d88440e0630ab1e0993e4a42946d1309ceade231ad4d2c494b79b",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        170.0
+      ],
+      "raster_images": 0,
+      "text_characters": 377
+    },
+    {
+      "file": "FROST_hardware_tradeoffs.pdf",
+      "sha256": "bac8f08f6cee920d971dc2522060b87994a26d8c34be07b26974e4ac3b0fd5dc",
+      "page_size_pt": [
+        0.0,
+        0.0,
+        510.2362060546875,
+        170.0
+      ],
+      "raster_images": 0,
+      "text_characters": 376
+    }
+  ],
+  "preserved_panel_checks": [
+    {
+      "file": "Fig_attention_efficiency.pdf",
+      "panel_d_pixel_identical": true,
+      "raster_images": 0
+    }
+  ],
+  "source_check_summaries": [
+    "Fig5: probabilities and errors checked against archived numerical_summary.json; three original stream seeds.",
+    "Fig6: original drawing path count and geometry retained.",
+    "Fig7: 40/20 actual observations; sample standard deviations; no invented horizontal or vertical data displacement; panel a and panel d pixel-identical to templates.",
+    "Fig8: original mean-curve geometry checked against matched CSV means within 0.0002 pt.",
+    "Fig10: hardware runner loaded actual Stage4/5 reports and checked disjoint text boxes; no PDF-derived measurement data."
+  ]
+}

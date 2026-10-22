@@ -1,0 +1,194 @@
+{
+  "scope": "Current main Figs 1\u20138. Experimental measurements were copied unchanged; no PDF-derived values are used as new measurements.",
+  "source_adaptations": [
+    "Replace the historical absolute working directory by FROST_FIGURE_WORK.",
+    "Make matplotlib family names configurable; external fonts are not distributed.",
+    "Remove manuscript editing from the Fig7 renderer; retain the figure and validation code."
+  ],
+  "files": [
+    {
+      "file": "source/draw_schematics.py",
+      "kind": "author figure source",
+      "original_path": "tmp/pdfs/frost_redesign/draw_frost_compact.py",
+      "original_sha256": "d29a4886539df1a2334b5f88b7a113eb9c6cfc29714d97d1373c84adda1fba4f",
+      "packaged_sha256": "6273a5b7a4b94e290309a3cc2b4fb261a034f256a3c76d065bd8150f4dd5fdc8",
+      "adapted_for_portability": true
+    },
+    {
+      "file": "source/draw_softmax.py",
+      "kind": "author figure source",
+      "original_path": "outputs/frost_plot_refresh/Source/redraw_fig5.py",
+      "original_sha256": "d8791a15f43255a083ef2cd615e49a007e4c9145f864ee9b9eab353cc1c2aef0",
+      "packaged_sha256": "365d61103d588feed925bda3754fd7cb47712a6209269a7c012c18e7dac8ede1",
+      "adapted_for_portability": true
+    },
+    {
+      "file": "source/restyle_convergence.py",
+      "kind": "author figure source",
+      "original_path": "outputs/frost_plot_refresh/Source/refresh_fig6.py",
+      "original_sha256": "7dbf290625f2ab30302d2da4e9db9256dea5e5ed28be46778a6aef6833344bb0",
+      "packaged_sha256": "db11b474ead141114558bf6434eb42dcb6563432ff24ae4c7826a5898cfb540a",
+      "adapted_for_portability": true
+    },
+    {
+      "file": "source/restyle_retrieval.py",
+      "kind": "author figure source",
+      "original_path": "outputs/frost_plot_refresh/Source/refresh_fig8.py",
+      "original_sha256": "112ab18d5ff3edf78691334a5b8264b1d42898f36d9b7cf1df740b3072140831",
+      "packaged_sha256": "d4312f8c37f4fc6726291b76524e47b4c225459a577ec13a7257885c873da43b",
+      "adapted_for_portability": true
+    },
+    {
+      "file": "source/draw_attention_fidelity.py",
+      "kind": "author figure source",
+      "original_path": "tmp/pdfs/frost_fig7_dumbbell/draw_and_compose.py",
+      "original_sha256": "7a6945278114275feab3bbc05ba2eb5d5e921eccec124b4b54c2c96699cd25ed",
+      "packaged_sha256": "7b59115d22645830dc069e611ebbf462ab806f082cfb130637a0a9714f1922dd",
+      "adapted_for_portability": true
+    },
+    {
+      "file": "source/draw_attention_efficiency.py",
+      "kind": "author figure source",
+      "original_path": "outputs/frost_fig7_clean/Source/draw_panel_c.py",
+      "original_sha256": "50d22e64145e0cc76dcb4251ffbcf8e367aea41b1d2b61e70b1b7cacc036e323",
+      "packaged_sha256": "0e54d52645150b8fb5c84c16c634d5635664662d7c7b7c8b620e41cc3a638464",
+      "adapted_for_portability": true
+    },
+    {
+      "file": "data/fig5/Fig3a_probabilities.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig5_data/Fig3a_probabilities.csv",
+      "original_sha256": "9f225e6e39fcad7fa510e657344ea26d10da0679ddadce92947229424bc907ed",
+      "packaged_sha256": "9f225e6e39fcad7fa510e657344ea26d10da0679ddadce92947229424bc907ed",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig5/Fig3b_row_errors.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig5_data/Fig3b_row_errors.csv",
+      "original_sha256": "db600656f47a39a6db3ae3dea9b77b09b8d4ab331cb187d1db8a40a551ed9ae4",
+      "packaged_sha256": "db600656f47a39a6db3ae3dea9b77b09b8d4ab331cb187d1db8a40a551ed9ae4",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig5/Fig3e_output_error.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig5_data/Fig3e_output_error.csv",
+      "original_sha256": "cd6f6ddb0d23fcdcf06679b84cec214cdbfb91e8ed7d663521bdbf5915af9f97",
+      "packaged_sha256": "cd6f6ddb0d23fcdcf06679b84cec214cdbfb91e8ed7d663521bdbf5915af9f97",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig5/Fig3f_sampling_error.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig5_data/Fig3f_sampling_error.csv",
+      "original_sha256": "1e60f471030dd027de0261f417e981680e0a33285fb7b0e9a50e95b232f49f2a",
+      "packaged_sha256": "1e60f471030dd027de0261f417e981680e0a33285fb7b0e9a50e95b232f49f2a",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig5/numerical_summary.json",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig5_data/numerical_summary.json",
+      "original_sha256": "48491c628906b59287c400b313ad0ab3c2b4cebdfde8081ed40b3498dd78cc3a",
+      "packaged_sha256": "48491c628906b59287c400b313ad0ab3c2b4cebdfde8081ed40b3498dd78cc3a",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig8/Fig_transformer_ablation_a.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig8_source_data/Fig_transformer_ablation_a.csv",
+      "original_sha256": "66c9d35c9dfaf074f3d409a0d527b39cc70b2d5de02d9ded721d45d7278f0fd1",
+      "packaged_sha256": "66c9d35c9dfaf074f3d409a0d527b39cc70b2d5de02d9ded721d45d7278f0fd1",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig8/Fig_transformer_ablation_b.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig8_source_data/Fig_transformer_ablation_b.csv",
+      "original_sha256": "7609b1efe95675afcb81dd7946434621c42e5def7e3c69666a29bfa9a892c75d",
+      "packaged_sha256": "7609b1efe95675afcb81dd7946434621c42e5def7e3c69666a29bfa9a892c75d",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig8/Fig_transformer_performance.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig8_source_data/Fig_transformer_performance.csv",
+      "original_sha256": "b3b289c9ce4b384af67aaafff353b3b8f2de4931233b70f75f5302b02125fc00",
+      "packaged_sha256": "b3b289c9ce4b384af67aaafff353b3b8f2de4931233b70f75f5302b02125fc00",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig8/per_model_metrics.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_plot_refresh/Source/fig8_source_data/per_model_metrics.csv",
+      "original_sha256": "baf68ffe1444d6b573e6c0798b3235c159b6b094997b9bf8fda54a04baed71af",
+      "packaged_sha256": "baf68ffe1444d6b573e6c0798b3235c159b6b094997b9bf8fda54a04baed71af",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig7/Fig_attention_fidelity_b.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_fig7_clean/Source/data/Fig_attention_fidelity_b.csv",
+      "original_sha256": "0ee7fd59bcccaa6e58af1d4ac20d751a099ba79676c914cca4c49323e1461bd0",
+      "packaged_sha256": "0ee7fd59bcccaa6e58af1d4ac20d751a099ba79676c914cca4c49323e1461bd0",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "data/fig7/Fig_attention_efficiency_a.csv",
+      "kind": "archived numerical source data",
+      "original_path": "outputs/frost_fig7_clean/Source/data/Fig_attention_efficiency_a.csv",
+      "original_sha256": "77b61198f19620f03f5d62cb3e60fb3b2422b64211540627345e975312bc90f1",
+      "packaged_sha256": "77b61198f19620f03f5d62cb3e60fb3b2422b64211540627345e975312bc90f1",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "templates/FROST_attention_formation.pdf",
+      "kind": "author-generated vector layout template",
+      "original_path": "tmp/pdfs/frost_layout_only/build/Images/FROST_attention_formation.pdf",
+      "original_sha256": "3d3b762640e64fc263a5a31058a2bbc85997660a4067d491fab88c690f42a50b",
+      "packaged_sha256": "3d3b762640e64fc263a5a31058a2bbc85997660a4067d491fab88c690f42a50b",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "templates/FROST_attention_convergence.pdf",
+      "kind": "author-generated vector layout template",
+      "original_path": "tmp/pdfs/frost_layout_only/build/Images/FROST_attention_convergence.pdf",
+      "original_sha256": "87c0eac9524d233434389051f7265f08b3308ffc0f50a1b60477d0d305f6b255",
+      "packaged_sha256": "87c0eac9524d233434389051f7265f08b3308ffc0f50a1b60477d0d305f6b255",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "templates/Fig_transformer_performance.pdf",
+      "kind": "author-generated vector layout template",
+      "original_path": "tmp/pdfs/frost_layout_only/build/Images/Fig_transformer_performance.pdf",
+      "original_sha256": "a2d2f83a0b82dde55edf8b02234fa1c7cfb4504c323b17ec06a679618e56c793",
+      "packaged_sha256": "a2d2f83a0b82dde55edf8b02234fa1c7cfb4504c323b17ec06a679618e56c793",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "templates/Fig_transformer_ablation.pdf",
+      "kind": "author-generated vector layout template",
+      "original_path": "tmp/pdfs/frost_layout_only/build/Images/Fig_transformer_ablation.pdf",
+      "original_sha256": "fdf8ed3e95bada9e682b6a81b1343c113f7b0fb619ba8540d0efe4d08b2213db",
+      "packaged_sha256": "fdf8ed3e95bada9e682b6a81b1343c113f7b0fb619ba8540d0efe4d08b2213db",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "templates/Fig_attention_fidelity.pdf",
+      "kind": "author-generated vector layout template (panel a retained)",
+      "original_path": "outputs/frost_fig7_clean/Images/Fig_attention_fidelity.pdf",
+      "original_sha256": "4762b676e7a48752b76c2a53b010c5bbd4370e8b3636b204bb4797e38fd13e77",
+      "packaged_sha256": "4762b676e7a48752b76c2a53b010c5bbd4370e8b3636b204bb4797e38fd13e77",
+      "adapted_for_portability": false
+    },
+    {
+      "file": "templates/Fig_attention_efficiency.pdf",
+      "kind": "author-generated vector layout template (panel d retained)",
+      "original_path": "outputs/frost_fig7_overlap/Images/Fig_attention_efficiency.pdf",
+      "original_sha256": "88a59636f8e18ea50107be9c7f11542469c6b15e5907986bb405af90efcc9925",
+      "packaged_sha256": "88a59636f8e18ea50107be9c7f11542469c6b15e5907986bb405af90efcc9925",
+      "adapted_for_portability": false
+    }
+  ]
+}

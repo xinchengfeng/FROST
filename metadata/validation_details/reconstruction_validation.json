@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "Python AST parse",
+      "directory": "reconstruction_original",
+      "files": 30,
+      "passed": true
+    },
+    {
+      "check": "Python AST parse",
+      "directory": "reconstruction_lt",
+      "files": 35,
+      "passed": true
+    },
+    {
+      "check": "Python AST parse",
+      "directory": "reconstruction_scalar",
+      "files": 43,
+      "passed": true
+    },
+    {
+      "check": "Data adapter restores hash-verified crop and preserves prediction bytes",
+      "passed": true
+    },
+    {
+      "check": "Data adapter refuses overwrite of different files",
+      "passed": true
+    },
+    {
+      "check": "Data adapter rejects incorrect reference hashes",
+      "passed": true
+    },
+    {
+      "check": "Byte-identical source provenance",
+      "directory": "reconstruction_original",
+      "original_files": 31,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical source provenance",
+      "directory": "reconstruction_lt",
+      "original_files": 40,
+      "passed": true
+    },
+    {
+      "check": "Byte-identical source provenance",
+      "directory": "reconstruction_scalar",
+      "original_files": 51,
+      "passed": true
+    },
+    {
+      "check": "Generic overlay compatibility: replaces verified public NPZ, protects divergent outputs",
+      "passed": true
+    },
+    {
+      "check": "prepare_data.py --help without torch",
+      "passed": true
+    }
+  ],
+  "native_compilation": "Original finite_kernels.cpp compiled with g++17; scalar local_tt/sc_exp/horner compilation checked by smoke_native.py",
+  "runtime_limit": "PyTorch is not installed in this environment. Full trained inference, model fitting and PyTorch-dependent archived verification scripts were NOT executed in this packaging task.",
+  "native_smoke": {
+    "compiled_kernels": 3,
+    "exact_count_checks": 4,
+    "stream_lengths": [
+      64,
+      256
+    ],
+    "passed": true
+  }
+}

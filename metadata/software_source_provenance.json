@@ -1,0 +1,1283 @@
+[
+  {
+    "path": "experiments/attention/README.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/README.md",
+    "sha256": "f03169b697f4b672dd414648b2ff027e05dc94987c64019dfe423910afa8026f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/attention_core.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/attention_core.py",
+    "sha256": "863bd62a97570ea377afc8fd59d22f8c3162d218791a279311c5219552ea5bbd",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/calibration.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/calibration.json",
+    "sha256": "2afc84d21374181cc0bfb4d16e7661bbc040ef7d719e6313bb97e2a90f9941fc",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/jobs.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/jobs.json",
+    "sha256": "c4ad087d4531e63d171b589dcba0d7c0831329fe94d8a5e0b822f5e43abc2aa4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/manifest_sha256.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/manifest_sha256.json",
+    "sha256": "1612302b84518ad9c75a3ae83cb9734cd3fb92da6e28250db2617382ba8dd576",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/pilot.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/pilot.py",
+    "sha256": "734fe320632f3e41c373ff4ccec1da08c88c6d2ab6abbfd8f6b1bee27fc0d826",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/protocol.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/protocol.json",
+    "sha256": "def6fc2c863215cc7776af7e3bab44728e55cca55e6ff0d0a728a93fec964c03",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/reading_notes_zh.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/reading_notes_zh.txt",
+    "sha256": "0630536249e5a2f5ccd277a62e376814016cf28264155a0c3f1fa61a98cbc1b7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/render_figures.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/render_figures.py",
+    "sha256": "1027c6d2270aea052882600e8578444ee9edbbd06831ba1fd3e78f5cabcba79f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/run_experiments.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/run_experiments.py",
+    "sha256": "c56efc79ec2d352b94ea7eae9b60d3a0e3e8c8f1ff286cf2b3a8c43280aac841",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/section3_2_attention.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/section3_2_attention.tex",
+    "sha256": "6e3ed104f87fb889b9b5d98c5f59992994cb9325d3fcdce0530fbd140b11cce5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/section3_2_attention_methods.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/section3_2_attention_methods.tex",
+    "sha256": "98af37d99ad8b1f18db506b7a9f66fdfcd22e9594d204de57a1cf48d4a59c743",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/section3_2_figure_captions.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/section3_2_figure_captions.tex",
+    "sha256": "95fba0c1905b2f21ade4464f9a94107955d226e70761023da1499ead2bb87aa9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/software_references.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/software_references.md",
+    "sha256": "3fa2cc309d1547498c477c082e53aed54f42f17fb4467ab9d14d48d71359db4e",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/validate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/validate.py",
+    "sha256": "9744afc6dfd45e358c67a4eb4f4416cd7ec7f1c42bf933400c1b1dfaaa1941ba",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/verify_artifacts.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/verify_artifacts.py",
+    "sha256": "9ee01d5e459934efc2ce17fdbd5a0175b7ab8ae162097006fd7d3f0736508201",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/attention/write_text.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/attention/write_text.py",
+    "sha256": "8cec31ac85d445f07576da42c19a5844d0f04c5ad1d320ebde4079e66a4bbc12",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/README.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/README.md",
+    "sha256": "0d440896a52476b7441c1e964df1e506efae21e5e35f0210427b0e362e4047d0",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/attention_core.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/attention_core.py",
+    "sha256": "1ad370d8695e223f8b14e4afb06024af93d73626fe2025283a0872457494b3c8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/calibrate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/calibrate.py",
+    "sha256": "8ca655f9e3695e2a9af449585711e384def5ee0f07857278482996fd02138d69",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/data.py",
+    "sha256": "eedccf2dfa7346084d58a4b347cc28021e6f8aea5aab27c08fbaa1c7a2034dd2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/dataset_references.bib",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/dataset_references.bib",
+    "sha256": "44b29244b8f86377deb56e13079691572d67121e9e4704f41d1d43258438f8d9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/evaluate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/evaluate.py",
+    "sha256": "88a79a6f03857973e7565c7d2d3f433bc902ca30006b673849cdd8be0a0de515",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/figure_captions.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/figure_captions.tex",
+    "sha256": "87f6ccbb2d7eb8833e172c548592fe485c4a578fdef110c0c62f96662589cbcd",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/manifest_sha256.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/manifest_sha256.json",
+    "sha256": "c7d66de05841c515396a9a38f930be5d56d9ebb7861c3c671f046aee5b0c3a9b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/package.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/package.py",
+    "sha256": "9d8f1de6432f3ea9dc122c3f959994c072d3d2939a46610a58467daae5bd5753",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/protocol.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/protocol.json",
+    "sha256": "4c56b9a2b6f66c4ee77c770f1285ecc4db29004d69d1a1b61e8f470014eb3224",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/render_figures.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/render_figures.py",
+    "sha256": "36b97d9eaacc182a89ecf39d23a2d76f07997376ea6a3abf20e225e2dc505c64",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/requirements.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/requirements.txt",
+    "sha256": "205766d51e0a3e047c9f0b15e8d1795fd493729003137c85d8634b91788d6bd1",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/results_table.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/results_table.tex",
+    "sha256": "fd9bb576b0e499c6ca5406262e5bbf21215106b698920e6b0244408a31dd9652",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/section3_4_methods.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/section3_4_methods.tex",
+    "sha256": "8a5fcac792d1418a0be5d1b7078ad86af93f6657c944295ff64f7ef25c29cfe8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/section3_4_results.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/section3_4_results.tex",
+    "sha256": "48932a2b713fa13d24bc34b64ef3d2e439d7bbf1df243b1548175d12850b0517",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/stochastic_model.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/stochastic_model.py",
+    "sha256": "82f992298632679aadb2dda44503898a1cc8e058172dd8919882de6e2459f386",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/validate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/validate.py",
+    "sha256": "f1e96b03ca6b6a3f8b9258cbc396604a7b20d4f65e118bf9ccd922e675474ec5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/verify_results.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/verify_results.py",
+    "sha256": "2b90318af2f9c1c967445d4a74f257f4e1675f4160502a483acef83b20d3a0d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/vision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/vision.py",
+    "sha256": "ad34286fa188b3188601493fd38a621eb92f14a6ad8beec9737c2b79d64e85d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/classification/write_results.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/classification/write_results.py",
+    "sha256": "bee087fe724eb58bcb657614530117fbffbb7a84b8cbf6ee169ee8ea5677f294",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/FROST_convergence_insert.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/FROST_convergence_insert.tex",
+    "sha256": "13a5c0d6745f690738c1e6cfc7c692a2e49a23b02a6a4e66c6e9132d3d807f42",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/FROST_references.bib",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/FROST_references.bib",
+    "sha256": "f6b0d9542dc9513da8b98cf0c9ef13fc7f0f8b2b75d7fd4897d0d6a9e894eed4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/FROST_with_convergence.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/FROST_with_convergence.tex",
+    "sha256": "cdea53b1dede10547af0838477dc587988b57e3564222a2ac28375daeb8ebe0b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/README_convergence.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/README_convergence.txt",
+    "sha256": "fc0852234ca213651723021b5f3709134624a3c1cfd06538acf71c0cf53431fd",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/fonts/NimbusSans-Bold.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/fonts/NimbusSans-Bold.ttf",
+    "sha256": "d8b8ac4da765220e1fbd3be72156d93f8de9b916b36a7c6c73f29e0632c392f9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/fonts/NimbusSans-Regular.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/fonts/NimbusSans-Regular.ttf",
+    "sha256": "fb68168fd4d9456fd7ccd7bc4f95a2e2179ce7cb929488cb78138210a4196d2f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/fonts/URW-font-copyright.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/fonts/URW-font-copyright.txt",
+    "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/sn-jnl.cls",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/sn-jnl.cls",
+    "sha256": "36d0c3273a59d48dc6a9c7b080dfa1ec50dc10229d8751568d1f2e490ffa5ecc",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/sn-mathphys-num.bst",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/sn-mathphys-num.bst",
+    "sha256": "b3a7c7fbcc1e7f9619de634fcea2f5bb7a245818a5942bc576e40ea001633332",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/attention_core.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/attention_core.py",
+    "sha256": "1ad370d8695e223f8b14e4afb06024af93d73626fe2025283a0872457494b3c8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/data.py",
+    "sha256": "eedccf2dfa7346084d58a4b347cc28021e6f8aea5aab27c08fbaa1c7a2034dd2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/export_source_data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/export_source_data.py",
+    "sha256": "15088025761260be1789fce522b45c8cf38598b7b53c574829a9eeac3abb6118",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/format_manuscript.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/format_manuscript.py",
+    "sha256": "78afaf0668cad4954a67b42b9318941f3f06d978b057f6b287af1b09d86e9ff1",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/manuscript_original.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/manuscript_original.tex",
+    "sha256": "5b471a9fc389a9b64946121626f4a18a62690e710430cbdbc16e5458a0c99f40",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/plot_convergence.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/plot_convergence.py",
+    "sha256": "2c385dca754c63c57b40e09506b912d2dc415fc29fa5e7aa67f2f1f1585c62ea",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/prepare_fonts.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/prepare_fonts.py",
+    "sha256": "27079fdb2dedb308bee184e9bc8264b216d904552864f6946c57ba795424ea1d",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/prepare_overleaf.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/prepare_overleaf.py",
+    "sha256": "d51820bc11ce772dbe9f94f77ca41debbc98919010d1e352d6c18f88ec0c21f8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/run_convergence.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/run_convergence.py",
+    "sha256": "93f170256f413e088186102ae12de4312f4b9ae095a9706e329b28a84d5f2b2e",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/trace_kernels.cpp",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/trace_kernels.cpp",
+    "sha256": "f9fd0deffcfa9eee8af55e86d71b85f898420a45841a5693db7fa8c4e38718af",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/truncate_prefixes.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/truncate_prefixes.py",
+    "sha256": "8c21fc3cddd40351d57bec23a09bc75037379675103167cb0db1db385509edbb",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/vision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/vision.py",
+    "sha256": "ad34286fa188b3188601493fd38a621eb92f14a6ad8beec9737c2b79d64e85d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/convergence/source/write_manuscript.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/convergence/source/write_manuscript.py",
+    "sha256": "82d8df4d70561cddb7e7dfaf295adb4a1769e2451ed9bffda3926ac40992d80f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/FROST_NC_stage3_changes.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/FROST_NC_stage3_changes.txt",
+    "sha256": "02e23153d238afac24f60e7d41e5718ec389bdd00f545aa38cb3ced0a6475776",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/README_stage3.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/README_stage3.txt",
+    "sha256": "3fc38e5f6fd3dac5ac50242514fcbec87b1c641745ab1493f94dab2fd652e110",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/SOURCE_MANIFEST.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/SOURCE_MANIFEST.json",
+    "sha256": "52362ad999fea6c1028b266d0de344847e0b2c076f3fa711c56a4cdbb118b629",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/fonts/FROSTNimbusSans-Bold.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/fonts/FROSTNimbusSans-Bold.ttf",
+    "sha256": "212b3a7e7461b98db2e74a5bdcc4344bb78713c9ef6172bf8b2677ac07744a5b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/fonts/FROSTNimbusSans-Regular.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/fonts/FROSTNimbusSans-Regular.ttf",
+    "sha256": "e3a3ddafb92438ca7c0e155bac506e87343294de9c752f094e6a482bf4c783af",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/fonts/NimbusSans-Bold.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/fonts/NimbusSans-Bold.ttf",
+    "sha256": "d8b8ac4da765220e1fbd3be72156d93f8de9b916b36a7c6c73f29e0632c392f9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/fonts/NimbusSans-Regular.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/fonts/NimbusSans-Regular.ttf",
+    "sha256": "fb68168fd4d9456fd7ccd7bc4f95a2e2179ce7cb929488cb78138210a4196d2f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/fonts/URW-font-copyright.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/fonts/URW-font-copyright.txt",
+    "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/requirements-stage3.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/requirements-stage3.txt",
+    "sha256": "aa3334a7c3dfa63e42aa9c88789334fa4c3e92c8f0496974e15af21bb09bdd95",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/source/audit_vector_assets.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/source/audit_vector_assets.py",
+    "sha256": "fe13c58b8ced593c95c267f4db279a3d891b17c00e00c08e256f8bd19ba941db",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/source/formation_layout.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/source/formation_layout.py",
+    "sha256": "1c1eccc9f7416dd91cd2595b30eb0f866ca5b9f8db5e29908cea78cf122c790f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/source/plot_stage3.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/source/plot_stage3.py",
+    "sha256": "b03e85268446014dc55831a1a6e6422dbb4ff73b09c0f02b36a9b2a53cdc3c3a",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/figure_audit/source/verify_stage3.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/figure_audit/source/verify_stage3.py",
+    "sha256": "d3f13ef89a55693a168d0aca42f1647b85d3fe99847dabaa09360c96241415a4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/HI_SMURF_direct_softmax_report.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/HI_SMURF_direct_softmax_report.md",
+    "sha256": "a1ee9ca3264884a872498b5885989fc1520ef7c452b1d3a5519ca58a44fdb283",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/README.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/README.md",
+    "sha256": "81c709e6ba9224417849bb1069859bcca0ec725423a32e07ed52788d065951bd",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/bounded_extension_jobs.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/bounded_extension_jobs.json",
+    "sha256": "77bbedbacc6ca6363c5ce5aba898699bd1fa583537700cbb6c7afc10a07cbf63",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/bounded_jobs.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/bounded_jobs.json",
+    "sha256": "891f214447d2b8b44331bdca9ff8615553f1f4d8ee0e677f82e742d26eb22969",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/bounded_study.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/bounded_study.py",
+    "sha256": "2c35e99727ee90d88ce487cfc0ca532c34c1b7c3ffed74a047756c5763354197",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/build_report.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/build_report.py",
+    "sha256": "3dd21135658c7d0ee769395df325ff49e51ae6efbbc3d94577ef7351a922b384",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/categorical_jobs.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/categorical_jobs.json",
+    "sha256": "931e1f55c3ef341fa5983d50bf2f371ba8c0745eb376fcad240f6acb79e3783b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/categorical_study.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/categorical_study.py",
+    "sha256": "6c6afe39f296c38d62d933012a25a28cd78da6cc4e4aa828f3dc9c8888a3c6eb",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/check_and_simulate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/check_and_simulate.py",
+    "sha256": "9d5340e21443abeb139a8ccd3a3d28c5695ffcb0c96b533087dbcad775ddee84",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/direct_study.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/direct_study.py",
+    "sha256": "0fbee1a0d11bd1985abca3354a1592ffb4f5797511677c631dcae867d1816fc1",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/environment.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/environment.json",
+    "sha256": "a6874013ae894c0bdf6ab1071b0d9ce2d162477ae5dc24af84450f5d54625fb5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/manifest_sha256.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/manifest_sha256.json",
+    "sha256": "02fb53990d77932cce957e7b1bf89a20440bf0b85dfd9e343fd5c11e92049c19",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/pilot_jobs.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/pilot_jobs.json",
+    "sha256": "80441fa2cebcc2c8d94a382b3cdd0f2c9fb6daa1324ddb8beba46f07e3c6b3df",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_direct_hi_smurf/protocol.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/frost_direct_hi_smurf/protocol.json",
+    "sha256": "1624e74d2f75070deaa48497d40c51b4e9e476c5d4b3ed503297aeee0724db6c",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/README.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/README.txt",
+    "sha256": "743b846c8c3b386111bef53d94faa458cc0adfe89680207a298888b9e6825771",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/fonts/FROSTNimbusSans-Bold.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/fonts/FROSTNimbusSans-Bold.ttf",
+    "sha256": "212b3a7e7461b98db2e74a5bdcc4344bb78713c9ef6172bf8b2677ac07744a5b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/fonts/FROSTNimbusSans-Regular.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/fonts/FROSTNimbusSans-Regular.ttf",
+    "sha256": "e3a3ddafb92438ca7c0e155bac506e87343294de9c752f094e6a482bf4c783af",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/fonts/NimbusSans-Bold.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/fonts/NimbusSans-Bold.ttf",
+    "sha256": "d8b8ac4da765220e1fbd3be72156d93f8de9b916b36a7c6c73f29e0632c392f9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/fonts/NimbusSans-Regular.ttf",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/fonts/NimbusSans-Regular.ttf",
+    "sha256": "fb68168fd4d9456fd7ccd7bc4f95a2e2179ce7cb929488cb78138210a4196d2f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/fonts/URW-font-copyright.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/fonts/URW-font-copyright.txt",
+    "sha256": "1315a62758a603a3e6e87a79b8389563789c59c1740b9db8bc2b20e2e2145458",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/requirements.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/requirements.txt",
+    "sha256": "cc137d90c7306f48c6a30754ebc47be822cef9fe5c3b01b9e0fb5edf15bf90df",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/attention_core.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/attention_core.py",
+    "sha256": "1ad370d8695e223f8b14e4afb06024af93d73626fe2025283a0872457494b3c8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/calibrate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/calibrate.py",
+    "sha256": "8ca655f9e3695e2a9af449585711e384def5ee0f07857278482996fd02138d69",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/data.py",
+    "sha256": "eedccf2dfa7346084d58a4b347cc28021e6f8aea5aab27c08fbaa1c7a2034dd2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/evaluate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/evaluate.py",
+    "sha256": "88a79a6f03857973e7565c7d2d3f433bc902ca30006b673849cdd8be0a0de515",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/package.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/package.py",
+    "sha256": "9d8f1de6432f3ea9dc122c3f959994c072d3d2939a46610a58467daae5bd5753",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/render_figures.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/render_figures.py",
+    "sha256": "36b97d9eaacc182a89ecf39d23a2d76f07997376ea6a3abf20e225e2dc505c64",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/stochastic_model.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/stochastic_model.py",
+    "sha256": "82f992298632679aadb2dda44503898a1cc8e058172dd8919882de6e2459f386",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/validate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/validate.py",
+    "sha256": "f1e96b03ca6b6a3f8b9258cbc396604a7b20d4f65e118bf9ccd922e675474ec5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/verify_results.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/verify_results.py",
+    "sha256": "2b90318af2f9c1c967445d4a74f257f4e1675f4160502a483acef83b20d3a0d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/vision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/vision.py",
+    "sha256": "ad34286fa188b3188601493fd38a621eb92f14a6ad8beec9737c2b79d64e85d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/original/write_results.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/original/write_results.py",
+    "sha256": "bee087fe724eb58bcb657614530117fbffbb7a84b8cbf6ee169ee8ea5677f294",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/benchmark_bsds500.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/benchmark_bsds500.py",
+    "sha256": "b664195aa9464b45b2b813112168b9bad634570ca694b3bbeeafedeff06bfcb5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/download_bsds.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/download_bsds.py",
+    "sha256": "910f84af265c513a9aed366de3192edf401177860e3015786f80aa3ab21abca2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/evaluate_bsds500.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/evaluate_bsds500.py",
+    "sha256": "5b775547cc14c6ffa004277cb3a1f21c2c6322dc57735fd234386070d036e2c0",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/fast_finite.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/fast_finite.py",
+    "sha256": "e8921770b42ccb4ecf13d1393d42eb3e705af55a19a79822468fa989894e2da1",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/finalize_bsds500.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/finalize_bsds500.py",
+    "sha256": "b362713bf3fdb3d414688fddfb117ecf7f49666da54482bcac135d39f24aeec2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/finalize_quality30.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/finalize_quality30.py",
+    "sha256": "37afc32106017bf796c416490485d5b30e626916e5cad9eeb2929e2523c9152c",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/finite_kernels.cpp",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/finite_kernels.cpp",
+    "sha256": "2f32a3dc8181ff4f06341349564d32b04433c8c6881b2f92382f4990e70f3fdb",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/packed_kernels.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/packed_kernels.py",
+    "sha256": "8716bb9d4ea81ab6aca391b7fd3db43128e25c3a41374fada261935b6198b34c",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/plot_bsds500.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/plot_bsds500.py",
+    "sha256": "9a7811012185d1250b4495898b91d22ac54543903c301f8e1d98a1da75b87e05",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/plot_examples_bsds500.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/plot_examples_bsds500.py",
+    "sha256": "5d1cd4e8cd45f09929b2d20b7cedad4af6d006749f7d84ce0933e9615ce7542b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/report_quality30.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/report_quality30.py",
+    "sha256": "7769898f29f91830a5816b3c30972233db8bb273ea1d63bce05073d6760898bb",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/restoration_data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/restoration_data.py",
+    "sha256": "781cd40eb9bc34a751d3329cd40830a05a2cf080a051683636fedb3af4bdfef4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/restoration_metrics.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/restoration_metrics.py",
+    "sha256": "44fee5d5717a33927bbbbaacfd28d6da1ce8266a21cd5b26584bb41a54343ef9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/restoration_model.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/restoration_model.py",
+    "sha256": "575403bed67e77ed73b70183ade96378e71c5f94b9500df17a7038699085a7a2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/run_quality30.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/run_quality30.py",
+    "sha256": "3c8e891361958e2fe6a0b298c6b17063e598319dbcb6fa003f585f731b4b9cdf",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/summarize_bsds500.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/summarize_bsds500.py",
+    "sha256": "ed5578ddad70d38b09afdcc1f7f47c7a47c5e4c740a2d920ad2932b8808449f9",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/verify_fast_finite.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/verify_fast_finite.py",
+    "sha256": "91d07acdbf3420ecb5a86299f515f2a96b8d11fd2678b624fa46eec7e0e3bd3f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/write_manuscript.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/write_manuscript.py",
+    "sha256": "3fb307f1655d2d1691b86b1a577f647d438e29b9ef806daf0ac04236a8288184",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/archive_bsds/scripts/write_readme.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/archive_bsds/scripts/write_readme.py",
+    "sha256": "ef4e3043a5280cff28ad8b10392743137c3d7c77f3a003fe7a5af4421bd2394c",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/attention_core.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/attention_core.py",
+    "sha256": "1ad370d8695e223f8b14e4afb06024af93d73626fe2025283a0872457494b3c8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/data.py",
+    "sha256": "eedccf2dfa7346084d58a4b347cc28021e6f8aea5aab27c08fbaa1c7a2034dd2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/evaluate_range_control.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/evaluate_range_control.py",
+    "sha256": "bb03ad9e173a4ba491c6fbf7705b8746098bc5f742ac664735cb88d56669660f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/package_revision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/package_revision.py",
+    "sha256": "57e89869c559adc9efa470d644e1f0cee93268ff3369103c087fb1804f0852d4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/plot_revision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/plot_revision.py",
+    "sha256": "9499f594489346bf0d13996c4559677d03be69f1c9519948f17c9610383be303",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/repair_pdf_fonts.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/repair_pdf_fonts.py",
+    "sha256": "a9ac5c001f428e56e2cd45853f6ff846434ed59a0274f8b7328e0c263c060fe2",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/run_dimension_streams.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/run_dimension_streams.py",
+    "sha256": "0049928f96291af08d9a0672984b10edfddae9d41a53d0e614a291c49d450d8d",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/run_dimension_study.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/run_dimension_study.py",
+    "sha256": "6710e4f015f74f160aa354949a24b32502ff32d11be51dd17498ef6c3f3b3cde",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/run_sampler_study.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/run_sampler_study.py",
+    "sha256": "ef77c6ae76ffb223ae59967afdd2884719ac26160596d1a192a5aa90f62f6db5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/verify_revision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/verify_revision.py",
+    "sha256": "e38ec856f6d5dc548010a2da6791e3926aa0eb7368ae760ab072c9565f506a8a",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/source/vision.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/source/vision.py",
+    "sha256": "ad34286fa188b3188601493fd38a621eb92f14a6ad8beec9737c2b79d64e85d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/operator_extensions/\u4fee\u6539\u8bf4\u660e.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/operator_extensions/\u4fee\u6539\u8bf4\u660e.txt",
+    "sha256": "c2d7fcfea159d6387a80def27579f00f569b81805fec0b462ba25b9d5be25e97",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/README.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/README.md",
+    "sha256": "f41a94fa9311d3745af1b1b3e71ae91d8725738d73c4d7fe5619d998905124ab",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/attention_core.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/attention_core.py",
+    "sha256": "863bd62a97570ea377afc8fd59d22f8c3162d218791a279311c5219552ea5bbd",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/calibrate_softmax.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/calibrate_softmax.py",
+    "sha256": "1adaaee5e9b3bfd4ba0d61cec7589263616ef9f6f143d5e687f14e0086fe6eb4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/calibration_selection.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/calibration_selection.json",
+    "sha256": "708f22a06b44dbbaebe9324e24e9e1a5811fba832fc494ab11eba36d388793a1",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/jobs.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/jobs.json",
+    "sha256": "05fd5bf39bb4b5a41532e047a1899523ac75dde1e34f92fd8d744f8a4ae7ff8a",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/manifest_sha256.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/manifest_sha256.json",
+    "sha256": "2b25474f190f16e12be77de9c7a72abc1c65475394cafe4387aca79aea11bd74",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/protocol.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/protocol.json",
+    "sha256": "eabb079d09a99f52fd469fdd64e33b5a12b4794e38d5d21ac1349e41556e623c",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/reading_notes_zh.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/reading_notes_zh.txt",
+    "sha256": "f99d49521c76548deea3c2620e8c91273e9ce2af8a88562d25241f323672e48e",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/render_figures.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/render_figures.py",
+    "sha256": "b30bb5ee03a0d2cc819943ad2ef1c19bee129ecb68263629e05219b32099251d",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/run_experiments.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/run_experiments.py",
+    "sha256": "05267e56359ac99d55944cfa7e5b7deffec64efd50db400e7c1bc611f79d00f5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/section3_3_figure_captions.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/section3_3_figure_captions.tex",
+    "sha256": "3decdb4ae10f4d9922f8ac33fe7801e3077a4dc52820b0ceadf01c3875aabdad",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/section3_3_transformer.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/section3_3_transformer.tex",
+    "sha256": "55b38d31b0c4447e9850792e5f8148cd29a971a2b5dbf8ffbb983448309ddb63",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/section3_3_transformer_methods.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/section3_3_transformer_methods.tex",
+    "sha256": "fb968552fe497a1b34b87300a94f5d30f0ac131b8569b80a77e0db4a2e7381d8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/stochastic_model.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/stochastic_model.py",
+    "sha256": "cdfec85bda6c6e02f57b259a1b1c99ac41d8df4445449897b96382e2f5d4ae05",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/teacher.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/teacher.py",
+    "sha256": "693a39402327e29a4491e9ecc12aaa861b99b07dcdc59b26df805d5b6aeccc8e",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/validate.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/validate.py",
+    "sha256": "0ab00201630467e40e107349ee337592937aecc34781eb8945b3d9c040f7191b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/verify_artifacts.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/verify_artifacts.py",
+    "sha256": "ddb4bcdcee0a92b1b7449ff08b000962d2339e7eef9b7ed178f73f76d84d0036",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/retrieval/write_text.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/retrieval/write_text.py",
+    "sha256": "043cf4ea9e04a4f8f28e9029935bb1481b30dda60f3de27c9664b454cec20286",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/README.md",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/README.md",
+    "sha256": "ad6eec32268899d6c4e38f36e8f44aaba6aac86cc490be1521328311520de953",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/manifest_sha256.json",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/manifest_sha256.json",
+    "sha256": "0584e227b8c3da8a61eb1f4f03e0cf59cfebcc886b866419c4c04de9ab2af8f0",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/prepare_source_data.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/prepare_source_data.py",
+    "sha256": "3fc37174e9e53a4b88c15e28b2e3a9c2ce835eba35f1c4960000feee7c5451e4",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/reading_notes_zh.txt",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/reading_notes_zh.txt",
+    "sha256": "8269467ce00bf2923d662d58a496b2b807b7d5fd160e7acfac4b3dde98afd3ef",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/render_figures.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/render_figures.py",
+    "sha256": "a6c94868e4ef39b08e3909fce42eb856889e5f9f1db6e8f2739c2538f0c30d2b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/section3_1_figure_caption.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/section3_1_figure_caption.tex",
+    "sha256": "39f15b5a06114fbb78e941eac87af0603878114a1bef44070a84df11b9532402",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/section3_1_softmax.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/section3_1_softmax.tex",
+    "sha256": "db8480852537e717b990c5846f2f1f33795dc79c1be0fc283b950c9a09c5fc69",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/section3_1_softmax_methods.tex",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/section3_1_softmax_methods.tex",
+    "sha256": "07bd02d015253d33da465be8124bdfc0329c96b77b9c9ef00fc33a28f49840aa",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/section3_1_softmax/write_text.py",
+    "archive": "FROST_Code.zip",
+    "member": "FROST/experiments/section3_1_softmax/write_text.py",
+    "sha256": "d64e0cd50694f157f660f8958c05e50f7daae67ca7d84aae3a10d21308b718d7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/FROST_softmax_report.md",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/FROST_softmax_report.md",
+    "sha256": "70ebe5bec0795cb7f6f302dfed8777243a6071700e6f97672285781dbd8e5e33",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/README.md",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/README.md",
+    "sha256": "a4e53a1f0e8e567b0780523c42a98204ac6ba36de7994409b61798d54d25b0d5",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/build_report.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/build_report.py",
+    "sha256": "d9538749cad6833c7d67c98de5356a2dfc870cc69dff462de94a32a3acc1dcc7",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/environment.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/environment.json",
+    "sha256": "4beeea7b068edf2e4dd42c38c2775d4be8cd3de4c91a0fbc1a72eb98ca97fd44",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/evaluate.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/evaluate.py",
+    "sha256": "81005bdc0d96be8b4ad5ffd93a622d7011084798525d1ecd8585069efc54d64f",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/figure_captions.txt",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/figure_captions.txt",
+    "sha256": "9ecaa8a27347c5417430f1964326dcc59448b4930ebe32be8d24feae505c5136",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/figures_and_summary.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/figures_and_summary.py",
+    "sha256": "a83aaf1cef96baa00923c1e5712aea6da39f5a6dbefbf2ba1ec10ee4d6db5898",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/protocol.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/protocol.json",
+    "sha256": "5717d1d2b86b802617e928d216d9bf8f9cf880765c1f1c2dc0131c47d1bc8462",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/protocol_additions.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/protocol_additions.json",
+    "sha256": "44e79b9b7d3deeea5c66cc895e27ae380ea8f3de0c3cef3f6fc590fbf6e49d10",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/provenance/experiment_configuration.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/provenance/experiment_configuration.json",
+    "sha256": "b744adbba9ae527249852f1f2919d885e387b0cc597621859561c5b496d13e5e",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/provenance/previous_full_script.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/provenance/previous_full_script.py",
+    "sha256": "6750eb373e863cdfb975d00b2ed966ca1903e0ab298c3baf1f2ccc8605ee7652",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/provenance/previous_model_definitions.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/provenance/previous_model_definitions.py",
+    "sha256": "05dfd91a560a881799efd82c43e3a8deb8a0bfb06f954bc307cd723345d863cd",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/provenance/previous_script_sha256.txt",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/provenance/previous_script_sha256.txt",
+    "sha256": "7ebd24c9199f77b4f882b46ebac8038e3f427911d8acfa72fb0a76f29f527034",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/run_training.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/run_training.py",
+    "sha256": "8c3919880c243f5b2c2fee68bbff2b38f4776a3f5c29787cc7396e12b27858be",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/signed_diagnostic.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/signed_diagnostic.py",
+    "sha256": "811c3a2b5d49ac162fb108b30c8981e3f8d996f5d357a2617d9c32247e3eb45b",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/stream_jobs.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/stream_jobs.json",
+    "sha256": "aa6e4956d5f6aa2253e3c1898fe4a21d34b0e952ccc0905ab4bcdcd8f8a10ff8",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/streams.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/streams.py",
+    "sha256": "b499cd9f99e7772678e6203fb6a1e6a0f72b7007cfffeb17e319865783cc3550",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/study.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/study.py",
+    "sha256": "460f5e107fba4ab5a8e0c6039871cd1f3faca53eba20fd9687482d69ecb8d0a3",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/training_jobs.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/training_jobs.json",
+    "sha256": "6dfd7643bc5d9ca2f6cf745a4b58bc06994a24a2b6dbe7eaac0908bc0007d40c",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/validate_signed_occupancy.py",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/validate_signed_occupancy.py",
+    "sha256": "dba54caad53efcb15245ac205b18d155871d0d48c63176398bb8fb62d0b3bf63",
+    "action": "byte-identical copy"
+  },
+  {
+    "path": "experiments/frost_softmax_study/manifest_sha256.json",
+    "archive": "FROST_softmax_systematic_study.zip",
+    "member": "frost_softmax_study/manifest_sha256.json",
+    "sha256": "f60562df97726ea1527a4cd85f9542691d0f76793bbdd2b4f83b5d306856f6a9",
+    "action": "byte-identical copy"
+  }
+]

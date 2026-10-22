@@ -1,0 +1,22 @@
+{
+  "scope": "synthetic software-interface smoke checks; not full experimental reproduction",
+  "data_helpers": {
+    "status": "passed",
+    "partition_unique_indices": 100,
+    "tokens": [
+      2,
+      16,
+      192
+    ]
+  },
+  "native_kernels": {
+    "status": "passed",
+    "fsm_values_checked": 336,
+    "categorical_events_checked": 21,
+    "every_prefix_emits_one_event": true
+  },
+  "torch_models": {
+    "status": "skipped",
+    "reason": "PyTorch is not installed in this environment"
+  }
+}

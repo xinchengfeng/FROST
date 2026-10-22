@@ -1,0 +1,15 @@
+{
+  "prepared_on": "2026-10-22",
+  "scope": "Research code recovered from the author archives available in this conversation",
+  "original_software_sources": "software_source_provenance.json",
+  "hardware_sources": "../hardware/SOURCE_PROVENANCE.json",
+  "figure_sources": "../figures/SOURCE_PROVENANCE.json",
+  "reconstruction_sources": [
+    "../experiments/reconstruction_original/SOURCE_PROVENANCE.json",
+    "../experiments/reconstruction_lt/SOURCE_PROVENANCE.json",
+    "../experiments/reconstruction_scalar/SOURCE_PROVENANCE.json"
+  ],
+  "organization": "Original experiment-local modules are kept separate. Portable tooling/docs were added; legacy scientific implementations and RTL remain traceable to their per-file archive hashes.",
+  "excluded": "Large checkpoint/results/waveform archives, benchmark photographs, caches, compiled executables/extensions, and font binaries.",
+  "historical_material": "Legacy plotting, packaging and manuscript-writing scripts may reference earlier figure numbers or absolute paths. Current supported commands are identified in docs/REPRODUCE.md and docs/FIGURES.md."
+}

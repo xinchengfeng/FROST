@@ -1,0 +1,19 @@
+{
+  "scope": "non-reconstruction software experiment source directories",
+  "directories": [
+    "attention",
+    "classification",
+    "convergence",
+    "figure_audit",
+    "frost_direct_hi_smurf",
+    "operator_extensions",
+    "retrieval",
+    "section3_1_softmax",
+    "frost_softmax_study"
+  ],
+  "python_files": 101,
+  "syntax_errors": [],
+  "original_files_copied": 183,
+  "torch_available": false,
+  "native_cpp_smoke": "passed; 336 FSM values and 21 categorical emissions matched independent NumPy reference"
+}
