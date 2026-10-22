@@ -1,0 +1,9 @@
+4'd0:bern_coefficient=17'd65536;
+4'd1:bern_coefficient=17'd511;
+4'd2:bern_coefficient=17'd6938;
+4'd3:bern_coefficient=17'd1;
+4'd4:bern_coefficient=17'd5;
+4'd5:bern_coefficient=17'd692;
+4'd6:bern_coefficient=17'd1;
+4'd7:bern_coefficient=17'd15;
+4'd8:bern_coefficient=17'd22;
