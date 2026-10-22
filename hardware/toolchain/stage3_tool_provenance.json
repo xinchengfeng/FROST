@@ -1,0 +1,11 @@
+{
+  "OpenSTA": {
+    "commit": "4f8d3ae6bd3da537f8c4e819c2b327545294fd4d",
+    "archive_sha256": "7a42b891710efaa186724d938f325f9cab2b03df2094aac1ad401d16a6a3646a",
+    "binary_sha256": "f252bbf911266f0bc82448f1e6039c35a2c511930a921d7aa53edd2e93341c8a"
+  },
+  "cudd": {
+    "commit": "f54f533303640afd5dbe47a05ebeabb3066f2a25",
+    "archive_sha256": "c82b0a555a81ab1d42dff9a1e452bec7a9021989173ba4aa73bbab0250b3de7b"
+  }
+}

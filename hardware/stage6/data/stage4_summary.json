@@ -1,0 +1,148 @@
+{
+  "status": "RTL verification, synthesis and FPGA routing complete; SC gate-activity power pending",
+  "boundary": "16-key x 16-value-channel score-to-output kernel; one tile contains 16 queries, with L=64. Not a complete Transformer.",
+  "controls": "Literature-derived stochastic exponentiation followed by a shared integer count-weighted AV; not reproductions of complete published accelerators.",
+  "statistics": "Three RNG seeds for output checks; three placement seeds for timing. No same-accuracy claim.",
+  "reference_note": "The FPGA FROST reference is perm; the standard-cell reference is hot_reuse. Their outputs and cycles match but the RTL implementations differ.",
+  "FROST_reference": {
+    "fpga": {
+      "design": "perm",
+      "TRELLIS_COMB": 6043,
+      "TRELLIS_FF": 1972,
+      "MULT18X18D": 0,
+      "DP16KD": 0,
+      "TRELLIS_RAMW": 64,
+      "internal_timing_estimate_MHz": {
+        "mean": 61.69804890950521,
+        "sample_sd": 1.3834071205189293,
+        "n": 3,
+        "values": [
+          63.29514694213867,
+          60.92731475830078,
+          60.87168502807617
+        ]
+      },
+      "common_clock_MHz": 8
+    },
+    "standard_cell_area_um2": 54287.142,
+    "tile_cycles": 2592
+  },
+  "SC_results": [
+    {
+      "design": "sexp16",
+      "stream_length": 64,
+      "tile_cycles": 4128,
+      "mapped_cell_area_um2": 58866.598,
+      "fpga": {
+        "TRELLIS_COMB": 5833,
+        "TRELLIS_FF": 1729,
+        "MULT18X18D": 8,
+        "DP16KD": 0,
+        "TRELLIS_RAMW": 64
+      },
+      "routed_internal_timing_MHz": [
+        53.21696472167969,
+        53.433074951171875,
+        53.54752731323242
+      ],
+      "common_clock_MHz": 8,
+      "checked_words": 156672,
+      "gate_verification": "pending",
+      "power_W": null,
+      "energy_per_tile_uJ": null,
+      "tile_service_us_at_8MHz": 516.0,
+      "FROST_cell_area_reduction_percent": 7.779379402900089,
+      "FROST_cycle_reduction_percent": 37.2093023255814,
+      "FROST_cycle_speedup": 1.5925925925925926
+    },
+    {
+      "design": "sexp256",
+      "stream_length": 64,
+      "tile_cycles": 7968,
+      "mapped_cell_area_um2": 59306.296,
+      "fpga": {
+        "TRELLIS_COMB": 5818,
+        "TRELLIS_FF": 1729,
+        "MULT18X18D": 8,
+        "DP16KD": 0,
+        "TRELLIS_RAMW": 64
+      },
+      "routed_internal_timing_MHz": [
+        53.493099212646484,
+        53.45021057128906,
+        55.01155471801758
+      ],
+      "common_clock_MHz": 8,
+      "checked_words": 156672,
+      "gate_verification": "pending",
+      "power_W": null,
+      "energy_per_tile_uJ": null,
+      "tile_service_us_at_8MHz": 996.0,
+      "FROST_cell_area_reduction_percent": 8.463104827858414,
+      "FROST_cycle_reduction_percent": 67.46987951807229,
+      "FROST_cycle_speedup": 3.074074074074074
+    },
+    {
+      "design": "bern8",
+      "stream_length": 64,
+      "tile_cycles": 3872,
+      "mapped_cell_area_um2": 79736.16,
+      "fpga": {
+        "TRELLIS_COMB": 17285,
+        "TRELLIS_FF": 2177,
+        "MULT18X18D": 8,
+        "DP16KD": 0,
+        "TRELLIS_RAMW": 64
+      },
+      "routed_internal_timing_MHz": [
+        33.46607971191406,
+        32.220645904541016,
+        33.95816421508789
+      ],
+      "common_clock_MHz": 8,
+      "checked_words": 156672,
+      "gate_verification": "pending",
+      "power_W": null,
+      "energy_per_tile_uJ": null,
+      "tile_service_us_at_8MHz": 484.0,
+      "FROST_cell_area_reduction_percent": 31.91653322658127,
+      "FROST_cycle_reduction_percent": 33.057851239669425,
+      "FROST_cycle_speedup": 1.4938271604938271
+    },
+    {
+      "design": "horner5",
+      "stream_length": 64,
+      "tile_cycles": 7968,
+      "mapped_cell_area_um2": 94827.404,
+      "fpga": {
+        "TRELLIS_COMB": 27945,
+        "TRELLIS_FF": 2308,
+        "MULT18X18D": 8,
+        "DP16KD": 0,
+        "TRELLIS_RAMW": 64
+      },
+      "routed_internal_timing_MHz": [
+        39.22799301147461,
+        41.14548873901367,
+        41.2456169128418
+      ],
+      "common_clock_MHz": 8,
+      "checked_words": 156672,
+      "gate_verification": "pending",
+      "power_W": null,
+      "energy_per_tile_uJ": null,
+      "tile_service_us_at_8MHz": 996.0,
+      "FROST_cell_area_reduction_percent": 42.75163116349784,
+      "FROST_cycle_reduction_percent": 67.46987951807229,
+      "FROST_cycle_speedup": 3.074074074074074
+    }
+  ],
+  "checked_words": 626688,
+  "caveats": [
+    "Area is mapped standard-cell area, not routed ASIC area.",
+    "Timing estimates are internal paths in 8-MHz-constrained FPGA implementations; I/O is unconstrained.",
+    "No SC power or energy has yet been computed. Do not combine these areas with old FP32 or FROST power.",
+    "FROST has more FPGA COMB and FF resources than the SExp controls, though fewer DSP blocks and fewer cycles.",
+    "Diagnostic output fidelity differs; equal recorded L does not establish accuracy parity."
+  ]
+}

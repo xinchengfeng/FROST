@@ -1,0 +1,127 @@
+{
+  "scope": "Descriptive score-to-output error on the frozen 3200-row kernel corpus, relative to unbounded numerical softmax of the quantized input scores. No hardware accuracy matching or whole-network accuracy assertion.",
+  "rows": 3200,
+  "normalization": "Inputs and outputs use Q10 units.",
+  "methods": [
+    {
+      "design": "sexp16",
+      "per_seed": [
+        {
+          "seed": 4004,
+          "RMSE": 0.07349882756763973,
+          "MAE": 0.05362972832702607,
+          "max_abs_error": 0.6662970558715173
+        },
+        {
+          "seed": 5005,
+          "RMSE": 0.07234979242092915,
+          "MAE": 0.05307105694288252,
+          "max_abs_error": 0.6796310475348366
+        },
+        {
+          "seed": 6006,
+          "RMSE": 0.07318373899648563,
+          "MAE": 0.053485134482251784,
+          "max_abs_error": 0.6651196315392551
+        }
+      ],
+      "mean_RMSE": 0.0730107863283515
+    },
+    {
+      "design": "sexp256",
+      "per_seed": [
+        {
+          "seed": 4004,
+          "RMSE": 0.07607721505892376,
+          "MAE": 0.05567470544458107,
+          "max_abs_error": 0.5555574284207881
+        },
+        {
+          "seed": 5005,
+          "RMSE": 0.07561699662567191,
+          "MAE": 0.05521956717083604,
+          "max_abs_error": 0.5568107896307579
+        },
+        {
+          "seed": 6006,
+          "RMSE": 0.07659638557268865,
+          "MAE": 0.05576877439150032,
+          "max_abs_error": 0.7035715896270072
+        }
+      ],
+      "mean_RMSE": 0.07609686575242812
+    },
+    {
+      "design": "bern8",
+      "per_seed": [
+        {
+          "seed": 4004,
+          "RMSE": 0.024117557537687906,
+          "MAE": 0.017357624993940998,
+          "max_abs_error": 0.1976215335686391
+        },
+        {
+          "seed": 5005,
+          "RMSE": 0.023928688148576936,
+          "MAE": 0.01721966651631561,
+          "max_abs_error": 0.1814800551586191
+        },
+        {
+          "seed": 6006,
+          "RMSE": 0.023728772740357878,
+          "MAE": 0.01704218446617522,
+          "max_abs_error": 0.22155132484353046
+        }
+      ],
+      "mean_RMSE": 0.023925006142207574
+    },
+    {
+      "design": "horner5",
+      "per_seed": [
+        {
+          "seed": 4004,
+          "RMSE": 0.024077975370777202,
+          "MAE": 0.017242955271808937,
+          "max_abs_error": 0.22955399628178208
+        },
+        {
+          "seed": 5005,
+          "RMSE": 0.024055791935169425,
+          "MAE": 0.01727805216541012,
+          "max_abs_error": 0.25448900796070595
+        },
+        {
+          "seed": 6006,
+          "RMSE": 0.02447205420484083,
+          "MAE": 0.017452138838172235,
+          "max_abs_error": 0.28014507484353046
+        }
+      ],
+      "mean_RMSE": 0.02420194050359582
+    },
+    {
+      "design": "FROST_L64",
+      "per_seed": [
+        {
+          "seed": 4004,
+          "RMSE": 0.09568097142074569,
+          "MAE": 0.06871607713110466,
+          "max_abs_error": 0.9144639258679188
+        },
+        {
+          "seed": 5005,
+          "RMSE": 0.09693207086487739,
+          "MAE": 0.0694936034014217,
+          "max_abs_error": 0.887774997677135
+        },
+        {
+          "seed": 6006,
+          "RMSE": 0.0976937993688804,
+          "MAE": 0.06973437239728426,
+          "max_abs_error": 1.3640759529586413
+        }
+      ],
+      "mean_RMSE": 0.09676894721816783
+    }
+  ]
+}

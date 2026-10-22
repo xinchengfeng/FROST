@@ -1,0 +1,29 @@
+{
+  "figure_width_mm": 180,
+  "font": "Arial, embedded TrueType; same family as Fig. 10",
+  "data_sources": [
+    "stage4_summary.json",
+    "stage5_summary.json"
+  ],
+  "first_figure_height_mm": 77,
+  "second_figure_height_mm": 82,
+  "format": "PDF, vector paths and embedded editable text; no image rasters",
+  "scope": "Fig11 combines separate standard-cell and FPGA resource flows, clearly labelled. Fig12 uses 8-MHz standard-cell data only.",
+  "error_bars": "sample SD across three stream seeds on one fixed tile; not population uncertainty",
+  "minimum_stroke_pt": 1,
+  "all_bar_axes_begin_at_zero": true,
+  "methods": [
+    "hot_reuse",
+    "sexp16",
+    "sexp256",
+    "bern8",
+    "horner5"
+  ],
+  "colors": {
+    "hot_reuse": "#087E83",
+    "sexp16": "#B77757",
+    "sexp256": "#8F5A42",
+    "bern8": "#717C95",
+    "horner5": "#A68D50"
+  }
+}

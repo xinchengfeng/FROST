@@ -1,0 +1,371 @@
+{
+  "status": "Stage 5 complete: mapped SC gate outputs, activity and pre-layout power verified; final figures and manuscript pending",
+  "boundary": "16-key, 16-value-channel score-to-weighted-value kernel. One tile is 16 queries. L=64. Not a complete Transformer.",
+  "clock_selection": "15 MHz failed all SC mapped timing diagnostics. 8 MHz was then selected for every design before final power comparisons; all five are simulated anew at 8 MHz.",
+  "power_conditions": "Nangate45 typical library: 1.1 V, 25 degrees C, 8 MHz; identical OpenSTA binary, library, inputs and seed files.",
+  "timing_scope": "Mapped internal register paths meet the common clock. External I/O delays and pad loads are unspecified; this is not routed ASIC timing closure.",
+  "activity_scope": "First frozen evaluation tile; 256 value loads, score loads, burn-in, conversion and output transfer included; reset and 32-cycle seed setup excluded.",
+  "excluded_costs": "Pre-layout zero-delay activity excludes wire and clock-tree parasitics, physical glitches, pads, board, host and external-memory cost.",
+  "statistics": "Mean and sample SD over three stream seeds on the same one input tile; not between-input confidence intervals.",
+  "controls": "Implemented literature-derived SExp, Bernstein and Horner stochastic exponentiation with shared integer count-weighted value aggregation; not whole published accelerators or stochastic AV.",
+  "FROST_scope": "Fixed-coefficient rank-2 kernel with burn-in=16. ASIC uses hot_reuse, FPGA uses perm; they are distinct target-specific RTL variants with equivalent outputs and cycles. These costs do not describe the rank-16 FROST-LT reconstruction model.",
+  "quality_scope": "Equal stream length does not imply matched output fidelity. Diagnostic RMSE is retained in fidelity_diagnostics.json. No accuracy-parity or end-to-end advantage is established.",
+  "FPGA_caveat": "FROST uses no DSP blocks, but the SExp controls use fewer FPGA COMB and FF resources. ASIC power cannot be relabelled as FPGA power.",
+  "new_SC_gate_words_checked": 3072,
+  "new_FROST_gate_words_checked": 768,
+  "total_new_gate_words_checked": 3840,
+  "standard_cell_power": [
+    {
+      "design": "hot_reuse",
+      "mapped_cell_area_um2": 54287.142,
+      "clock_MHz": 8,
+      "tile_cycles": 2592,
+      "tile_latency_us": 324.0,
+      "checked_gate_words": 768,
+      "seeds": [
+        4004,
+        5005,
+        6006
+      ],
+      "origin": "new stage-5 gate runs at 8 MHz; unchanged RTL/netlist",
+      "total_power_mW": {
+        "mean": 1.4486222838333334,
+        "sample_sd": 0.001441135396433253,
+        "n": 3,
+        "values": [
+          1.4490139438,
+          1.4498271048,
+          1.4470258029
+        ]
+      },
+      "internal_power_mW": {
+        "mean": 0.34860766027,
+        "sample_sd": 0.0002785183535129327,
+        "n": 3,
+        "values": [
+          0.34889546805,
+          0.34833946847,
+          0.34858804429
+        ]
+      },
+      "switching_power_mW": {
+        "mean": 0.036684654333,
+        "sample_sd": 5.900821430470849e-05,
+        "n": 3,
+        "values": [
+          0.036717792682000004,
+          0.036616525904,
+          0.036719644413
+        ]
+      },
+      "leakage_power_mW": {
+        "mean": 1.0633299437666666,
+        "sample_sd": 0.0015776849376539562,
+        "n": 3,
+        "values": [
+          1.0634006467,
+          1.0648710886,
+          1.061718096
+        ]
+      },
+      "energy_per_tile_uJ": {
+        "mean": 0.46935361996200003,
+        "sample_sd": 0.00046692786844438705,
+        "n": 3,
+        "values": [
+          0.46948051779120004,
+          0.4697439819552,
+          0.4688363601396
+        ]
+      }
+    },
+    {
+      "design": "sexp16",
+      "mapped_cell_area_um2": 58866.598,
+      "clock_MHz": 8,
+      "tile_cycles": 4128,
+      "tile_latency_us": 516.0,
+      "checked_gate_words": 768,
+      "seeds": [
+        4004,
+        5005,
+        6006
+      ],
+      "origin": "new stage-5 gate runs at 8 MHz; unchanged RTL/netlist",
+      "total_power_mW": {
+        "mean": 1.6783964432333334,
+        "sample_sd": 0.0011394485849783287,
+        "n": 3,
+        "values": [
+          1.6779501457,
+          1.6796914860999999,
+          1.6775476979000001
+        ]
+      },
+      "internal_power_mW": {
+        "mean": 0.46545282627333334,
+        "sample_sd": 0.00033865554126011875,
+        "n": 3,
+        "values": [
+          0.46549268882,
+          0.46576978639,
+          0.46509600361000003
+        ]
+      },
+      "switching_power_mW": {
+        "mean": 0.028932589581666664,
+        "sample_sd": 0.00026199649717630654,
+        "n": 3,
+        "values": [
+          0.028895652576,
+          0.029211094442999998,
+          0.028691021726
+        ]
+      },
+      "leakage_power_mW": {
+        "mean": 1.1840110334333334,
+        "sample_sd": 0.000613889383163015,
+        "n": 3,
+        "values": [
+          1.1835618642999999,
+          1.1847105343,
+          1.1837607017
+        ]
+      },
+      "energy_per_tile_uJ": {
+        "mean": 0.8660525647084,
+        "sample_sd": 0.000587955469848889,
+        "n": 3,
+        "values": [
+          0.8658222751811999,
+          0.8667208068276,
+          0.8656146121164
+        ]
+      }
+    },
+    {
+      "design": "sexp256",
+      "mapped_cell_area_um2": 59306.296,
+      "clock_MHz": 8,
+      "tile_cycles": 7968,
+      "tile_latency_us": 996.0,
+      "checked_gate_words": 768,
+      "seeds": [
+        4004,
+        5005,
+        6006
+      ],
+      "origin": "new stage-5 gate runs at 8 MHz; unchanged RTL/netlist",
+      "total_power_mW": {
+        "mean": 1.6531163904,
+        "sample_sd": 0.0005705711511781194,
+        "n": 3,
+        "values": [
+          1.6528879059,
+          1.6537657939,
+          1.6526954714
+        ]
+      },
+      "internal_power_mW": {
+        "mean": 0.4296699868666667,
+        "sample_sd": 4.2201482920729845e-05,
+        "n": 3,
+        "values": [
+          0.42967556510000005,
+          0.42970912182000004,
+          0.42962527368
+        ]
+      },
+      "switching_power_mW": {
+        "mean": 0.026857502234666666,
+        "sample_sd": 6.565016482318597e-05,
+        "n": 3,
+        "values": [
+          0.026930862077,
+          0.026837366022,
+          0.026804278605000002
+        ]
+      },
+      "leakage_power_mW": {
+        "mean": 1.1965888940333334,
+        "sample_sd": 0.0005459549771936856,
+        "n": 3,
+        "values": [
+          1.1962815188,
+          1.1972192442,
+          1.1962659191
+        ]
+      },
+      "energy_per_tile_uJ": {
+        "mean": 1.6465039248384001,
+        "sample_sd": 0.0005682888665733657,
+        "n": 3,
+        "values": [
+          1.6462763542764,
+          1.6471507307244,
+          1.6460846895144001
+        ]
+      }
+    },
+    {
+      "design": "bern8",
+      "mapped_cell_area_um2": 79736.16,
+      "clock_MHz": 8,
+      "tile_cycles": 3872,
+      "tile_latency_us": 484.0,
+      "checked_gate_words": 768,
+      "seeds": [
+        4004,
+        5005,
+        6006
+      ],
+      "origin": "new stage-5 gate runs at 8 MHz; unchanged RTL/netlist",
+      "total_power_mW": {
+        "mean": 2.2783584427333334,
+        "sample_sd": 0.0016113196585755257,
+        "n": 3,
+        "values": [
+          2.2772853263,
+          2.280211309,
+          2.2775786929
+        ]
+      },
+      "internal_power_mW": {
+        "mean": 0.54489208075,
+        "sample_sd": 8.118491830612232e-05,
+        "n": 3,
+        "values": [
+          0.54480019026,
+          0.54492196068,
+          0.5449540913099999
+        ]
+      },
+      "switching_power_mW": {
+        "mean": 0.063484318768,
+        "sample_sd": 0.00013662960942536804,
+        "n": 3,
+        "values": [
+          0.06333038618299999,
+          0.063591221988,
+          0.063531348133
+        ]
+      },
+      "leakage_power_mW": {
+        "mean": 1.6699819825666666,
+        "sample_sd": 0.0014864838917468567,
+        "n": 3,
+        "values": [
+          1.6691546189,
+          1.6716980607999998,
+          1.669093268
+        ]
+      },
+      "energy_per_tile_uJ": {
+        "mean": 1.1027254862829334,
+        "sample_sd": 0.0007798787147505504,
+        "n": 3,
+        "values": [
+          1.1022060979292,
+          1.103622273556,
+          1.1023480873636
+        ]
+      }
+    },
+    {
+      "design": "horner5",
+      "mapped_cell_area_um2": 94827.404,
+      "clock_MHz": 8,
+      "tile_cycles": 7968,
+      "tile_latency_us": 996.0,
+      "checked_gate_words": 768,
+      "seeds": [
+        4004,
+        5005,
+        6006
+      ],
+      "origin": "new stage-5 gate runs at 8 MHz; unchanged RTL/netlist",
+      "total_power_mW": {
+        "mean": 2.8957505710333336,
+        "sample_sd": 0.00202922393127831,
+        "n": 3,
+        "values": [
+          2.8949296102,
+          2.898061648,
+          2.8942604549
+        ]
+      },
+      "internal_power_mW": {
+        "mean": 0.7028711649266667,
+        "sample_sd": 9.036726668252091e-05,
+        "n": 3,
+        "values": [
+          0.7027668179900001,
+          0.70292351302,
+          0.70292316377
+        ]
+      },
+      "switching_power_mW": {
+        "mean": 0.18247617602666666,
+        "sample_sd": 3.717094351554924e-05,
+        "n": 3,
+        "values": [
+          0.18243449449000002,
+          0.18250588619,
+          0.1824881474
+        ]
+      },
+      "leakage_power_mW": {
+        "mean": 2.0104032785999997,
+        "sample_sd": 0.0019797996032740552,
+        "n": 3,
+        "values": [
+          2.0097282249,
+          2.0126323216,
+          2.0088492892999996
+        ]
+      },
+      "energy_per_tile_uJ": {
+        "mean": 2.8841675687492003,
+        "sample_sd": 0.0020211070355531046,
+        "n": 3,
+        "values": [
+          2.8833498917592,
+          2.886469401408,
+          2.8826834130804
+        ]
+      }
+    }
+  ],
+  "optimized_FROST_vs_SC": {
+    "sexp16": {
+      "cell_area_reduction_percent": 7.779379402900089,
+      "cycle_reduction_percent": 37.2093023255814,
+      "power_reduction_percent": 13.690100472171729,
+      "energy_reduction_percent": 45.805411924386895,
+      "energy_ratio_SC_over_FROST": 1.8452026955252154
+    },
+    "sexp256": {
+      "cell_area_reduction_percent": 8.463104827858414,
+      "cycle_reduction_percent": 67.46987951807229,
+      "power_reduction_percent": 12.370218319424298,
+      "energy_reduction_percent": 71.49392644125851,
+      "energy_ratio_SC_over_FROST": 3.5080243441431325
+    },
+    "bern8": {
+      "cell_area_reduction_percent": 31.91653322658127,
+      "cycle_reduction_percent": 33.057851239669425,
+      "power_reduction_percent": 36.41815718445823,
+      "energy_reduction_percent": 57.436948197860474,
+      "energy_ratio_SC_over_FROST": 2.349455590376
+    },
+    "horner5": {
+      "cell_area_reduction_percent": 42.75163116349784,
+      "cycle_reduction_percent": 67.46987951807229,
+      "power_reduction_percent": 49.97420363742171,
+      "energy_reduction_percent": 83.72654817120947,
+      "energy_ratio_SC_over_FROST": 6.14497778664775
+    }
+  },
+  "FPGA_results_source": "stage4_summary.json",
+  "data_provenance": "Each raw waveform, mapped netlist, power report and activity-window manifest is retained with SHA256."
+}

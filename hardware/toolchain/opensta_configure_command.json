@@ -1,0 +1,17 @@
+[
+  "cmake",
+  "-S",
+  "/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/OpenSTA",
+  "-B",
+  "/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/opensta_build",
+  "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+  "-DCMAKE_CXX_FLAGS_RELWITHDEBINFO=-O2 -g0 -DNDEBUG",
+  "-DCUDD_DIR=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/cudd",
+  "-DCMAKE_PREFIX_PATH=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/native/usr",
+  "-DTCL_LIBRARY=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/native/usr/lib/x86_64-linux-gnu/libtcl8.6.so",
+  "-DTCL_INCLUDE_PATH=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/native/usr/include/tcl8.6",
+  "-DEigen3_DIR=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/native/usr/share/eigen3/cmake",
+  "-DUSE_TCL_READLINE=OFF",
+  "-DTCL_HEADER=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/native/usr/include/tcl8.6/tcl.h",
+  "-DFLEX_INCLUDE_DIR=/workspace/scratch/8cdc812febb3/tmp/FROST_hw_next_stage/toolchain/native/usr/include"
+]
