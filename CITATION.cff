@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the FROST manuscript and the exact software release used."
+type: software
+title: "FROST research code"
+version: "1.0.0"
+authors:
+  - family-names: "Feng"
+    given-names: "Xincheng"
+    affiliation: "The University of Hong Kong"
+keywords:
+  - "stochastic computing"
+  - "Transformer"
+  - "tensor train"
+  - "finite-state machine"
+  - "attention"
+# Add the real repository-code URL, software archive DOI, license and
+# date-released after those values are confirmed. Do not use the data DOI
+# as the software DOI unless the archive actually contains this code release.

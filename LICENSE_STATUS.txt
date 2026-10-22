@@ -1,0 +1,16 @@
+FROST author-controlled code: no project-wide license has been selected
+or newly granted by this repository-preparation step.
+
+The maintainers/rightsholders should add a LICENSE file containing the
+actual chosen software license before describing the project as open-source.
+MIT is one possible choice for author-owned code if the rightsholders approve.
+The data archive's CC BY license does not automatically license this software.
+
+Third-party components retain their original licenses and notices, including
+the bundled HardFloat and Nangate45 material where present. See
+hardware/THIRD_PARTY_NOTICES.md and component-level license files.
+Do not replace third-party notices with a FROST-wide copyright statement.
+
+The code can be uploaded to a repository before the license is selected;
+without a project license, users do not receive a general open-source
+reuse grant for the author-controlled code.

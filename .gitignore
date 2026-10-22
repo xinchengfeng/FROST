@@ -1,0 +1,52 @@
+# Local environments and machine-specific configuration
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.key
+*.pem
+
+# Generated Python/native build products
+__pycache__/
+*.py[cod]
+*.so
+*.o
+*.a
+*.dll
+*.exe
+obj_dir/
+build/
+.pytest_cache/
+
+# Separately archived data and newly generated outputs
+local_data/
+datasets/
+artifacts/
+outputs/
+local_replay_results/
+verification_outputs/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.vcd
+*.vcd.gz
+*.saif
+*.tar.gz
+*.zip
+*.log
+*.aux
+*.out
+*.fls
+*.fdb_latexmk
+
+# Small bundled fixtures are intentional repository inputs
+!examples/**/*.npz
+!hardware/**/fixtures/**/*.npz
+!hardware/**/inputs/*.npz
+!figures/data/**/*.npz
+

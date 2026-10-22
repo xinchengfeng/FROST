@@ -1,0 +1,17 @@
+# Baseline software dependencies. Per-module archived environment records
+# describe the original runs; this is not a bit-exact universal lockfile.
+numpy>=2.0,<3
+scipy>=1.10
+pandas>=2.0
+matplotlib>=3.8
+Pillow>=10
+scikit-learn>=1.3
+scikit-image>=0.23
+fonttools>=4.40
+pypdf>=4
+PyMuPDF>=1.24
+reportlab>=4
+PyYAML>=6
+# Install PyTorch separately using the official CPU instructions:
+# https://pytorch.org/get-started/locally/
+# A compatible torch>=2.1 is required for model execution and fitting.
