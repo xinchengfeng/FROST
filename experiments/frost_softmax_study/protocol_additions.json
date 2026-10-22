@@ -1,0 +1,6 @@
+{
+  "exploratory_diagnostic": "10 signed TT probability-regression runs (r16/r32, five seeds), MSE validation selection; added to check whether low mean error implies valid state emission",
+  "offline_quantization": "4/8/12-bit probability grid; largest-remainder row normalization; evaluated without retraining",
+  "negative_state_tests": "65536 uniform state codewords + 65536 stationary-occupancy samples per model; violations refute direct probability emission, not all possible signed SC encodings",
+  "scope": "Masking and real pretrained-network logits not evaluated. Synthetic QK is labeled synthetic."
+}

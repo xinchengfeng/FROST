@@ -1,0 +1,32 @@
+[
+  {
+    "n": 16,
+    "states": 8,
+    "rank": 4,
+    "heads": "shared",
+    "encoding": "sorted_center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 16,
+    "rank": 4,
+    "heads": "shared",
+    "encoding": "sorted_center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  },
+  {
+    "n": 16,
+    "states": 16,
+    "rank": 8,
+    "heads": "shared",
+    "encoding": "sorted_center",
+    "bound": 4.0,
+    "seed": 11,
+    "steps": 3000
+  }
+]

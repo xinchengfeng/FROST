@@ -1,0 +1,8 @@
+numpy==2.3.5
+scipy==1.17.0
+matplotlib==3.10.8
+fonttools==4.61.1
+pypdf==6.10.0
+Pillow==12.3.0
+# Install PyTorch separately using the official CPU wheel index:
+# torch==2.14.0+cpu

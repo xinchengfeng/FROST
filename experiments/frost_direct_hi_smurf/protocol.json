@@ -1,0 +1,37 @@
+{
+  "scope": "Direct multivariate TT/FSM probability regression, analytic steady-state pilot. No claim that unrestricted state coefficients are valid probabilities.",
+  "n": 16,
+  "states": 4,
+  "seed": 11,
+  "train_rows": 16384,
+  "validation_rows": 2048,
+  "test_rows": 4096,
+  "data_seeds": [
+    110016,
+    120016,
+    130016
+  ],
+  "target": "exact Softmax used only for teacher labels",
+  "runtime": "FSM bases contracted with signed TT cores, affine sum-one readout; no exp, output Softmax, sigmoid, or piecewise interpolation",
+  "selection": "validation MSE within each independently trained configuration; rank/encoding sweep is exploratory",
+  "state_audit": "32768 state configurations sampled from stationary occupancy; finite-bitstream hardware not asserted",
+  "parameter_note": "Separate scalar TT heads each see ALL inputs; total parameter count includes every head. Ranks are not interchangeable with one shared vector-output TT.",
+  "total_trained_configurations": 18,
+  "model_initialization_seeds": [
+    11
+  ],
+  "no_final_performance_claim": "Exploratory single-initialization study; no held-out Transformer task or hardware results.",
+  "phases": [
+    "six free signed TT configurations",
+    "six bounded scalar-head configurations",
+    "three additional bounded sorted configurations",
+    "three joint categorical TT configurations"
+  ],
+  "bounded_head_constraint": "Nonnegative row-stochastic internal cores and scalar terminal coefficients in [0,1]; does not guarantee a simplex across output channels.",
+  "joint_categorical_constraint": "All core slices row-stochastic with final axis indexing outputs; every represented state output vector lies on the simplex in exact arithmetic.",
+  "compilation": "Softmax/sigmoid on static PARAMETERS during training/compilation only; compiled input forward has neither function.",
+  "free_readout": "q=(1+raw-mean(raw))/n; r is the rank of each base TT, not the rank of the combined post-readout CPT.",
+  "sorting": "Binary score sorting, centering and inverse output permutation; an explicit preprocessing cost, not a piecewise function approximation.",
+  "test_reuse": "Same 4096 test rows across phases; adaptive exploration, not a pristine final confirmation set.",
+  "finite_scope": "One validation-selected joint CPT model, three stream seeds, 128 new rows, 256 burn-in cycles plus L sampling cycles. Separate weighted-state diagnostic is not a bitstream output."
+}

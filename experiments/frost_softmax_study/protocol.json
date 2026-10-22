@@ -1,0 +1,88 @@
+{
+  "scope": "Softmax row fitting only; numerical CPU simulation; no hardware efficiency conclusions",
+  "architecture": "new probability-preserving row-stochastic-core TT reference; stricter than general signed HI-SMURF; not claimed identical to user code",
+  "prior_audit": "prior TTAttentionOperator.forward and stochastic_forward call exact torch.softmax on runtime logits; TTScalarOperator calls sigmoid after expectation",
+  "main_train": "32768 N(0,1) rows, seed=10000+n; shared across initializations; logits clipped to [-4,4] only for model input",
+  "validation": "4096 N(0,1) rows, seed=20000+n, best validation KL checkpoint",
+  "test": "8192 N(0,1) rows, seed=30000+n, never used for checkpoint/hyperparameter selection",
+  "main_model_seeds": [
+    11,
+    22,
+    33,
+    44,
+    55
+  ],
+  "pilot_seed": 101,
+  "planned_axes": {
+    "n": [
+      4,
+      8,
+      16,
+      32,
+      64
+    ],
+    "rank_at_n16_s4": [
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "states_at_n16_r8": [
+      2,
+      4,
+      8
+    ]
+  },
+  "baselines": [
+    "uniform",
+    "encoding-clipped exact softmax oracle",
+    "4/8-bit input quantization + exact softmax numerical references",
+    "I-BERT Eq13-14 polynomial evaluated in float, NOT integer-only implementation",
+    "16/64-segment exponential LUT + floating normalization",
+    "dense CPT n4",
+    "prior-style TT plus exact output softmax audit control"
+  ],
+  "stream_lengths": [
+    16,
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "stream_scope": "explicit FSM transitions; floating exact TT contraction; probability averaging and actual categorical event frequencies; NOT gate-level TT arithmetic",
+  "stream_separation": [
+    "analytic approximation error",
+    "FSM occupation noise",
+    "output emission noise",
+    "initialization/transient effect",
+    "inter-input correlation bias"
+  ],
+  "primary_metrics": [
+    "row TV",
+    "RMSE",
+    "Jensen-Shannon nats",
+    "top1 agreement with fractional tie credit",
+    "95th percentile row Linf",
+    "probability constraints"
+  ],
+  "kl_policy": "raw KL without pseudocount; zeros can make KL infinite; finite streams primarily assessed by JS/TV and zero target mass",
+  "stress_cases": [
+    "sigma0.25",
+    "sigma0.5",
+    "sigma2",
+    "sigma4",
+    "uniform matched variance",
+    "Student-t3",
+    "one peak",
+    "near top2 tie",
+    "synthetic qk_d64",
+    "common shift",
+    "token permutation"
+  ],
+  "compute": "CPU PyTorch installed; 1 intra-op thread per independent process; no GPU",
+  "training_steps": 4000
+}

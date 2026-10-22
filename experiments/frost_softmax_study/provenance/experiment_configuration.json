@@ -1,0 +1,22 @@
+{
+  "experiment_1": {
+    "purpose": "Multivariate nonlinear approximation",
+    "input_dimension": 8,
+    "states_per_fsm": 4,
+    "functions": ["Softmax component", "Gaussian radial", "Multiplicative sinusoid", "GELU mean"],
+    "tt_ranks": [2, 4, 8]
+  },
+  "experiment_2": {
+    "purpose": "Joint fitting of a complete attention row",
+    "token_count": 16,
+    "states_per_fsm": 4,
+    "tt_ranks": [4, 8, 12]
+  },
+  "experiment_3": {
+    "purpose": "Recovery of exact softmax-attention outputs on CIFAR-10 images",
+    "images": 10,
+    "patch_size": 8,
+    "token_count": 16,
+    "important_note": "PSNR and SSIM compare FROST-attention output with exact-attention output, not with the untransformed input image."
+  }
+}

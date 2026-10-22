@@ -1,0 +1,66 @@
+FROST 本轮实质性修改说明
+
+1. 论文定位与结构
+重写标题、摘要和引言，把重点放在有限状态分类抽样的概率正确性、
+CDF 有限精度误差、校准迁移边界及整网数值保真度。
+主文调整为 Introduction、Results、Discussion、Methods、Data availability
+和 Code availability；主文共 8 张图、2 张表。基础 softmax 实验与形式证明
+移至完整 Supplementary Information，新增四张补充表。
+相关依据是 Nature Communications 的文章结构和图文要求；初稿格式具有
+弹性，并非使用某种模板就能提高录用率。
+https://www.nature.com/ncomms/submit/article
+https://www.nature.com/ncomms/submit/how-to-submit
+https://www.nature.com/documents/ncomms-formatting-instructions.pdf
+
+2. 修复原稿的架构与实现不一致
+把主文中的 post-normalization 描述及示意改为实验实际采用的
+pre-normalization。明确 LayerNorm 为随机方差估计 + 标量 FSM 倒平方根，
+GELU 为标量 FSM 门；未将未测试的“完整 tensorized feature normalization”
+当作现有实验实现。纠正“所有有限流 TT 步骤均执行浮点矩阵连乘”的旧描述：
+有限类别输出实际通过潜变量逐级 CDF 抽样，解析对照/条件概率平均才收缩 TT。
+保留数值辅助操作、排序和阶段转换的说明。统一缩写、符号、首次定义和引用。
+
+3. 实际完成的新增软件实验
+在 n=16、32、64，N=16、r=8 下各优化三个 base operator，随后各进行尖锐
+分布校准：共 9 个 base fit 和 9 个校准 checkpoint。所有维度使用同一个
+按维度重采样的旧算子作为 warm start，不能称为无关联初始化的三次训练。
+每种测试分布包含 4,096 个独立于拟合与验证的输入行。
+增加高斯、平缓、尖锐及相关分布测试；range-only 对照和有限流扩维测试
+均为看到主实验后的固定权重 follow-up，未用测试数据再选超参数。
+
+高斯分布的 base TV 分别为 0.0551、0.0547、0.0470；参数分别为
+16,512、34,944、71,808。尖锐分布 TV 经校准从 0.2296、0.2730、0.3310
+下降至 0.1251、0.1375、0.1375。但平缓分布误差明显上升，论文如实保留。
+这支持特定分布内的校准，不支持“校准后普遍泛化”的说法。
+
+增加 8/12/16-bit CDF 的实际整数阈值抽样及 512 个状态组合的解析测试，
+并对 128 个固定 CIFAR-10 注意力行跑 8 个随机流 seed，L 最大为 4096。
+12-bit CDF 对浮点核的解析平均行 TV 为 0.0004062；4096 周期时
+到 exact softmax 的 TV 为 0.06510 ± 0.00064，浮点 CDF 为
+0.06509 ± 0.00064。共享潜变量各阶段的同一个均匀随机数使 TV 升至
+0.08545 ± 0.00090，却仍保持行概率和为 1。
+补充了条件分类分布的等价性推导以及逐核 TV 误差上界。
+
+4. 原有结果与新运行的边界
+从保存的参考 crop 和 2,400 个 BSDS500 输出重新计算 PSNR/SSIM，并检查
+原图哈希与逐图记录；复核结果与已有全 200 图统计一致。未重新拟合这
+200 个图像模型。把已有 BSDS500 全图池分布图加入主文，保留三个 pilot
+作为示例，并展示低于 30 dB 的图像尾部。继续明确这属于目标图像拟合与
+随机转换实验，不能充当未见图像恢复或生成模型的泛化成绩。
+原有完整分类与 retrieval 数值保留，未在这次重新跑完所有训练和测试。
+
+5. 硬件与投稿声明
+移出主文中的未实施硬件小节、占位资源表及虚构 PPA 数字，保留作者规划
+备份。没有新做 FPGA/ASIC 实验，也没有把 CDF 参数容量当成硬件收益。
+重写 Discussion，明确小模型、分布迁移、混合数值辅助操作及无硬件证据
+的限制。Data/Code availability 描述本次提供的真实材料；投稿前需换为
+公开稳定链接，并由作者补充真实基金、作者贡献、利益冲突等信息。
+
+6. 图与交付文件
+三张新图均为真正的矢量 PDF：FROST_execution、FROST_dimension_transfer、
+FROST_sampler_precision，并附可编辑 SVG 与绘图脚本。字体保持 Nimbus
+Sans 的原有字形，修复了旧图中 CFF 字体被当作 TrueType 封装的问题。
+未对实验数据、图片裁剪或旧图中的成绩做装饰性篡改。
+主文与补充材料通过 pdfLaTeX/BibTeX 编译，交叉引用与文献均解析。
+数值复核、配置、checkpoint、逐行预测和类别事件都在软件包中。
+Overleaf 工程包含所有主文和补充材料需要的图片与完整源代码。

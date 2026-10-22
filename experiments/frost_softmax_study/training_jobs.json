@@ -1,0 +1,562 @@
+[
+  {
+    "kind": "strict",
+    "n": 64,
+    "states": 4,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 64,
+    "states": 4,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 64,
+    "states": 4,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 64,
+    "states": 4,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 64,
+    "states": 4,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 32,
+    "states": 4,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 32,
+    "states": 4,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 32,
+    "states": 4,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 32,
+    "states": 4,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 32,
+    "states": 4,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 8,
+    "states": 4,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 8,
+    "states": 4,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 8,
+    "states": 4,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 8,
+    "states": 4,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 8,
+    "states": 4,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 4,
+    "states": 4,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 4,
+    "states": 4,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 4,
+    "states": 4,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 4,
+    "states": 4,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 4,
+    "states": 4,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 2,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 2,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 2,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 2,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 2,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 4,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 32,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 32,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 32,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 32,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 4,
+    "rank": 32,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 2,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 2,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 2,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 2,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 2,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 8,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 8,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 8,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 8,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "strict",
+    "n": 16,
+    "states": 8,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "dense",
+    "n": 4,
+    "states": 4,
+    "rank": 0,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "dense",
+    "n": 4,
+    "states": 4,
+    "rank": 0,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "dense",
+    "n": 4,
+    "states": 4,
+    "rank": 0,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "dense",
+    "n": 4,
+    "states": 4,
+    "rank": 0,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "dense",
+    "n": 4,
+    "states": 4,
+    "rank": 0,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 8,
+    "seed": 55,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 11,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 22,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 33,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 44,
+    "steps": 4000
+  },
+  {
+    "kind": "legacy",
+    "n": 16,
+    "states": 4,
+    "rank": 16,
+    "seed": 55,
+    "steps": 4000
+  }
+]
