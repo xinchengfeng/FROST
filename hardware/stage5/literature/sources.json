@@ -1,0 +1,20 @@
+[
+  {
+    "key": "li2014linear",
+    "doi": "10.1109/TC.2012.231",
+    "primary_url": "https://experts.umn.edu/en/publications/logical-computation-on-stochastic-bit-streams-with-linear-finite-/",
+    "use": "SExp FSM state update and emission mask; N16/G2 chosen in prior software configuration"
+  },
+  {
+    "key": "qian2008synthesis",
+    "doi": "10.1145/1391469.1391636",
+    "primary_url": "https://gc.sjtu.edu.cn/~wkqian/papers/Qian_Riedel_The_Synthesis_of_Robust_Polynomial_Arithmetic_with_Stochastic_Logic.pdf",
+    "use": "Bernstein population count and coefficient-selection construction; coefficients are the prior local fit"
+  },
+  {
+    "key": "parhi2019series",
+    "doi": "10.1109/TETC.2016.2618750",
+    "primary_url": "https://experts.umn.edu/en/publications/computing-arithmetic-functions-using-stochastic-logic-by-series-e/",
+    "use": "NAND-Horner factorization principle; five levels and eight factors are our stated range adaptation"
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "clock_MHz": 8,
+  "original_proposed_clock_MHz": 15,
+  "clock_change_reason": "All four SC controls violated the mapped standard-cell 15-MHz timing check. Common clock reduced to 8 MHz before final power aggregation. Every 8-MHz waveform generated afresh; no frequency scaling of old power values.",
+  "designs": [
+    "hot_reuse",
+    "sexp16",
+    "sexp256",
+    "bern8",
+    "horner5"
+  ],
+  "stream_length": 64,
+  "seeds": [
+    4004,
+    5005,
+    6006
+  ],
+  "queries": 16,
+  "value_channels": 16,
+  "keys": 16,
+  "clock_period_ps": 125000,
+  "excluded_setup_cycles": 35,
+  "source_hashes": {
+    "source/sim_main.cpp": "16cdafff957ca871eea79ae4a70253adc3691bc5e35ad07119eb6d5a6f36cb2a",
+    "source/stage5_power.py": "103f80082fd8d684d258384d1bd51fae47a8feffa99a534324857f76041c4e52"
+  },
+  "frozen_inputs": {
+    "tt09.hex": "e5c913fca0197ecc4653204c7cbd080d96122af7fb122c42535ff069a06a4f38",
+    "tt15.hex": "88e26f728f36fb1efcf58dfb8626846e7a5d8152decbe82eb96ed78bdd97b338",
+    "tt13.hex": "7c6efa65c099347152defe4b8ee566cc2189db3454ddd48edb04c36acf3500d2",
+    "tt14.hex": "79332abeacad4e3918cc282cc7053a487a1341991d458d00f3efe8ae0d8ba0f5",
+    "tt06.hex": "c7d06bf1b5a4896187090615465e765f822f73d789061bb832a4810fd7b7988a",
+    "tt01.hex": "4c92ae6b2ba79996c3859461276a2be9568e830d4ef1fd4dfdad2b3efac530c7",
+    "tt05.hex": "23a3d2144e26e3cb4ccf4a6b4ea21b251312b0aecc475fd1dab751ed09433c60",
+    "tt11.hex": "c27a729c119b272982863573c7461d5139e8616812d380b5be47d6a7dd4d7c24",
+    "tt04.hex": "e9db59128da88d1616997b8f7f37bbbacd05124d63b6a07c1e9b727393d3c046",
+    "seed5005.hex": "92eeeed60bd3abf7dc76ce20892694893939d02a4060547dfdc9097b2c93fc87",
+    "exp_fx16.hex": "2a6102d785583bfeafcec3e4390015064576e0c145626bd38a516eee738ec27d",
+    "seed4004.hex": "283de19350d1d0870a3ce841bfc584fc3b3901ecef56b0dc236a2c49ca3a1005",
+    "tt07.hex": "34fea5a942cada234a36ecc07a72c3bd90ed9348e0a52c9c902ecb0253c16a03",
+    "tt12.hex": "a84a35b767b5d5887eca3968358a03f8c272fe3905c05b3af07a77243b726b10",
+    "seed6006.hex": "cd5b35408871700434bf8d5001ec013d8f296f98993a2d0d1c286797fa0935cf",
+    "tt03.hex": "1f66a136950dd4915094dbc7fa42fe500c69c24aa335680c1c3c442bae7761e0",
+    "values.hex": "d6672eea7f76bf234d61437bbe36151e79944e8bcaeb8a558887ac25b2559a05",
+    "tt08.hex": "3bb13bc587bf1e9b71bba6edbf4ef376ac4ab54af5e068768a09bfa3ecf945d9",
+    "tt02.hex": "bbb4905a390fc5553778a6dc4781c194f13ea40a1d92d827c279993dfa3af250",
+    "tt00.hex": "20cf13843487d5bc499222e90b300b32864ae64f0b09158279ab7f3b01114f96",
+    "scores.hex": "5140092d75f74196bbe68028f01379169deb34204eb1b8e61483027600a890e2",
+    "tt10.hex": "f1571d41b3a72bee1a80c142cb3e3652e4e2d2950f412012481a6b0dcd53b606",
+    "exp_fp32.hex": "b087ea201e020349d2733d126cdcddf676a06a6d2328adcd5435a47b3fad8455"
+  }
+}

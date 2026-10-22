@@ -1,0 +1,37 @@
+{
+  "L": 64,
+  "SExp_states": 16,
+  "SExp_gain": 2,
+  "SExp_burns": [
+    16,
+    256
+  ],
+  "Bernstein_degree": 8,
+  "Bernstein_coefficients": [
+    1.0,
+    0.007796012162303407,
+    0.10585770080220884,
+    9.237484191220936e-20,
+    6.354197803327884e-05,
+    0.010552217546088143,
+    1.7264904731879306e-20,
+    0.00022258326310187107,
+    0.00033546262790251185
+  ],
+  "Bernstein_threshold_u16": [
+    65536,
+    511,
+    6938,
+    1,
+    5,
+    692,
+    1,
+    15,
+    22
+  ],
+  "Horner_degree": 5,
+  "Horner_factors": 8,
+  "draws": "xorshift32 upper16; consecutive draws via eight-step unrolling; coefficient draws use a separately seeded state. Independence is a modelling assumption, not guaranteed for deterministic PRNG outputs.",
+  "normalization": "integer count-weighted AV; one floor(2^30/sum(counts)) reciprocal; rounded signed output",
+  "scope": "SC primitive adaptations with an integer AV tail; not Fig10 full-network hardware or published accelerator reproductions"
+}
