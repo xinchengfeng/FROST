@@ -1,0 +1,270 @@
+% Requires amsmath, amssymb, booktabs, graphicx and url (or hyperref).
+% Copy both figure PDFs to Images/ and retain FROST_hardware_tools.bib entries.
+\section{Hardware resource savings through categorical value selection}
+\label{sec:fpga_evaluation}
+
+FROST reduces the arithmetic resources of attention aggregation by
+replacing dense probability--value products with categorical value
+selection. In the implemented fused kernel, this mapping required no
+dedicated digital signal processing (DSP) blocks or block random-access
+memory (BRAM) instances. Its field-programmable gate array (FPGA)
+combinational resource count was 71.3\% lower than the four-lane
+single-precision floating-point (FP32) control and 26.5\% lower than the
+single-lane FP32 control. These savings were obtained with random-number
+generation, sampling-state updates, coefficient storage, buffering and
+format conversion included in the implementation boundary
+(Fig.~\ref{fig:fused_hardware_stage3}).
+In a separate standard-cell assessment, the short-stream operating point
+also reduced mapped area, estimated active power and tile latency
+simultaneously relative to four-lane FP32 at the same clock frequency.
+
+\paragraph{Architectural basis of the resource savings.}
+The kernel maps 16 attention scores and a value matrix
+$\boldsymbol V\in\mathbb{R}^{16\times16}$ to a 16-component output.
+For stream length $L$, FROST forms the sampled estimate
+\begin{equation}
+\widehat{\boldsymbol y}
+=\frac{1}{L}\sum_{t=1}^{L}\boldsymbol V_{J_t,:},
+\label{eq:fused_categorical_attention}
+\end{equation}
+where $t$ indexes retained samples, $J_t\in\{1,\ldots,16\}$ is the
+category emitted by the tensorized finite-state operator, and
+$\widehat{\boldsymbol y}\in\mathbb{R}^{16}$ is the estimated attention
+output. Each sample selects one value row, which is added to sixteen
+signed 32-bit accumulators. This formulation removes explicit probability
+materialization and dense probability--value multiplication from the
+aggregation datapath. For the supported power-of-two stream lengths,
+final scaling is implemented by binary shifting.
+
+The frozen hardware candidate uses tensor-train rank 2, 16
+finite-state-machine (FSM) states per score input, 8-bit cumulative
+distribution function (CDF) entries and 16 burn-in updates.
+Fifteen binary latent transitions each retain one non-terminal threshold;
+the final category transition retains 15 thresholds. Making terminal
+unit-CDF entries implicit leaves 944 bytes of constant lookup data before
+logic mapping. Sorting, inverse index mapping and 32 separately
+initialized xorshift32 states are included. A single circuit supports
+$L\in\{64,256,1024\}$: the stream length changes execution duration
+without changing the allocated resources.
+
+\paragraph{Matched interfaces and implementation controls.}
+We implemented FP32 controls with one and four shared fused
+multiply-add (FMA) lanes using Berkeley
+HardFloat~\cite{hauser2019hardfloat}, together with a four-lane
+fixed-point control (FX16). Both FP32 controls use a 1,025-entry
+exponential look-up table (LUT), spaced at $1/64$ over score differences
+from 0 to 16. They accumulate unnormalized exponential--value products
+and use one reciprocal per query to normalize the final vector.
+FX16 uses a LUT with 16 fractional bits, widened accumulators and one
+restoring reciprocal per query.
+
+All implementations receive signed 16-bit scores and values with ten
+fractional bits and return signed 32-bit outputs with ten fractional
+bits. FP32 computation uses the integer-unit value representation before
+conversion back to this common interface. A tile contains 16 consecutive
+queries sharing one $16\times16$ value matrix. Value loading therefore
+occurs once per tile; each query loads its own 16 scores. Transfers use
+one word per cycle, and queries do not overlap. Burn-in and output
+transfers are included; one-time random-seed initialization is excluded.
+The comparison isolates hardware cost without matching approximation
+error. Query--key products, projections, feed-forward layers and
+whole-network classification are outside the evaluated kernel.
+
+\paragraph{FPGA resource allocation.}
+We targeted an LFE5U-85F FPGA with CABGA381 packaging and speed grade 6,
+using Yosys 0.33 and nextpnr-ecp5
+0.6~\cite{yosysSoftware,nextpnrSoftware}. All four implementations were
+routed with seeds 1, 2 and 3 at a common 8-MHz clock, with identical
+resource counts across seeds. This common frequency was selected after
+the initial FP32 implementation failed the 15-MHz constraint; all four
+designs were then rerouted at 8 MHz. Board-specific pin locations and
+external input/output delays were not constrained.
+
+Table~\ref{tab:fused_fpga_resources} shows the complete resource vector.
+Relative to the four-lane FP32 control, FROST removes all 16 DSP and
+three BRAM instances and reduces combinational resources from 23,799
+to 6,834. The same DSP- and BRAM-free mapping also distinguishes it
+from FX16, which uses seven DSP and two BRAM instances. FROST instead
+uses distributed value storage and constant logic-mapped CDFs; zero
+BRAM usage does not imply zero storage cost. Its 2,699 flip-flops (FFs)
+exceed the 2,043 of either FP32 control, while FX16 uses fewer
+combinational resources. The demonstrated gain is therefore reduced
+dedicated-block demand and lower combinational cost relative to FP32,
+with the state-storage cost explicitly retained.
+
+\begin{table}[!htbp]
+\centering
+\caption{Post-route resource allocation for the fused attention kernel.}
+\label{tab:fused_fpga_resources}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+Implementation & COMB & FF & DSP & BRAM \\
+\midrule
+FP32-LUT, 1 lane & 9,304 & 2,043 & 4 & 3 \\
+FP32-LUT, 4 lanes & 23,799 & 2,043 & 16 & 3 \\
+FX16, 4 lanes & 3,419 & 1,280 & 7 & 2 \\
+FROST, all supported $L$ & 6,834 & 2,699 & 0 & 0 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\footnotesize
+COMB denotes ECP5 \texttt{TRELLIS\_COMB}, including arithmetic and
+distributed-memory logic, rather than a literal LUT4 count. DSP and
+BRAM denote \texttt{MULT18X18D} and nominal 18-kbit \texttt{DP16KD}
+instances. The FROST circuit supports $L=64$, 256 and 1024.
+All counts include the declared kernel interfaces and auxiliary logic.
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_hardware_stage3.pdf}
+\caption{\textbf{Hardware resource substitution through categorical value selection.}
+\textbf{a}, Functional organization of the fused kernel. Conventional
+controls accumulate products of exponential coefficients and values;
+FROST selects value rows using the tensorized FSM sampler and accumulates
+the selected values. Shared input and output formats are retained.
+The schematic groups operations rather than depicting physical placement.
+\textbf{b}, Absolute post-route resource counts on the same ECP5 device.
+Axes are independent across resource classes, and all begin at zero.
+FROST uses one programmable circuit for all three stream lengths.
+Its zero DSP and BRAM counts coexist with distributed storage, constant
+CDF logic and increased FF usage relative to FP32.}
+\label{fig:fused_hardware_stage3}
+\end{figure}
+
+\paragraph{Resource savings at a short-stream operating point.}
+At $L=64$, FROST completes a 16-query tile in 2,592 cycles, compared
+with 2,816 cycles for four-lane FP32. At the common 8-MHz FPGA clock,
+these correspond to 324 and 352~$\mu$s, respectively. Thus, the
+71.3\% reduction in combinational resources is accompanied by an
+8.0\% reduction in tile latency, rather than an increase in execution
+time at this operating point. Increasing $L$ retains the same resource
+allocation while increasing the tile cycle count
+(Table~\ref{tab:fused_cycles}).
+
+\begin{table}[!htbp]
+\centering
+\caption{Tile execution time across the supported stream lengths.}
+\label{tab:fused_cycles}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrr@{}}
+\toprule
+Implementation & Tile cycles & Tile latency at 8 MHz ($\mu$s) \\
+\midrule
+FP32-LUT, 1 lane & 6,080 & 760 \\
+FP32-LUT, 4 lanes & 2,816 & 352 \\
+FX16, 4 lanes & 2,848 & 356 \\
+FROST, $L=64$ & 2,592 & 324 \\
+FROST, $L=256$ & 5,664 & 708 \\
+FROST, $L=1024$ & 17,952 & 2,244 \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\footnotesize
+Each tile includes loading 256 value words, loading 16 scores for each
+of 16 queries, computation, burn-in where applicable, and all output
+transfers. Cycles were obtained from register-transfer-level simulation.
+These are attention-kernel tile latencies, not image-inference latencies.
+\end{table}
+
+\paragraph{Independent standard-cell assessment.}
+The same register-transfer-level (RTL) designs were mapped to the
+Nangate45 typical standard-cell library at 1.10 V and $25\,^{\circ}$C.
+All memories were mapped into standard cells. OpenSTA 3.1.0 estimated
+power from zero-delay gate-level switching activity at a common
+15-MHz clock~\cite{openstaSoftware}, using the first 16-query evaluation
+tile and three stream seeds for FROST. All reported designs met
+pre-layout register timing at this frequency.
+
+Let $C_{\mathrm{tile}}$ be the tile cycle count, $f$ the clock frequency
+in hertz, and $P_{\mathrm{cell}}$ the estimated active cell power in watts,
+including internal, switching and leakage components. Estimated tile
+energy $E_{\mathrm{tile}}$, in joules, is
+\begin{equation}
+E_{\mathrm{tile}}=P_{\mathrm{cell}}\frac{C_{\mathrm{tile}}}{f}.
+\label{eq:fused_tile_energy}
+\end{equation}
+The standard-cell results use $f=15$ MHz throughout; their power is
+not combined with the FPGA timing results.
+
+At $L=64$, FROST's mapped area is
+$63.62\times10^3~\mu\mathrm{m}^2$, compared with
+$85.36\times10^3~\mu\mathrm{m}^2$ for four-lane FP32, a 25.5\%
+reduction. Estimated active power decreases from 3.556 to 2.650~mW,
+a 25.5\% reduction. At the common 15-MHz clock, the corresponding
+tile latencies are 187.7 and 172.8~$\mu$s, an 8.0\% reduction.
+FROST therefore improves all three power, performance and area (PPA)
+metrics relative to this four-lane FP32 implementation at $L=64$
+within the same standard-cell flow. Estimated energy per tile decreases
+from 0.668 to 0.458~$\mu$J, a 31.4\% reduction
+(Fig.~\ref{fig:fused_hardware_tradeoffs}).
+At $L=256$, estimated energy remains 16.0\% below single-lane FP32
+but exceeds four-lane FP32 and FX16, showing the execution cost of
+longer sampling at fixed resource allocation.
+
+\begin{table}[!htbp]
+\centering
+\caption{Standard-cell area, power and latency at a common 15-MHz clock.}
+\label{tab:fused_asic_power}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+Implementation
+& \shortstack{Area\\($10^3\,\mu\mathrm{m}^2$)}
+& \shortstack{Active power\\(mW)}
+& \shortstack{Tile latency\\($\mu$s)}
+& \shortstack{Energy/tile\\($\mu$J)} \\
+\midrule
+FP32-LUT, 1 lane & 62.86 & 3.598 & 405.3 & 1.458 \\
+FP32-LUT, 4 lanes & 85.36 & 3.556 & 187.7 & 0.668 \\
+FX16, 4 lanes & 60.08 & 2.839 & 189.9 & 0.539 \\
+FROST, $L=64$ & 63.62 & $2.650\pm0.004$ & 172.8 & $0.458\pm0.001$ \\
+FROST, $L=256$ & 63.62 & $3.244\pm0.010$ & 377.6 & $1.225\pm0.004$ \\
+FROST, $L=1024$ & 63.62 & $3.619\pm0.012$ & 1196.8 & $4.331\pm0.015$ \\
+\bottomrule
+\end{tabular*}
+\par\smallskip\footnotesize
+All entries are pre-layout tool estimates for Nangate45 at 15 MHz,
+not FPGA power or board measurements. Area is summed mapped-cell area.
+FROST values are means $\pm$ sample standard deviations over three
+stream seeds on one activity tile; deterministic controls use that tile
+once. Clock-tree implementation, extracted interconnect, time-resolved
+glitches, pads and external memory are excluded.
+\end{table}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_hardware_tradeoffs.pdf}
+\caption{\textbf{Simultaneous PPA reductions at the short-stream operating point.}
+Both panels use the same Nangate45 standard-cell flow at 15 MHz.
+\textbf{a}, FROST at $L=64$, normalized separately by the mapped area,
+estimated active power, tile latency and estimated tile energy of
+four-lane FP32. Lower values are preferable; the dashed line denotes
+the FP32 reference. Percentage reductions are calculated from unrounded
+results. \textbf{b}, Estimated FROST energy across all supported stream
+lengths, with deterministic controls shown as horizontal references.
+Error bars show sample standard deviations over three stream seeds on
+one tile and can be smaller than the symbols. Each tile contains 16
+queries. Values are pre-layout estimates without matched approximation
+error.}
+\label{fig:fused_hardware_tradeoffs}
+\end{figure}
+
+\paragraph{Verification and interpretation.}
+Verilator RTL simulations covered 3,200 query rows from the 200-image
+evaluation subset. The three FROST stream lengths and stream seeds
+4004, 5005 and 6006, together with the deterministic controls, produced
+614,400 output components that agreed bit for bit with independent
+integer or C++ floating-point references. Gate-level simulations matched
+the RTL for all 3,072 checked components, and every power analysis
+reported zero unannotated pins.
+These checks establish implementation agreement for the evaluated inputs.
+The resource result is a realizable DSP- and BRAM-free mapping of the
+fused sampling kernel, with lower combinational cost than both FP32
+controls. At $L=64$, the standard-cell implementation also reduces area,
+estimated power and latency simultaneously relative to four-lane FP32.
+These findings concern
+the declared kernel and do not establish whole-Transformer or
+quality-matched hardware superiority.

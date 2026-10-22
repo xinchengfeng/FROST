@@ -1,0 +1,287 @@
+{
+  "scope": "hardware-only kernel comparison; precision matching waived; not a complete Transformer, FPGA power or measured chip results",
+  "rtl_checked_words": 614400,
+  "gate_checked_words": 3072,
+  "fpga": [
+    {
+      "design": "fp32_1",
+      "comb": 9304,
+      "ff": 2043,
+      "dsp": 4,
+      "bram18": 3,
+      "common_clock_MHz": 8,
+      "fmax_estimate_min_MHz": 10.049544334411621,
+      "fmax_estimate_max_MHz": 10.355182647705078
+    },
+    {
+      "design": "fp32_4",
+      "comb": 23799,
+      "ff": 2043,
+      "dsp": 16,
+      "bram18": 3,
+      "common_clock_MHz": 8,
+      "fmax_estimate_min_MHz": 9.839517593383789,
+      "fmax_estimate_max_MHz": 10.133047103881836
+    },
+    {
+      "design": "fx16",
+      "comb": 3419,
+      "ff": 1280,
+      "dsp": 7,
+      "bram18": 2,
+      "common_clock_MHz": 8,
+      "fmax_estimate_min_MHz": 58.217384338378906,
+      "fmax_estimate_max_MHz": 58.62696075439453
+    },
+    {
+      "design": "frost",
+      "comb": 6834,
+      "ff": 2699,
+      "dsp": 0,
+      "bram18": 0,
+      "common_clock_MHz": 8,
+      "fmax_estimate_min_MHz": 58.482948303222656,
+      "fmax_estimate_max_MHz": 61.33840560913086
+    }
+  ],
+  "performance": [
+    {
+      "design": "fp32_1",
+      "L": 0,
+      "tile_cycles": 6080,
+      "cold_row_cycles": 620,
+      "resident_row_cycles": 364,
+      "FPGA_tile_us_at8MHz": 760.0,
+      "FPGA_tiles_per_s_at8MHz": 1315.7894736842106,
+      "ASIC_tile_us_at15MHz": 405.3333333333333
+    },
+    {
+      "design": "fp32_4",
+      "L": 0,
+      "tile_cycles": 2816,
+      "cold_row_cycles": 416,
+      "resident_row_cycles": 160,
+      "FPGA_tile_us_at8MHz": 352.0,
+      "FPGA_tiles_per_s_at8MHz": 2840.909090909091,
+      "ASIC_tile_us_at15MHz": 187.73333333333332
+    },
+    {
+      "design": "fx16",
+      "L": 0,
+      "tile_cycles": 2848,
+      "cold_row_cycles": 418,
+      "resident_row_cycles": 162,
+      "FPGA_tile_us_at8MHz": 356.0,
+      "FPGA_tiles_per_s_at8MHz": 2808.9887640449438,
+      "ASIC_tile_us_at15MHz": 189.86666666666667
+    },
+    {
+      "design": "frost",
+      "L": 64,
+      "tile_cycles": 2592,
+      "cold_row_cycles": 402,
+      "resident_row_cycles": 146,
+      "FPGA_tile_us_at8MHz": 324.0,
+      "FPGA_tiles_per_s_at8MHz": 3086.41975308642,
+      "ASIC_tile_us_at15MHz": 172.8
+    },
+    {
+      "design": "frost",
+      "L": 256,
+      "tile_cycles": 5664,
+      "cold_row_cycles": 594,
+      "resident_row_cycles": 338,
+      "FPGA_tile_us_at8MHz": 708.0,
+      "FPGA_tiles_per_s_at8MHz": 1412.4293785310736,
+      "ASIC_tile_us_at15MHz": 377.6
+    },
+    {
+      "design": "frost",
+      "L": 1024,
+      "tile_cycles": 17952,
+      "cold_row_cycles": 1362,
+      "resident_row_cycles": 1106,
+      "FPGA_tile_us_at8MHz": 2244.0,
+      "FPGA_tiles_per_s_at8MHz": 445.63279857397504,
+      "ASIC_tile_us_at15MHz": 1196.8
+    }
+  ],
+  "asic": [
+    {
+      "design": "fp32_1",
+      "L": 0,
+      "area_um2": 62861.652,
+      "runs": 1,
+      "tile_cycles": 6080,
+      "dynamic_mW": 2.32670431436,
+      "dynamic_mW_sd": 0.0,
+      "leakage_mW": 1.2713853503,
+      "leakage_mW_sd": 0.0,
+      "total_mW": 3.5980897956,
+      "total_mW_sd": 0.0,
+      "tile_energy_uJ": 1.4584257304832,
+      "tile_energy_uJ_sd": 0.0
+    },
+    {
+      "design": "fp32_4",
+      "L": 0,
+      "area_um2": 85355.144,
+      "runs": 1,
+      "tile_cycles": 2816,
+      "dynamic_mW": 1.76372783606,
+      "dynamic_mW_sd": 0.0,
+      "leakage_mW": 1.7922683619000002,
+      "leakage_mW_sd": 0.0,
+      "total_mW": 3.5559963435000004,
+      "total_mW_sd": 0.0,
+      "tile_energy_uJ": 0.6675790468864,
+      "tile_energy_uJ_sd": 0.0
+    },
+    {
+      "design": "fx16",
+      "L": 0,
+      "area_um2": 60077.696,
+      "runs": 1,
+      "tile_cycles": 2848,
+      "dynamic_mW": 1.617673726324,
+      "dynamic_mW_sd": 0.0,
+      "leakage_mW": 1.2216854375,
+      "leakage_mW_sd": 0.0,
+      "total_mW": 2.839359222,
+      "total_mW_sd": 0.0,
+      "tile_energy_uJ": 0.5390996709504,
+      "tile_energy_uJ_sd": 0.0
+    },
+    {
+      "design": "frost",
+      "L": 64,
+      "area_um2": 63620.018,
+      "runs": 3,
+      "tile_cycles": 2592,
+      "dynamic_mW": 1.3862431563550002,
+      "dynamic_mW_sd": 0.004819249262835459,
+      "leakage_mW": 1.2635036837666664,
+      "leakage_mW_sd": 0.0011882547240140882,
+      "total_mW": 2.6497468352333335,
+      "total_mW_sd": 0.004011719546843301,
+      "tile_energy_uJ": 0.45787625312832003,
+      "tile_energy_uJ_sd": 0.0006932251376945371
+    },
+    {
+      "design": "frost",
+      "L": 256,
+      "area_um2": 63620.018,
+      "runs": 3,
+      "tile_cycles": 5664,
+      "dynamic_mW": 1.9776590148966668,
+      "dynamic_mW_sd": 0.010398519423844869,
+      "leakage_mW": 1.2661808481,
+      "leakage_mW_sd": 0.001019134161465718,
+      "total_mW": 3.2438398338999996,
+      "total_mW_sd": 0.009555885690388382,
+      "tile_energy_uJ": 1.2248739212806399,
+      "tile_energy_uJ_sd": 0.0036083024366906032
+    },
+    {
+      "design": "frost",
+      "L": 1024,
+      "area_um2": 63620.018,
+      "runs": 3,
+      "tile_cycles": 17952,
+      "dynamic_mW": 2.3516955746633332,
+      "dynamic_mW_sd": 0.012605105818996076,
+      "leakage_mW": 1.2671525279666667,
+      "leakage_mW_sd": 0.0009799214219736992,
+      "total_mW": 3.618848122033333,
+      "total_mW_sd": 0.012499292532565985,
+      "tile_energy_uJ": 4.3310374324494925,
+      "tile_energy_uJ_sd": 0.01495915330297504
+    }
+  ],
+  "quality": [
+    {
+      "design": "fx16",
+      "L": 0,
+      "seed": 4004,
+      "output_nrmse": 0.0016933171837544806,
+      "centered_output_nrmse": 0.0021998509113756197
+    },
+    {
+      "design": "fp32_1",
+      "L": 0,
+      "seed": 4004,
+      "output_nrmse": 0.0016927584416175038,
+      "centered_output_nrmse": 0.0021991250288232868
+    },
+    {
+      "design": "fp32_4",
+      "L": 0,
+      "seed": 4004,
+      "output_nrmse": 0.0016927584416175038,
+      "centered_output_nrmse": 0.0021991250288232868
+    },
+    {
+      "design": "frost",
+      "L": 64,
+      "seed": 4004,
+      "output_nrmse": 0.23815511933439146,
+      "centered_output_nrmse": 0.30939611393708816
+    },
+    {
+      "design": "frost",
+      "L": 64,
+      "seed": 5005,
+      "output_nrmse": 0.24127046924427026,
+      "centered_output_nrmse": 0.313443380098591
+    },
+    {
+      "design": "frost",
+      "L": 64,
+      "seed": 6006,
+      "output_nrmse": 0.2431690880367657,
+      "centered_output_nrmse": 0.31590994591455074
+    },
+    {
+      "design": "frost",
+      "L": 256,
+      "seed": 4004,
+      "output_nrmse": 0.16199497252755776,
+      "centered_output_nrmse": 0.21045365355761184
+    },
+    {
+      "design": "frost",
+      "L": 256,
+      "seed": 5005,
+      "output_nrmse": 0.16169150301081647,
+      "centered_output_nrmse": 0.21005940509702642
+    },
+    {
+      "design": "frost",
+      "L": 256,
+      "seed": 6006,
+      "output_nrmse": 0.16579706103834238,
+      "centered_output_nrmse": 0.21539308720644265
+    },
+    {
+      "design": "frost",
+      "L": 1024,
+      "seed": 4004,
+      "output_nrmse": 0.13652878570748864,
+      "centered_output_nrmse": 0.17736958943610012
+    },
+    {
+      "design": "frost",
+      "L": 1024,
+      "seed": 5005,
+      "output_nrmse": 0.1361387019313205,
+      "centered_output_nrmse": 0.17686281719121352
+    },
+    {
+      "design": "frost",
+      "L": 1024,
+      "seed": 6006,
+      "output_nrmse": 0.13595167207119405,
+      "centered_output_nrmse": 0.17661983979028656
+    }
+  ]
+}

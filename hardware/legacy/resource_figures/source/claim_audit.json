@@ -1,0 +1,12 @@
+{
+  "new_hardware_runs": false,
+  "source_results_sha256": "2b02c94ff9e91b2042a01e764ca46d0c09fceb1cf444b0fa44998d4e531042e2",
+  "same_flow_comparison": "Nangate45 15 MHz; FROST L64 vs FP32 four lanes; approximation error not matched",
+  "reductions_percent": {
+    "area_um2": 25.46434225452189,
+    "total_mW": 25.48510799014737,
+    "tile_cycles": 7.954545454545459,
+    "tile_energy_uJ": 31.412428945476545
+  },
+  "no_claim_of_all_baseline_or_all_resource_dominance": true
+}

@@ -1,0 +1,41 @@
+% Replace the two previous figure environments with the following.
+% Remove the old figure-a citation after "associated switching";
+% the new figure illustrates resources rather than implementation changes.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_hardware_stage3.pdf}
+\caption{\textbf{FPGA resource efficiency of 64-sample attention.}
+\textbf{a--c}, Absolute post-route counts of combinational resources
+(COMB), digital signal processing (DSP) blocks and block random-access
+memory (BRAM) instances for the three arithmetic controls and optimized
+FROST at $L=64$. FROST uses 73.3\% fewer COMB resources than the
+four-lane FP32 control and no DSP or BRAM instances. Counts include
+support logic and alternative storage implementations; values are
+stored in distributed memory and constant CDFs are implemented as logic.
+Colours identify implementations consistently across panels, with FROST
+highlighted in coral. Resource axes are independent and start at zero.
+The complete resource counts, including flip-flops, are reported in
+Table~\ref{tab:fused_fpga_resources}.}
+\label{fig:fused_hardware_stage3}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\linewidth]{Images/FROST_hardware_tradeoffs.pdf}
+\caption{\textbf{Lower energy and a favourable area--power operating point.}
+\textbf{a}, Estimated energy per 16-query attention tile for the three
+arithmetic controls and optimized FROST at $L=64$. Coral percentages
+indicate FROST's energy reduction relative to the control in the same
+row: 70.7\% against single-lane FP32, 36.0\% against four-lane FP32
+and 20.8\% against four-lane FX16. Reductions are calculated from
+unrounded results; the energy axis starts at zero.
+\textbf{b}, Mapped standard-cell area versus estimated active power
+for the same implementations. FROST occupies the lowest-area,
+lowest-power point among these evaluated kernels. Both panels use
+Nangate45 at 1.10 V, $25\,^{\circ}$C and 15 MHz. FROST power and energy
+are means across three stream seeds on one activity tile; error bars
+show sample standard deviations and may be smaller than the marks.
+All power and energy values are pre-layout tool estimates.}
+\label{fig:fused_hardware_tradeoffs}
+\end{figure}

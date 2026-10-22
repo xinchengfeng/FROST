@@ -1,0 +1,54 @@
+{
+  "stage": 3,
+  "scope": "fused 16-key by 16-channel attention normalization and value aggregation; QK and projections excluded",
+  "quality_gate": "waived for this feasibility stage by user; existing quality differences must remain disclosed",
+  "designs": [
+    "FROST-r2",
+    "FX16-4",
+    "FP32-LUT-1",
+    "FP32-LUT-4"
+  ],
+  "device": "LFE5U-85F CABGA381 speed 6",
+  "route_seeds": [
+    1,
+    2,
+    3
+  ],
+  "first_frequency_target_MHz": 15,
+  "arithmetic": "same signed16 Q10 scores and values; signed32 Q10 outputs including conversion; FP32 IEEE arithmetic with LUT exp; no row overlap",
+  "reuse": "256 V words once per 16-query tile, 16 score words per query; also report cold-row latency",
+  "FROST": {
+    "rank": 2,
+    "cdf_bits": 8,
+    "burn": 16,
+    "L": [
+      64,
+      256,
+      1024
+    ],
+    "states": 16,
+    "random_states": 32
+  },
+  "data": "200 held-out matrices / 3200 queries from stage2; 3 stream seeds; no refitting",
+  "PPA_scope": "FPGA post-route resources and timing. Power only if a separately identified activity-based implementation flow is completed; no board measurements.",
+  "secondary_ASIC_power": {
+    "process": "Nangate45 typical standard-cell library, no SRAM macros",
+    "flow": "Yosys mapping + gate-level zero-delay VCD + OpenSTA",
+    "clock_MHz": 15,
+    "workload": "first 16 queries (first evaluation matrix), full V loading, all compute, burn and output; seed initialization excluded",
+    "stream_seeds": [
+      4004,
+      5005,
+      6006
+    ],
+    "L": [
+      64,
+      256,
+      1024
+    ],
+    "boundary": "mapped cells only; pre-layout, no clock tree, pads, external memory, parasitic extraction or glitch power",
+    "extension_note": "Stream sweep added to quantify hardware-only trade-off requested by user; all supported L values retained without quality matching."
+  },
+  "FPGA_common_clock_MHz": 8,
+  "frequency_adjustment_reason": "Initial 15 MHz FPGA route failed for unpipelined FP32-1; all designs rerouted at 8 MHz, all routing seeds retained. No algorithm, precision or candidate reselection."
+}

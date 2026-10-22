@@ -1,0 +1,25 @@
+{
+  "stream_length": 64,
+  "input_output": "same signed16 Q10 inputs, signed32 Q10 outputs",
+  "unchanged": [
+    "TT rank2",
+    "16 FSM states",
+    "16 burn-in",
+    "CDF8",
+    "32 xorshift32 states",
+    "input and output transport",
+    "baseline implementations"
+  ],
+  "variants": [
+    "retime: stage-local FSM update scheduling",
+    "l64: retiming and fixed 22-bit accumulation",
+    "l64c: above plus validity-based completion and 6-bit launch counter"
+  ],
+  "acceptance": "all valid output words and query cycles must match the original L64 kernel on all 3200 rows and three stream seeds",
+  "area_power_flow": "same Nangate45 typical 1.10V 25C, 15MHz; zero-delay activity",
+  "FPGA": "same ECP5 85F speed6 CABGA381 8MHz three route seeds",
+  "quality_scope": "fixed operating point, no quality-matched baseline claim",
+  "protocol_extension": "The received-sample counter was removed after the first synthesis results; the added variant underwent the same verification, routing seeds and power workload.",
+  "final_design": "l64c",
+  "reported_operating_point": "L64 only"
+}

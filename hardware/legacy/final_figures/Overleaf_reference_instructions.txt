@@ -1,0 +1,13 @@
+参考文献上传步骤（BibTeX / natbib 项目）
+
+1. 下载 FROST_hardware_tools.bib，通过 Overleaf 文件列表上方的 Upload 上传到项目根目录，与 main.tex 同级。
+2. 找到文末原有的 bibliography 命令，例如：\bibliography{references}
+   将其改为：\bibliography{references,FROST_hardware_tools}
+   references 应替换为你原来正在使用的文献库名字；保留原有 bibliography style，不另加第二条 bibliography 命令。
+3. 点击 Recompile。正文的四个引用键已经写好：hauser2019hardfloat、yosysSoftware、nextpnrSoftware、openstaSoftware。
+4. 也可以将本文件中的四条 BibTeX 记录追加到原有 .bib 文件末尾，此时 bibliography 命令保持原样。两种方法任选一种，避免重复条目。
+
+如果项目使用 biblatex，即已有 addbibresource 和 printbibliography，则在导言区新增：\addbibresource{FROST_hardware_tools.bib}
+保留原来的 printbibliography，不使用上面的 bibliography 命令。
+
+两张新 PDF 上传到 Images/ 覆盖原文件。图注已将颜色说明改成 coral，正文和数据保持不变。
